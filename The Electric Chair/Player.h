@@ -3,6 +3,10 @@
 class Player
 {
 public:
+	// Variabler
+	string name;
+
+public:
 
 	vector<string> items;
 

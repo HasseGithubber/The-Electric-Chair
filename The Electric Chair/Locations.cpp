@@ -1,30 +1,65 @@
 #include "pch.h"
 #include "Locations.h"
 #include "Game.h"
-
-enum locations
-{
-	cellA = 'a', cellCorridor = 'b', cellB = 'c', securityroom = 'd', mainCorridor = 'e',
-	farCorridor = 'f', fikaroom = 'g', lockerroom = 'h', mainEntrance = 'i'
-};
+#include "Player.h"
 
 void Locations::cellA() {
-	cout << "Nu är du fast\n 1, nål 2, fil 3, harrypotter bok";
-	cin >> answer;
-	switch (answer)
+	Player l_player;
+	Game l_game;
+	bool l_cellA = true;
+	do
 	{
-	case '1':
-		cellCorridor();
-		break;
-	case '2':
-		cellCorridor();
-		break;
-	case '3':
-		cellCorridor();
-		break;
-	default:
-		break;
-	}
+		cout << "Nu är du fast" << l_game.s_answer << "\n" << choice1 << choice2 << choice3 << "4. Inventory";
+		cin >> answer;
+		switch (answer)
+		{
+		case hairpin:
+			//l_player.pushBack(1);
+			choice1 = "";
+			if (if_choice1)
+			{
+				if_choice1 = false;
+				cellCorridor();
+
+			}
+			else
+			{
+
+			}
+			break;
+		case harryPotter:
+			//l_player.pushBack(2);
+			choice2 = "";
+			if (if_choice2)
+			{
+				if_choice2 = false;
+				cellCorridor();
+			}
+			else
+			{
+
+			}
+			break;
+		case nailfile:
+			//l_player.pushBack(3);
+			choice3 = "";
+			if (if_choice3)
+			{
+				if_choice3 = false;
+				cellCorridor();
+			}
+			else
+			{
+
+			}
+			break;
+		case inventory:
+			//l_player.inventory();
+			break;
+		default:
+			break;
+		}
+	} while (l_cellA);
 }
 
 void Locations::cellCorridor() {
@@ -32,7 +67,6 @@ void Locations::cellCorridor() {
 	cout << "Du flydde din cell, vad gör du nu?";
 	Game l_game;
 	l_game.menu();
-	cin.get();
 }
 
 void Locations::cellB() {

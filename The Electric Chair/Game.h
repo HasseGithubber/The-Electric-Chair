@@ -10,6 +10,11 @@ public:
 	char answer;
 	string s_answer;
 
+	enum game
+	{
+		startgame = '1', exitgame = '2'
+	};
+
 	// Class objects
 	//Player player;
 	//Locations locate;

@@ -4,6 +4,7 @@
 #include "Player.h"
 
 
+
 void Game::intro() {
 	menu();
 }
@@ -25,15 +26,15 @@ void Game::menu() {
 }
 
 void Game::start() {
-	Player player;
+	Player g_player;
 	Locations locate;
 	while (true)
 	{
 		s_answer = "";
 		cout << "What do you want to call you prisoner?\n";
 		cin >> s_answer;
-		player.name = s_answer;
-		cout << "Intro, prisoner name " << player.name << ". What happens now? typ\n";
+		//g_player.name = s_answer;
+		cout << "Intro, prisoner name " << s_answer << ". What happens now? typ\n";
 		locate.cellA();
 	}
 }

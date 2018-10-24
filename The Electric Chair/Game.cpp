@@ -3,10 +3,6 @@
 #include "Locations.h"
 #include "Player.h"
 
-enum game
-{
-	startgame = 'a', exitgame = 'b'
-};
 
 void Game::intro() {
 	menu();

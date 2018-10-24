@@ -2,11 +2,7 @@
 #include "Locations.h"
 #include "Game.h"
 
-enum locations
-{
-	cellA = 'a', cellCorridor = 'b', cellB = 'c', securityroom = 'd', mainCorridor = 'e',
-	farCorridor = 'f', fikaroom = 'g', lockerroom = 'h', mainEntrance = 'i'
-};
+
 
 void Locations::cellA() {
 	cout << "Nu är du fast\n 1, nål 2, fil 3, harrypotter bok";
@@ -14,13 +10,13 @@ void Locations::cellA() {
 	switch (answer)
 	{
 	case '1':
-		cellCorridor();
+		cellCorridor(); //l_player.pushBack(1);
 		break;
 	case '2':
-		cellCorridor();
+		cellCorridor();//l_player.pushBack(2);
 		break;
 	case '3':
-		cellCorridor();
+		cellCorridor(); //l_player.pushBack(3);
 		break;
 	default:
 		break;

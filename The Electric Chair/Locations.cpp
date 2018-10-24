@@ -14,6 +14,7 @@ void Locations::cellA() {
 		switch (answer)
 		{
 		case hairpin:
+	
 			l_player.pushBack(1);
 			choice1 = "";
 			if (if_choice1)
@@ -27,6 +28,7 @@ void Locations::cellA() {
 
 			}
 			break;
+
 		case harryPotter:
 			l_player.pushBack(2);
 			choice2 = "";

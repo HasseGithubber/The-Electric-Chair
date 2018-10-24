@@ -22,6 +22,8 @@ public:
 		hairpin = '1', harryPotter = '2', nailfile = '3', inventory = '4'
 	};
 
+
+
 public:
 	// Alla platser
 	void cellA();

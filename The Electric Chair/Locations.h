@@ -3,6 +3,10 @@
 class Locations
 {
 public:
+	// Variabler
+	char answer;
+
+public:
 	// Alla platser
 	void cellA();
 	void cellCorridor();

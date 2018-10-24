@@ -28,6 +28,7 @@ void Game::menu() {
 void Game::start() {
 	Player g_player;
 	Locations locate;
+	g_player.startInventory();
 	while (true)
 	{
 		s_answer = "";

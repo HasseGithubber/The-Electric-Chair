@@ -33,10 +33,10 @@ void Locations::mainEntrance() {
 
 }
 
+
 Locations::Locations()
 {
 }
-
 
 Locations::~Locations()
 {

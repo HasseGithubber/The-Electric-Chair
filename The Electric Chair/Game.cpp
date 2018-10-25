@@ -3,41 +3,44 @@
 #include "Locations.h"
 #include "Player.h"
 
-
+Player g_player;
+Locations locate;
 
 void Game::intro() {
 	menu();
 }
 
 void Game::menu() {
-	cout << "Menyn\n 1. start 2. exit\n";
-	cin >> answer;
-	switch (answer)
+	bool menuloop = true;
+	do
 	{
-	case startgame:
-		cout << endl;
-		start();
-		break;
-	case exitgame:
-		return;
-	default:
-		break;
-	}
+		cout << "Menyn\n 1. start 2. exit\n";
+		cin >> answer;
+		switch (answer)
+		{
+		case startgame:
+			menuloop = false;
+			cout << endl;
+			start();
+			break;
+		case exitgame:
+			menuloop = false;
+			return;
+		default:
+			break;
+		}
+	} while (true);
+	return;
 }
 
 void Game::start() {
-	Player g_player;
-	Locations locate;
-	g_player.startInventory();
-	while (true)
-	{
-		s_answer = "";
-		cout << "What do you want to call you prisoner?\n";
-		cin >> s_answer;
-		//g_player.name = s_answer;
-		cout << "Intro, prisoner name " << s_answer << ". What happens now? typ\n";
-		locate.cellA();
-	}
+	//bool startloop = true;
+	s_answer = "";
+	cout << "What do you want to call you prisoner?\n";
+	cin >> s_answer;
+	//g_player.name = s_answer;
+	cout << "Intro, prisoner name " << s_answer << ". What happens now? typ\n";
+	locate.cellA();
 }
 
 void victory() {

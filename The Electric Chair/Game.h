@@ -2,12 +2,10 @@
 class Game
 {
 private:
-	//regler
-public:
-	//regel funktioner
+	string answer;
+
 public:
 	// Variabler
-	char answer;
 	string s_answer;
 	int diceResult;
 	int bulleOutcome;
@@ -18,9 +16,6 @@ public:
 	};
 
 
-	// Class objects
-	//Player player;
-	//Locations locate;
 
 public:
 	void intro();
@@ -28,8 +23,7 @@ public:
 	void start();
 	void victory();
 
-	// Ändra dessa, debugg Locations?
-	void gameover();
+
 
 public:
 	// Mekaniska spel funktioner

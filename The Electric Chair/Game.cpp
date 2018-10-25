@@ -15,9 +15,10 @@ void Game::menu() {
 	bool menuloop = true;
 	do
 	{
-		cout << "Menyn\n 1. start 2. exit\n";
+		answer = "";
+		cout << "Menyn\n 1. start 2. exit" << endl;
 		cin >> answer;
-		switch (answer)
+		switch(answer[0])
 		{
 		case startgame:
 			menuloop = false;
@@ -34,6 +35,7 @@ void Game::menu() {
 }
 
 void Game::start() {
+	answer = "";
 	//bool startloop = true;
 	s_answer = "";
 	cout << "What do you want to call your prisoner?\n";
@@ -47,10 +49,6 @@ void Game::victory() {
 	cout << "Du flydde den elektriska stolen!";
 }
 
-void Game::gameover() { // Inte färdig. flytta till location. Töm inventory..skicka till starta om.
-	
-	cout << "Du har inga fler chanser.. börja om? \n 1. Ja || 2. nej \n";
-}
 
 int Game::bulle() {
 	bulleOutcome = 0;

@@ -24,7 +24,10 @@ public:
 	void menu();
 	void start();
 	void victory();
-	
+
+	// Ändra dessa, debugg Locations?
+	void gameover();
+
 
 public:
 	Game();

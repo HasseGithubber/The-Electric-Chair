@@ -6,8 +6,24 @@
 Game l_game;
 Player l_player;
 
-void Locations::cellA() {
+void Locations::fillItems() // Fyller inventory från början.
+{
+
 	l_player.startInventory();
+	cellA();
+
+}
+
+void Locations::cellA() {
+
+
+	if (if_choice1 == false && if_choice2 == false && if_choice3 == false) // Så du dör.. inte färdig.
+	{
+		l_game.gameover(); // fixa
+		bool cellA = false;
+	}
+	else
+	{ 
 	bool cellA = true;
 	while (cellA)
 	{
@@ -60,12 +76,13 @@ void Locations::cellA() {
 			break;
 		}
 	}
+	}
 }
 
 void Locations::cellCorridor() {
 	bool cellCorridor = true;
 	cout << "Cell corridor" << endl; // endl för att tömma buffern
-	cout << "Du flydde din cell, vad gör du nu?";
+	cout << "Du flydde din cell, vad gör du nu? \n 3. Gå till Cell B || 4. Gå till säkerhetssluss || 0 Inventory";
 	while (cellCorridor)
 	{
 		answer = NULL;
@@ -101,7 +118,7 @@ void Locations::cellCorridor() {
 void Locations::cellB() {
 	bool cellB = true;
 	cout << "Cell B you now are in" << endl;  // endl för att tömma buffern
-	cout << "Du pratar med din langare, ";
+	cout << "Du pratar med din langare, \n 1. Ta sax || 2. Ta bazooka || 3. Ak47 || 4. Ta Kpist || 0. Inventory";
 	while (cellB)
 	{
 		answer = NULL;
@@ -109,16 +126,25 @@ void Locations::cellB() {
 		switch (answer)
 		{
 		case scissor:
-			//give tiem
+			if (b_scissors == true) // Så att man inte ska kunna ta flera saxar.
+			{
+				cout << "You already have one.. why take two?" << endl;
+			}
+			else
+			{ 
+			l_player.ItemScissors(); // Ger en sax i inventory
+			b_scissors = true;
+			cout << "Good choice! You now have a scissor in your inventory\n";
+			}
 			break;
 		case bazooka:
-			cout << "Its too big, cant get it through the metal bars";
+			cout << "Its too big, cant get it through the metal bars.. try someting else";
 			break;
 		case ak47:
-			cout << "It's out of ammo";
+			cout << "It's out of ammo, try someting else";
 			break;
 		case kpist:
-			cout << "It's rusty as hell, it wont work";
+			cout << "It's rusty as hell, it wont work, try someting else";
 			break;
 		case inventory:
 			l_player.inventory();
@@ -137,6 +163,8 @@ void Locations::cellB() {
 
 void Locations::securityroom() {
 
+	// Ta bort denna sen!
+	l_game.BackToCell();
 }
 
 void Locations::mainCorridor() {

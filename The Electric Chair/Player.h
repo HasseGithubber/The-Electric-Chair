@@ -12,6 +12,7 @@ public:
 	void startInventory();
 	int pushBack(int);
 	void ItemScissors();
+	void clearVector();
 
 public:
 	Player();

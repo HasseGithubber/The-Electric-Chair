@@ -19,7 +19,7 @@ void Locations::cellA() {
 
 	if (if_choice1 == false && if_choice2 == false && if_choice3 == false) // Så du dör.. inte färdig.
 	{
-		l_game.gameover(); // fixa
+		gameover(); // fixa
 		b_cellA = false;
 	}
 	else
@@ -27,10 +27,10 @@ void Locations::cellA() {
 	b_cellA = true;
 	while (b_cellA)
 	{
-		answer = NULL;
+		answer = "";
 		cout << "Nu är du fast" << l_game.s_answer << endl << choice1 << choice2 << choice3 << "0. Inventory";  // endl för att tömma buffern
 		cin >> answer;
-		switch (answer)
+		switch (answer[0])
 		{
 		case e_hairpin:
 			b_cellA = false;
@@ -82,16 +82,17 @@ void Locations::cellA() {
 void Locations::cellCorridor() {
 	b_cellCorr = true;
 	cout << "Cell corridor" << endl; // endl för att tömma buffern
-	cout << "Du flydde din cell, vad gör du nu? \n 3. Gå till Cell B || 4. Gå till säkerhetssluss || 0 Inventory";
+
 	while (b_cellCorr)
 	{
-		answer = NULL;
+		cout << "Du flydde din cell, vad gör du nu? \n 3. Gå till Cell B || 4. Gå till säkerhetssluss || 0 Inventory";
+		answer = "";
 		cin >> answer;
-		if (answer == '3' || answer == '4')
+		if (answer[0] == '3' || answer[0] == '4')
 		{
 			b_cellCorr = false;
 		}
-		else if (answer == '0')
+		else if (answer[0] == '0')
 		{
 			l_player.inventory();
 			cout << endl;
@@ -101,7 +102,7 @@ void Locations::cellCorridor() {
 			cout << "Skriv rätt!" << endl;
 		}
 	}
-	switch (answer)
+	switch (answer[0])
 	{
 	case e_cellB:
 		cellB();
@@ -112,7 +113,6 @@ void Locations::cellCorridor() {
 	default:
 		break;
 	}
-	//l_game.menu(); // **Detta orsakar att man måste i menyn välja exit två gånger**
 }
 
 void Locations::cellB() {
@@ -121,9 +121,9 @@ void Locations::cellB() {
 	while (b_cellB)
 	{
 		cout << "Du pratar med din langare, \n 1. Ta sax || 2. Ta bazooka || 3. Ak47 || 4. Ta Kpist || 0. Inventory";
-		answer = NULL;
+		answer = "";
 		cin >> answer;
-		switch (answer)
+		switch (answer[0])
 		{
 		case e_scissor:
 			if (b_scissors == true) // Så att man inte ska kunna ta flera saxar.
@@ -153,7 +153,7 @@ void Locations::cellB() {
 			cout << "Skriv rätt!" << endl;
 			break;
 		}
-		if (answer == '1') // valet för att lämna rummet, tadaaaaaaaa
+		if (answer[0] == '1') // valet för att lämna rummet, tadaaaaaaaa
 		{
 			b_cellB = false;
 		}
@@ -170,9 +170,9 @@ void Locations::securityroom() {
 		while (b_secroom)
 		{
 			cout << "Do you take the unifrom?\n 1. Yes || 2. No";
-			answer = NULL;
+			answer = "";
 			cin >> answer;
-			switch (answer)
+			switch (answer[0])
 			{
 			case yes:
 				b_secroom = false;
@@ -204,20 +204,22 @@ void Locations::mainCorridor() { // Fixa så att valet till far corridor bara fin
 	while (b_mainCorr)
 	{
 		cout << "Where do you want to go?\n 6. Continue the corridor || 9. Main entrance";
-		answer = NULL;
+		answer = "";
 		cin >> answer;
-		switch (answer)
+		switch (answer[0])
 		{
 		case e_farCorridor:
 			b_mainCorr = false;
+			break;
 		case e_mainEntrance:
 			b_mainCorr = false;
+			break;
 		default:
 			cout << "That is not an option, try again" << endl;
 			break;
 		}
 	}
-	if (answer == '6')
+	if (answer[0] == '6')
 	{
 		farCorridor();
 	}
@@ -234,9 +236,9 @@ void Locations::farCorridor() {
 	while (b_farCorr)
 	{
 		cout << "Where do you want to go?\n 7. Fika Room || 8. Locker Room";
-		answer = NULL;
+		answer = "";
 		cin >> answer;
-		switch (answer)
+		switch (answer[0])
 		{
 		case e_fikaroom:
 			b_farCorr = false;
@@ -249,7 +251,7 @@ void Locations::farCorridor() {
 			break;
 		}
 	}
-	if (answer == '7')
+	if (answer[0] == '7')
 	{
 		fikaroom();
 	}
@@ -273,6 +275,13 @@ void Locations::lockerroom() {
 
 void Locations::mainEntrance() {
 
+}
+
+
+void Locations::gameover() { // Inte färdig. flytta till location. Töm inventory..skicka till starta om.
+
+	cout << "Du har inga fler chanser.. börja om? \n 1. Ja || 2. nej \n";
+	l_player.clearVector();
 }
 
 

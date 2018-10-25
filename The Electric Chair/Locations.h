@@ -2,9 +2,10 @@
 
 class Locations
 {
+private:
+	string answer;
 public:
 	// Variabler
-	char answer;
 	string choice1 = "1. Hairpin ";
 	string choice2 = "2. Harry Potter book ";
 	string choice3 = "3. Nail-file ";
@@ -23,6 +24,7 @@ public:
 	bool b_fikaroom;
 	bool b_lockerroom;
 	bool b_mainEntr;
+
 
 	// Bools till items
 	bool b_scissors = false; // Denna är false tills spelaren tar sax:en, då blir den true.
@@ -60,6 +62,7 @@ public:
 	void fikaroom();
 	void lockerroom();
 	void mainEntrance();
+	void gameover();
 
 public:
 	Locations();

@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Player.h"
+#include "Game.h"
 #include <iomanip>
 
 
@@ -50,6 +51,10 @@ void Player::ItemScissors()
 	items.push_back("Scissors");
 }
 
+void Player::clearVector()
+{
+	items.clear();
+}
 
 
 Player::Player()

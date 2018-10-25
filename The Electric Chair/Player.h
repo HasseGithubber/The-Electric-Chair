@@ -12,7 +12,11 @@ public:
 	void startInventory();
 	int pushBack(int);
 	void ItemScissors();
+	void ItemBloodyUniform();
+	void ItemCleanUniform();
+	void changeUniform();
 	void clearVector();
+	void ItemCoins();
 
 public:
 	Player();

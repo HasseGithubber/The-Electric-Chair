@@ -24,69 +24,73 @@ void Locations::cellA() {
 	}
 	else
 	{ 
-		b_cellA = true;
-		while (b_cellA)
+	b_cellA = true;
+	while (b_cellA)
+	{
+		answer = "";
+		cout << "Nu är du fast" << l_game.s_answer << endl << choice1 << choice2 << choice3 << "0. Inventory";  // endl för att tömma buffern
+		cin >> answer;
+		switch (answer[0])
 		{
-			answer = "";
-			cout << "Nu är du fast" << l_game.s_answer << endl << choice1 << choice2 << choice3 << "0. Inventory";  // endl för att tömma buffern
-			cin >> answer;
-			switch (answer[0])
-			{
-			case e_hairpin:
-				b_cellA = false;
-				l_player.pushBack(1);
-				choice1 = "";
-				if (if_choice1) {
-					if_choice1 = false;
-					cellCorridor();
-				}
-				else {
-					cout << "Your hairpin is broken. Use something else";
-				}
-				break;
-
-			case e_harryPotter:
-				b_cellA = false;
-				l_player.pushBack(2);
-				choice2 = "";
-				if (if_choice2) {
-					if_choice2 = false;
-					cellCorridor();
-				}
-				else {
-					cout << "Your Harry Potter book has been warped in space&time from the spell. Use something else";
-				}
-				break;
-			case e_nailfile:
-				b_cellA = false;
-				l_player.pushBack(3);
-				choice3 = "";
-				if (if_choice3) {
-					if_choice3 = false;
-					cellCorridor();
-				}
-				else {
-					cout << "Your nail-file is dull after all those years. Use something else";
-				}
-				break;
-			case e_inventory:
-				l_player.inventory();
-				break;
-			default:
-				cout << wrongAnsw << endl;
-				break;
+		case e_hairpin:
+			b_cellA = false;
+			l_player.pushBack(1);
+			choice1 = "";
+			if (if_choice1) {
+				if_choice1 = false;
+				cout << "Du flydde din cell " << endl;
+				cellCorridor();
 			}
+			else {
+				cout << "Your hairpin is broken. Use something else";
+			}
+			break;
+
+		case e_harryPotter:
+			b_cellA = false;
+			l_player.pushBack(2);
+			choice2 = "";
+			if (if_choice2) {
+				if_choice2 = false;
+				cout << "Du flydde din cell" << endl;
+				cellCorridor();
+			}
+			else {
+				cout << "Your Harry Potter book has been warped in space&time from the spell. Use something else";
+			}
+			break;
+		case e_nailfile:
+			b_cellA = false;
+			l_player.pushBack(3);
+			choice3 = "";
+			if (if_choice3) {
+				if_choice3 = false;
+				cout << "Du flydde din cell" << endl;
+				cellCorridor();
+
+			}
+			else {
+				cout << "Your nail-file is dull after all those years. Use something else";
+			}
+			break;
+		case e_inventory:
+			l_player.inventory();
+			break;
+		default:
+			break;
 		}
+	}
 	}
 }
 
 void Locations::cellCorridor() {
 	b_cellCorr = true;
 	cout << "Cell corridor" << endl; // endl för att tömma buffern
-
+	
 	while (b_cellCorr)
 	{
-		cout << "Du flydde din cell, vad gör du nu? \n 3. Gå till Cell B || 4. Gå till säkerhetssluss || 0 Inventory";
+		cout << " vad gör du nu? " << endl;
+		cout << " 3. Gå till Cell B || 4. Gå till säkerhetssluss || 0 Inventory";
 		answer = "";
 		cin >> answer;
 		if (answer[0] == '3' || answer[0] == '4')
@@ -177,8 +181,11 @@ void Locations::securityroom() {
 			{
 			case yes:
 				b_secroom = false;
-				// Give item
-				b_dirtyUniform = true;
+				l_player.ItemBloodyUniform();// ger spelaren en blodig uniform
+				b_bloodyUniform = true;
+				cout << "You found some coins in the uniform.. wohoo" << endl;
+				l_player.ItemCoins();
+				coins = 5;  // Spelaren har nu 5 coins.
 				break;
 			case no:
 				b_secroom = false;
@@ -204,7 +211,7 @@ void Locations::mainCorridor() { // Fixa så att valet till far corridor bara fin
 	cout << "You hear a few voices coming from the main entrance to the right, to the left the corridor just keeps going";
 	while (b_mainCorr)
 	{
-		cout << "Where do you want to go?\n 6. Continue the corridor || 9. Main entrance";
+		cout << "Where do you want to go?\n 6. Continue the corridor || 9. Main entrance || 0. Inventory";
 		answer = "";
 		cin >> answer;
 		switch (answer[0])
@@ -214,6 +221,9 @@ void Locations::mainCorridor() { // Fixa så att valet till far corridor bara fin
 			break;
 		case e_mainEntrance:
 			b_mainCorr = false;
+			break;
+		case e_inventory:
+			l_player.inventory();
 			break;
 		default:
 			cout << wrongAnsw << endl;
@@ -236,7 +246,7 @@ void Locations::farCorridor() {
 	cout << "A fika room and locker room you find doors to.";
 	while (b_farCorr)
 	{
-		cout << "Where do you want to go?\n 7. Fika Room || 8. Locker Room";
+		cout << "Where do you want to go?\n 7. Fika Room || 8. Locker Room || 0. Inventory";
 		answer = "";
 		cin >> answer;
 		switch (answer[0])
@@ -246,6 +256,9 @@ void Locations::farCorridor() {
 			break;
 		case e_lockerroom:
 			b_farCorr = false;
+			break;
+		case e_inventory:
+			l_player.inventory();
 			break;
 		default:
 			cout << wrongAnsw << endl;
@@ -405,6 +418,69 @@ void Locations::callBoss() {
 
 void Locations::lockerroom() {
 
+	b_lockerroom = true;
+	cout << "You are now in the lockerroom" << endl;
+	while (b_lockerroom)
+	{
+		cout << "You see a washing machine and and a bunch of lockers " << endl;
+		cout << "1. use washing machine || 2. open a locker || 0. Inventory";
+		answer = "";
+		cin >> answer;
+		switch (answer[0])
+		{
+		case wash:
+		{
+			b_lockerroom = false;
+			if (b_bloodyUniform == true || b_cleanUniform == true )
+			{ 
+			cout << "Mmmmm .. your clothes smell gooood, they are now clean" << endl;
+			l_player.changeUniform();
+			b_cleanUniform = true;
+			}
+			else
+			{
+				cout << "Your prisonscrubbs smell like flowers.. mmm" << endl;
+			}
+			break;
+		}
+
+		case open:
+		{
+			b_lockerroom = false;
+			cout << "In the locker you see a bunch of things, do you want to take something?\n 1. A clean uniform || 2. some coins ";
+			answer = "";
+			cin >> answer;
+			switch (answer[0])
+			{
+			case '1':
+				l_player.ItemCleanUniform();
+				b_cleanUniform = true;
+				break;
+
+			case '2':
+				//Plussa på int coins
+				//fler coins i inventory?
+				break;
+
+			default:
+				cout << "Byt ut mig mot konstant";
+				break;
+			}
+
+			break;
+		}
+		case e_inventory:
+		{
+			l_player.inventory();
+			break;
+		}
+
+		default:
+			cout << "Ändra mig till konstant";
+
+
+		}
+	}
 }
 
 void Locations::mainEntrance() {
@@ -419,6 +495,7 @@ void Locations::gameover() { // Inte färdig. flytta till location. Töm inventory
 
 	cout << "Du har inga fler chanser.. börja om? \n 1. Ja || 2. nej \n";
 	l_player.clearVector();
+	coins = 0;
 }
 
 

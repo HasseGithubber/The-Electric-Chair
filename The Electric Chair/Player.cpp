@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Player.h"
+#include "Locations.h"
 #include "Game.h"
 #include <iomanip>
 
@@ -14,6 +15,7 @@ void Player::inventory() {
 		cout << " " << items[i] << endl;
 
 	}
+
 	cout << endl;
 	cout << "--------------------------------" << endl << endl;
 
@@ -49,6 +51,29 @@ int Player::pushBack(int x) {
 void Player::ItemScissors()
 {
 	items.push_back("Scissors");
+}
+
+void Player::ItemBloodyUniform() {
+
+	items.push_back("Bloody Uniform");
+
+}
+
+void Player::ItemCleanUniform() {
+
+	items.push_back("Clean uniform");
+
+}
+
+void Player::changeUniform() {
+
+	items[4] = "Clean uniform";
+
+}
+
+void Player::ItemCoins() {
+
+	items.push_back("Some coins ");
 }
 
 void Player::clearVector()

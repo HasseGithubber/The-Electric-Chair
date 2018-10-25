@@ -12,7 +12,7 @@ public:
 	void startInventory();
 	int pushBack(int);
 
-
+	
 public:
 	Player();
 	~Player();

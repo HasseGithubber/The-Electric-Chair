@@ -8,6 +8,7 @@ Locations locate;
 
 void Game::intro() {
 	menu();
+	
 }
 
 void Game::menu() {

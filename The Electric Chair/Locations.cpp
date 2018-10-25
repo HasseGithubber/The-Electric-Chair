@@ -112,7 +112,6 @@ void Locations::cellCorridor() {
 	default:
 		break;
 	}
-	//l_game.menu(); // **Detta orsakar att man måste i menyn välja exit två gånger**
 }
 
 void Locations::cellB() {
@@ -262,9 +261,72 @@ void Locations::farCorridor() {
 
 void Locations::fikaroom() {
 	b_fikaroom = true;
-	cout << "The corridor you continue to walk." << endl;
-	cout << "A fika room and locker room you find doors to.";
-
+	cout << "You find yourself in the holy fika room. Angels sing and the room table has some strange items and a (pay maybe?)telephone sits on the wall." << endl;
+	while (b_fikaroom)
+	{
+		cout << "What do you want to do?\n 1. Walk to the table || 2. Use the telephone";
+		answer = "";
+		cin >> answer;
+		switch (answer[0])
+		{
+		case e_fikatable:
+			b_fikaroom = false;
+			break;
+		case e_telephone:
+			b_fikaroom = false;
+			break;
+		default:
+			cout << "That is not an option, try again" << endl;
+			break;
+		}
+	}
+	if (answer[0] = '1')
+	{
+		cout << "You see a bulle and dice" << endl;
+		while (b_fikatable)
+		{
+			answer = "";
+			cout << "What do you do?\n 1. Eat the bulle || 2. Throw the dice\n";
+			cin >> answer;
+			switch (answer[0])
+			{
+			case e_bulle:
+				b_fikatable = false;
+				break;
+			case e_dice:
+				b_fikatable = false;
+				break;
+			default:
+				cout << "That is not an option, try again" << endl;
+				break;
+			}
+		}
+	}
+	else
+	{
+		cout << "You take the telephone to your head and hear the ringtone." << endl;
+		while (b_telephone)
+		{
+			answer = "";
+			cout << "What do you do?\n 1. Eat the bulle || 2. Throw the dice\n";
+			cin >> answer;
+			switch (answer[0])
+			{
+			case e_mother:
+				b_telephone = false;
+				break;
+			case e_boss:
+				b_telephone = false;
+				break;
+			case e_developers:
+				b_telephone = false;
+				break;
+			default:
+				cout << "That is not an option, try again" << endl;
+				break;
+			}
+		}
+	}
 }
 
 void Locations::lockerroom() {

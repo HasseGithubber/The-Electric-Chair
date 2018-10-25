@@ -9,11 +9,14 @@ public:
 	// Variabler
 	char answer;
 	string s_answer;
+	int diceResult;
+	int bulleOutcome;
 
 	enum game
 	{
 		startgame = '1', exitgame = '2'
 	};
+
 
 	// Class objects
 	//Player player;
@@ -28,6 +31,10 @@ public:
 	// Ändra dessa, debugg Locations?
 	void gameover();
 
+public:
+	// Mekaniska spel funktioner
+	int bulle();
+	int dice();
 
 public:
 	Game();

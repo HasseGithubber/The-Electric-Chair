@@ -43,6 +43,14 @@ public: // Enum's
 	{
 		e_scissor = '1', e_bazooka, e_ak47, e_kpist
 	};
+	enum fikaroom
+	{
+		e_fikatable = '1', e_bulle, e_dice, e_telephone
+	};
+	enum phonenumbers
+	{
+		e_mother = '1', e_boss, e_developers
+	};
 	enum yesNo
 	{
 		yes = '1', no

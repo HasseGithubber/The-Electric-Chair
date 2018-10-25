@@ -50,7 +50,18 @@ void Game::victory() {
 void Game::gameover() { // Inte färdig. flytta till location. Töm inventory..skicka till starta om.
 	
 	cout << "Du har inga fler chanser.. börja om? \n 1. Ja || 2. nej \n";
+}
 
+int Game::bulle() {
+	bulleOutcome = 0;
+	bulleOutcome = rand() % 2 + 1;
+	return bulleOutcome;
+}
+
+int Game::dice() {
+	diceResult = 0;
+	diceResult = rand() % 6 + 1;
+	return diceResult;
 }
 
 

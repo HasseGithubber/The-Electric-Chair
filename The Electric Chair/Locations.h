@@ -12,6 +12,7 @@ public:
 	bool if_choice1 = true;
 	bool if_choice2 = true;
 	bool if_choice3 = true;
+	int coins; // Använd till telefonen
 
 
 	// Bools till platser
@@ -24,11 +25,14 @@ public:
 	bool b_fikaroom;
 	bool b_lockerroom;
 	bool b_mainEntr;
+	bool b_fikatable;
+	bool b_telephone;
 
 
 	// Bools till items
 	bool b_scissors = false; // Denna är false tills spelaren tar sax:en, då blir den true.
-	bool b_dirtyUniform = false;
+	bool b_bloodyUniform = false;
+	bool b_cleanUniform = false;
 
 public: // Enum's
 
@@ -57,6 +61,11 @@ public: // Enum's
 	{
 		yes = '1', no
 	};
+	enum lockerroomChoice
+	{
+		wash = '1', open = '2'
+	};
+
 
 public:
 	// Alla platser

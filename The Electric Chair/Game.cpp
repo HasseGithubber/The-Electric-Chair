@@ -30,7 +30,7 @@ void Game::menu() {
 		default:
 			break;
 		}
-	} while (true);
+	} while (menuloop);
 }
 
 void Game::start() {

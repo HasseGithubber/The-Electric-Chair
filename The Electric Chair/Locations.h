@@ -11,7 +11,7 @@ public:
 	bool if_choice1 = true;
 	bool if_choice2 = true;
 	bool if_choice3 = true;
-	bool b_scissors = false; // Denna är false tills spelaren tar sax:en, då blir den true.
+
 
 	// Bools till platser
 	bool b_cellA;
@@ -25,6 +25,7 @@ public:
 	bool b_mainEntr;
 
 	// Bools till items
+	bool b_scissors = false; // Denna är false tills spelaren tar sax:en, då blir den true.
 	bool b_dirtyUniform = false;
 
 public: // Enum's

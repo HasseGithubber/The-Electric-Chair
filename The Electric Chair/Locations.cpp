@@ -20,12 +20,12 @@ void Locations::cellA() {
 	if (if_choice1 == false && if_choice2 == false && if_choice3 == false) // Så du dör.. inte färdig.
 	{
 		l_game.gameover(); // fixa
-		bool cellA = false;
+		b_cellA = false;
 	}
 	else
 	{ 
-	bool cellA = true;
-	while (cellA)
+	b_cellA = true;
+	while (b_cellA)
 	{
 		answer = NULL;
 		cout << "Nu är du fast" << l_game.s_answer << endl << choice1 << choice2 << choice3 << "0. Inventory";  // endl för att tömma buffern
@@ -80,10 +80,10 @@ void Locations::cellA() {
 }
 
 void Locations::cellCorridor() {
-	bool cellCorridor = true;
+	b_cellCorr = true;
 	cout << "Cell corridor" << endl; // endl för att tömma buffern
 	cout << "Du flydde din cell, vad gör du nu? \n 3. Gå till Cell B || 4. Gå till säkerhetssluss || 0 Inventory";
-	while (cellCorridor)
+	while (b_cellCorr)
 	{
 		answer = NULL;
 		cin >> answer;
@@ -118,14 +118,14 @@ void Locations::cellCorridor() {
 void Locations::cellB() {
 	b_cellB = true;
 	cout << "Cell B you now are in" << endl;  // endl för att tömma buffern
-	cout << "Du pratar med din langare, \n 1. Ta sax || 2. Ta bazooka || 3. Ak47 || 4. Ta Kpist || 0. Inventory";
-	while (cellB)
+	while (b_cellB)
 	{
+		cout << "Du pratar med din langare, \n 1. Ta sax || 2. Ta bazooka || 3. Ak47 || 4. Ta Kpist || 0. Inventory";
 		answer = NULL;
 		cin >> answer;
 		switch (answer)
 		{
-		case scissor:
+		case e_scissor:
 			if (b_scissors == true) // Så att man inte ska kunna ta flera saxar.
 			{
 				cout << "You already have one.. why take two?" << endl;
@@ -137,13 +137,13 @@ void Locations::cellB() {
 			cout << "Good choice! You now have a scissor in your inventory\n";
 			}
 			break;
-		case bazooka:
+		case e_bazooka:
 			cout << "Its too big, cant get it through the metal bars.. try someting else";
 			break;
-		case ak47:
+		case e_ak47:
 			cout << "It's out of ammo, try someting else";
 			break;
-		case kpist:
+		case e_kpist:
 			cout << "It's rusty as hell, it wont work, try someting else";
 			break;
 		case e_inventory:

@@ -4,15 +4,19 @@ class Locations
 {
 private:
 	string answer;
+	const string wrongAnsw = "That is not an option, try again";
 public:
 	// Variabler
 	string choice1 = "1. Hairpin ";
 	string choice2 = "2. Harry Potter book ";
 	string choice3 = "3. Nail-file ";
+	string teleBoss = "";
+	
+	// Bools till spel funktioner
 	bool if_choice1 = true;
 	bool if_choice2 = true;
 	bool if_choice3 = true;
-
+	bool if_teleBoss = false;
 
 	// Bools till platser
 	bool b_cellA;
@@ -25,13 +29,20 @@ public:
 	bool b_lockerroom;
 	bool b_mainEntr;
 
+	// Bools till händelser i platser
+	bool b_fikatable;
+	bool b_telephone;
 
-	// Bools till items
-	bool b_scissors = false; // Denna är false tills spelaren tar sax:en, då blir den true.
+	// Bools till items || items börjar som false tills man får dom
+	bool b_scissors = false;
 	bool b_dirtyUniform = false;
 
 public: // Enum's
 
+	enum playeractions
+	{
+		e_inventory = '0'
+	};
 	enum locations
 	{
 		e_cellA = '1', e_cellCorridor, e_cellB, e_securityroom, e_mainCorridor,
@@ -39,7 +50,7 @@ public: // Enum's
 	};
 	enum chances
 	{
-		e_hairpin = '1', e_harryPotter, e_nailfile, e_inventory = '0'
+		e_hairpin = '1', e_harryPotter, e_nailfile
 	};
 	enum cellBitems
 	{
@@ -47,11 +58,15 @@ public: // Enum's
 	};
 	enum fikaroom
 	{
-		e_fikatable = '1', e_bulle, e_dice, e_telephone
+		e_fikatable = '1',  e_telephone
+	};
+	enum fikatable
+	{
+		e_bulle = '1', e_dice,
 	};
 	enum phonenumbers
 	{
-		e_mother = '1', e_boss, e_developers
+		e_mother = '1', e_developers, e_boss
 	};
 	enum yesNo
 	{
@@ -60,7 +75,6 @@ public: // Enum's
 
 public:
 	// Alla platser
-	void fillItems();
 	void cellA();
 	void cellCorridor();
 	void cellB();
@@ -70,6 +84,13 @@ public:
 	void fikaroom();
 	void lockerroom();
 	void mainEntrance();
+
+	// Plats specifika händelser
+	void fikatable();
+	void telephone();
+
+	// Spel funktioner
+	void fillItems();
 	void gameover();
 
 public:

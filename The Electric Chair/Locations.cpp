@@ -24,58 +24,59 @@ void Locations::cellA() {
 	}
 	else
 	{ 
-	b_cellA = true;
-	while (b_cellA)
-	{
-		answer = "";
-		cout << "Nu är du fast" << l_game.s_answer << endl << choice1 << choice2 << choice3 << "0. Inventory";  // endl för att tömma buffern
-		cin >> answer;
-		switch (answer[0])
+		b_cellA = true;
+		while (b_cellA)
 		{
-		case e_hairpin:
-			b_cellA = false;
-			l_player.pushBack(1);
-			choice1 = "";
-			if (if_choice1) {
-				if_choice1 = false;
-				cellCorridor();
-			}
-			else {
-				cout << "Your hairpin is broken. Use something else";
-			}
-			break;
+			answer = "";
+			cout << "Nu är du fast" << l_game.s_answer << endl << choice1 << choice2 << choice3 << "0. Inventory";  // endl för att tömma buffern
+			cin >> answer;
+			switch (answer[0])
+			{
+			case e_hairpin:
+				b_cellA = false;
+				l_player.pushBack(1);
+				choice1 = "";
+				if (if_choice1) {
+					if_choice1 = false;
+					cellCorridor();
+				}
+				else {
+					cout << "Your hairpin is broken. Use something else";
+				}
+				break;
 
-		case e_harryPotter:
-			b_cellA = false;
-			l_player.pushBack(2);
-			choice2 = "";
-			if (if_choice2) {
-				if_choice2 = false;
-				cellCorridor();
+			case e_harryPotter:
+				b_cellA = false;
+				l_player.pushBack(2);
+				choice2 = "";
+				if (if_choice2) {
+					if_choice2 = false;
+					cellCorridor();
+				}
+				else {
+					cout << "Your Harry Potter book has been warped in space&time from the spell. Use something else";
+				}
+				break;
+			case e_nailfile:
+				b_cellA = false;
+				l_player.pushBack(3);
+				choice3 = "";
+				if (if_choice3) {
+					if_choice3 = false;
+					cellCorridor();
+				}
+				else {
+					cout << "Your nail-file is dull after all those years. Use something else";
+				}
+				break;
+			case e_inventory:
+				l_player.inventory();
+				break;
+			default:
+				cout << wrongAnsw << endl;
+				break;
 			}
-			else {
-				cout << "Your Harry Potter book has been warped in space&time from the spell. Use something else";
-			}
-			break;
-		case e_nailfile:
-			b_cellA = false;
-			l_player.pushBack(3);
-			choice3 = "";
-			if (if_choice3) {
-				if_choice3 = false;
-				cellCorridor();
-			}
-			else {
-				cout << "Your nail-file is dull after all those years. Use something else";
-			}
-			break;
-		case e_inventory:
-			l_player.inventory();
-			break;
-		default:
-			break;
 		}
-	}
 	}
 }
 
@@ -99,7 +100,7 @@ void Locations::cellCorridor() {
 		}
 		else
 		{
-			cout << "Skriv rätt!" << endl;
+			cout << wrongAnsw << endl;
 		}
 	}
 	switch (answer[0])
@@ -183,7 +184,7 @@ void Locations::securityroom() {
 				b_secroom = false;
 				break;
 			default:
-				cout << "That is not an option, try again" << endl; // "endl" Töm buffern efter potientiella mängder fel slag
+				cout << wrongAnsw << endl; // "endl" Töm buffern efter potientiella mängder fel slag
 				break;
 			}
 		}
@@ -215,7 +216,7 @@ void Locations::mainCorridor() { // Fixa så att valet till far corridor bara fin
 			b_mainCorr = false;
 			break;
 		default:
-			cout << "That is not an option, try again" << endl;
+			cout << wrongAnsw << endl;
 			break;
 		}
 	}
@@ -247,7 +248,7 @@ void Locations::farCorridor() {
 			b_farCorr = false;
 			break;
 		default:
-			cout << "That is not an option, try again" << endl;
+			cout << wrongAnsw << endl;
 			break;
 		}
 	}
@@ -267,7 +268,7 @@ void Locations::fikaroom() {
 	cout << "You find yourself in the holy fika room. Angels sing and the room table has some strange items and a (pay maybe?)telephone sits on the wall." << endl;
 	while (b_fikaroom)
 	{
-		cout << "What do you want to do?\n 1. Walk to the table || 2. Use the telephone";
+		cout << "What do you want to do?\n 1. Walk to the table || 2. Use the telephone || 8. Locker Room || 5. Main Corridor || 0. Check inventory\n";
 		answer = "";
 		cin >> answer;
 		switch (answer[0])
@@ -278,57 +279,127 @@ void Locations::fikaroom() {
 		case e_telephone:
 			b_fikaroom = false;
 			break;
+		case e_lockerroom:
+			b_fikaroom = false;
+			break;
+		case e_mainCorridor:
+			b_fikaroom = false;
+			break;
+		case e_inventory:
+			l_player.inventory();
+			break;
 		default:
-			cout << "That is not an option, try again" << endl;
+			cout << wrongAnsw << endl;
 			break;
 		}
 	}
-	if (answer[0] = '1')
+	switch (answer[0])
 	{
-		cout << "You see a bulle and dice" << endl;
-		while (b_fikatable)
+	case e_fikatable:
+		fikatable();
+		break;
+	case e_telephone:
+		telephone();
+		break;
+	case e_lockerroom:
+		lockerroom();
+		break;
+	case e_mainCorridor:
+		mainCorridor();
+		break;
+	}
+}
+
+void Locations::fikatable() {
+	b_fikatable = true;
+	cout << "You see a bowl full of bullar and a dice on the table" << endl;
+	while (b_fikatable)
+	{
+		answer = "";
+		cout << "What do you do?\n 1. Eat a bulle || 2. Throw the dice || 7. Fika Room || 0. Check inventory\n";
+		cin >> answer;
+		switch (answer[0])
 		{
-			answer = "";
-			cout << "What do you do?\n 1. Eat the bulle || 2. Throw the dice\n";
-			cin >> answer;
-			switch (answer[0])
-			{
-			case e_bulle:
-				b_fikatable = false;
-				break;
-			case e_dice:
-				b_fikatable = false;
-				break;
-			default:
-				cout << "That is not an option, try again" << endl;
-				break;
-			}
+		case e_bulle:
+			b_fikatable = false;
+			break;
+		case e_dice:
+			b_fikatable = false;
+			break;
+		case e_fikaroom:
+			b_fikatable = false;
+			break;
+		case e_inventory:
+			l_player.inventory();
+			break;
+		default:
+			cout << wrongAnsw << endl;
+			break;
 		}
 	}
-	else
+	switch (answer[0])
 	{
-		cout << "You take the telephone to your head and hear the ringtone." << endl;
-		while (b_telephone)
+	case e_bulle:
+		cout << "You eat a bulle"; // LÄgg in funktion
+		break;
+	case e_dice:
+		cout << "You threw a dice"; // Lägg in funktion
+		break;
+	case e_fikaroom:
+		fikaroom();
+		break;
+	}
+	fikaroom();
+}
+
+void Locations::telephone() {
+	b_telephone = true;
+	cout << "You take the telephone to your head and hear the ringtone." << endl;
+	while (b_telephone)
+	{
+		answer = "";
+		cout << "What do you do?\n 1. Call your mother || 2. Call the developers " << teleBoss << "|| 0. Check inventory\n";
+		cin >> answer;
+		switch (answer[0])
 		{
-			answer = "";
-			cout << "What do you do?\n 1. Eat the bulle || 2. Throw the dice\n";
-			cin >> answer;
-			switch (answer[0])
+		case e_mother:
+			b_telephone = false;
+			break;
+		case e_developers:
+			b_telephone = false;
+			break;
+		case e_boss:	// Lägg till fler val att säga till bossen
+			if (if_teleBoss)
 			{
-			case e_mother:
 				b_telephone = false;
-				break;
-			case e_boss:
-				b_telephone = false;
-				break;
-			case e_developers:
-				b_telephone = false;
-				break;
-			default:
-				cout << "That is not an option, try again" << endl;
-				break;
+				cout << "fhdsjkalfsd";
 			}
+			else
+			{
+				"Some old guy answered the phone, but you hung up in him.\n";
+			}
+			break;
+		case e_inventory:
+			l_player.inventory();
+			break;
+		default:
+			cout << "You typed a number, but no one answered. Try again" << endl;
+			break;
 		}
+	}
+	switch (switch_on)
+	{
+	default:
+		break;
+	}
+}
+
+void Locations::callBoss() {
+	b_callBoss = true;
+	cout << "OMG it's the boss, what do you say?"; // you call is going through
+	while (b_callBoss)
+	{
+		answer = "";
 	}
 }
 
@@ -337,9 +408,12 @@ void Locations::lockerroom() {
 }
 
 void Locations::mainEntrance() {
-
+	if (b_dirtyUniform) // Placeholder
+	{
+		teleBoss = "|| 3. Call the boss ";
+		if_teleBoss = true;
+	}
 }
-
 
 void Locations::gameover() { // Inte färdig. flytta till location. Töm inventory..skicka till starta om.
 

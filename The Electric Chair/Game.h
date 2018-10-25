@@ -25,6 +25,7 @@ public:
 	void start();
 	void victory();
 	
+
 public:
 	Game();
 	~Game();

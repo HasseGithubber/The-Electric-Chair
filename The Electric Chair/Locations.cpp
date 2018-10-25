@@ -6,6 +6,8 @@
 void Locations::cellA() {
 	Player l_player;
 	Game l_game;
+	l_player.startInventory();
+	
 	bool l_cellA = true;
 	do
 	{

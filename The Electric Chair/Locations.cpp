@@ -6,9 +6,25 @@
 Game l_game;
 Player l_player;
 
+void Locations::fillItems() // Fyller inventory från början.
+{
+
+	l_player.startInventory();
+	cellA();
+
+}
+
 void Locations::cellA() {
-	//l_player.startInventory();
-	b_cellA = true;
+
+
+	if (if_choice1 == false && if_choice2 == false && if_choice3 == false) // Så du dör.. inte färdig.
+	{
+		l_game.gameover(); // fixa
+		bool cellA = false;
+	}
+	else
+	{ 
+	bool cellA = true;
 	while (cellA)
 	{
 		answer = NULL;
@@ -60,12 +76,13 @@ void Locations::cellA() {
 			break;
 		}
 	}
+	}
 }
 
 void Locations::cellCorridor() {
-	b_cellCorr = true;
-	cout << "Cell corridor you now are in" << endl; // endl för att tömma buffern
-	cout << "Du flydde din cell, vad gör du nu?";
+	bool cellCorridor = true;
+	cout << "Cell corridor" << endl; // endl för att tömma buffern
+	cout << "Du flydde din cell, vad gör du nu? \n 3. Gå till Cell B || 4. Gå till säkerhetssluss || 0 Inventory";
 	while (cellCorridor)
 	{
 		answer = NULL;
@@ -101,24 +118,33 @@ void Locations::cellCorridor() {
 void Locations::cellB() {
 	b_cellB = true;
 	cout << "Cell B you now are in" << endl;  // endl för att tömma buffern
-	cout << "Du pratar med din langare, ";
-	while (b_cellB)
+	cout << "Du pratar med din langare, \n 1. Ta sax || 2. Ta bazooka || 3. Ak47 || 4. Ta Kpist || 0. Inventory";
+	while (cellB)
 	{
 		answer = NULL;
 		cin >> answer;
 		switch (answer)
 		{
-		case e_scissor:
-			//give tiem
+		case scissor:
+			if (b_scissors == true) // Så att man inte ska kunna ta flera saxar.
+			{
+				cout << "You already have one.. why take two?" << endl;
+			}
+			else
+			{ 
+			l_player.ItemScissors(); // Ger en sax i inventory
+			b_scissors = true;
+			cout << "Good choice! You now have a scissor in your inventory\n";
+			}
 			break;
-		case e_bazooka:
-			cout << "Its too big, cant get it through the metal bars";
+		case bazooka:
+			cout << "Its too big, cant get it through the metal bars.. try someting else";
 			break;
-		case e_ak47:
-			cout << "It's out of ammo";
+		case ak47:
+			cout << "It's out of ammo, try someting else";
 			break;
-		case e_kpist:
-			cout << "It's rusty as hell, it wont work";
+		case kpist:
+			cout << "It's rusty as hell, it wont work, try someting else";
 			break;
 		case e_inventory:
 			l_player.inventory();

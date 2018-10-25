@@ -36,15 +36,21 @@ void Game::menu() {
 void Game::start() {
 	//bool startloop = true;
 	s_answer = "";
-	cout << "What do you want to call you prisoner?\n";
+	cout << "What do you want to call your prisoner?\n";
 	cin >> s_answer;
 	//g_player.name = s_answer;
 	cout << "Intro, prisoner name " << s_answer << ". What happens now? typ\n";
-	locate.cellA();
+	locate.fillItems();
 }
 
 void Game::victory() {
 	cout << "Du flydde den elektriska stolen!";
+}
+
+void Game::gameover() { // Inte färdig. flytta till location. Töm inventory..skicka till starta om.
+	
+	cout << "Du har inga fler chanser.. börja om? \n 1. Ja || 2. nej \n";
+
 }
 
 

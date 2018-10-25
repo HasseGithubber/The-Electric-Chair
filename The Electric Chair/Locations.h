@@ -11,6 +11,7 @@ public:
 	bool if_choice1 = true;
 	bool if_choice2 = true;
 	bool if_choice3 = true;
+	bool b_scissors = false; // Denna är false tills spelaren tar sax:en, då blir den true.
 
 	// Bools till platser
 	bool b_cellA;
@@ -48,6 +49,7 @@ public: // Enum's
 
 public:
 	// Alla platser
+	void fillItems();
 	void cellA();
 	void cellCorridor();
 	void cellB();

@@ -11,8 +11,8 @@ public:
 	void inventory();
 	void startInventory();
 	int pushBack(int);
+	void ItemScissors();
 
-	
 public:
 	Player();
 	~Player();

@@ -26,12 +26,11 @@ void Game::menu() {
 			break;
 		case exitgame:
 			menuloop = false;
-			return;
+			break;
 		default:
 			break;
 		}
 	} while (true);
-	return;
 }
 
 void Game::start() {
@@ -44,7 +43,7 @@ void Game::start() {
 	locate.cellA();
 }
 
-void victory() {
+void Game::victory() {
 	cout << "Du flydde den elektriska stolen!";
 }
 

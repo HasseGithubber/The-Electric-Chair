@@ -12,6 +12,22 @@ public:
 	bool if_choice2 = true;
 	bool if_choice3 = true;
 
+	// Bools till platser
+	bool b_cellA;
+	bool b_cellCorr;
+	bool b_cellB;
+	bool b_secroom;
+	bool b_mainCorr;
+	bool b_farCorr;
+	bool b_fikaroom;
+	bool b_lockerroom;
+	bool b_mainEntr;
+
+	// Bools till items
+	bool b_dirtyUniform = false;
+
+public: // Enum's
+
 	enum locations
 	{
 		e_cellA = '1', e_cellCorridor, e_cellB, e_securityroom, e_mainCorridor,
@@ -19,14 +35,16 @@ public:
 	};
 	enum chances
 	{
-		hairpin = '1', harryPotter, nailfile, inventory = '0'
+		e_hairpin = '1', e_harryPotter, e_nailfile, e_inventory = '0'
 	};
 	enum cellBitems
 	{
-		scissor = '1', bazooka, ak47, kpist
+		e_scissor = '1', e_bazooka, e_ak47, e_kpist
 	};
-
-
+	enum yesNo
+	{
+		yes = '1', no
+	};
 
 public:
 	// Alla platser

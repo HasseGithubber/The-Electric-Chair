@@ -82,7 +82,6 @@ public: // Enum's
 
 public:
 	// Alla platser
-	void fillItems();
 	void cellA();
 	void cellCorridor();
 	void cellB();

@@ -11,6 +11,7 @@ public:
 	string choice2 = "2. Harry Potter book ";
 	string choice3 = "3. Nail-file ";
 	string teleBoss = "";
+	string choiceCoins = "|| 3. some coins";
 	
 	// Bools till spel funktioner
 	bool if_choice1 = true;
@@ -39,6 +40,8 @@ public:
 	bool b_scissors = false; // Denna är false tills spelaren tar sax:en, då blir den true.
 	bool b_bloodyUniform = false;
 	bool b_cleanUniform = false;
+	bool b_coins = false; // blir true om spelaren hittar coins
+	bool b_choiseCoins = true; // blir false om du tar uniform + coins
 
 public: // Enum's
 

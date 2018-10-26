@@ -76,6 +76,7 @@ void Player::ItemCoins() {
 	items.push_back("Some coins ");
 }
 
+
 void Player::clearVector()
 {
 	items.clear();

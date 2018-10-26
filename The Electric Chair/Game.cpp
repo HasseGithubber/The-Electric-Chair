@@ -16,7 +16,7 @@ void Game::menu() {
 	do
 	{
 		answer = "";
-		cout << "Menyn\n 1. start 2. exit" << endl;
+		cout << "Menyn\n 1. Start || 2. Exit" << endl;
 		cin >> answer;
 		switch(answer[0])
 		{
@@ -46,7 +46,7 @@ void Game::start() {
 }
 
 void Game::victory() {
-	cout << "Du flydde den elektriska stolen!";
+	cout << "You escaped the electric chair!";
 }
 
 

@@ -28,7 +28,7 @@ void Locations::cellA() {
 	while (b_cellA)
 	{
 		answer = "";
-		cout << "Nu är du fast" << l_game.s_answer << endl << choice1 << choice2 << choice3 << "0. Inventory";  // endl för att tömma buffern
+		cout << "You are stuck in your cell " << l_game.s_answer << endl << choice1 << choice2 << choice3 << "0. Inventory";  // endl för att tömma buffern
 		cin >> answer;
 		switch (answer[0])
 		{
@@ -38,7 +38,7 @@ void Locations::cellA() {
 			choice1 = "";
 			if (if_choice1) {
 				if_choice1 = false;
-				cout << "Du flydde din cell " << endl;
+				cout << "You escaped from your cell " << endl;
 				cellCorridor();
 			}
 			else {
@@ -52,7 +52,7 @@ void Locations::cellA() {
 			choice2 = "";
 			if (if_choice2) {
 				if_choice2 = false;
-				cout << "Du flydde din cell" << endl;
+				cout << "You escaped from your cell" << endl;
 				cellCorridor();
 			}
 			else {
@@ -65,7 +65,7 @@ void Locations::cellA() {
 			choice3 = "";
 			if (if_choice3) {
 				if_choice3 = false;
-				cout << "Du flydde din cell" << endl;
+				cout << "You escaped from your cell" << endl;
 				cellCorridor();
 
 			}
@@ -89,8 +89,8 @@ void Locations::cellCorridor() {
 	
 	while (b_cellCorr)
 	{
-		cout << " vad gör du nu? " << endl;
-		cout << " 3. Gå till Cell B || 4. Gå till säkerhetssluss || 0 Inventory";
+		cout << " What do you do now? " << endl;
+		cout << " 3. Go to Cell B || 4. Go to securityroom || 0 Inventory";
 		answer = "";
 		cin >> answer;
 		if (answer[0] == '3' || answer[0] == '4')
@@ -125,7 +125,7 @@ void Locations::cellB() {
 	cout << "Cell B you now are in" << endl;  // endl för att tömma buffern
 	while (b_cellB)
 	{
-		cout << "Du pratar med din langare, \n 1. Ta sax || 2. Ta bazooka || 3. Ak47 || 4. Ta Kpist || 0. Inventory";
+		cout << "You are talkning to your dealer, \n 1. Take scissors || 2. Take bazooka || 3. Take Ak47 || 4. Take Kpist || 0. Inventory";
 		answer = "";
 		cin >> answer;
 		switch (answer[0])
@@ -155,7 +155,7 @@ void Locations::cellB() {
 			l_player.inventory();
 			break;
 		default:
-			cout << "Skriv rätt!" << endl;
+			cout << wrongAnsw << endl;
 			break;
 		}
 		if (answer[0] == '1') // valet för att lämna rummet, tadaaaaaaaa
@@ -400,13 +400,15 @@ void Locations::telephone() {
 			break;
 		}
 	}
+	/*
 	switch (switch_on)
 	{
 	default:
 		break;
 	}
+	*/
 }
-
+/*
 void Locations::callBoss() {
 	b_callBoss = true;
 	cout << "OMG it's the boss, what do you say?"; // you call is going through
@@ -415,7 +417,7 @@ void Locations::callBoss() {
 		answer = "";
 	}
 }
-
+*/
 void Locations::lockerroom() {
 
 	b_lockerroom = true;
@@ -423,39 +425,48 @@ void Locations::lockerroom() {
 	while (b_lockerroom)
 	{
 		cout << "You see a washing machine and and a bunch of lockers " << endl;
-		cout << "1. use washing machine || 2. open a locker || 0. Inventory";
+		cout << "1. use washing machine || 2. open a locker || 3. Back to the main corridor || 0. Inventory ";
 		answer = "";
 		cin >> answer;
 		switch (answer[0])
 		{
 		case wash:
 		{
-			b_lockerroom = false;
-			if (b_bloodyUniform == true || b_cleanUniform == true )
+			if (b_bloodyUniform == true || b_cleanUniform == true ) // om man har en uniform, ren/blodig
 			{ 
 			cout << "Mmmmm .. your clothes smell gooood, they are now clean" << endl;
-			l_player.changeUniform();
+			l_player.changeUniform(); // ändrar uniform till ren
 			b_cleanUniform = true;
 			}
 			else
 			{
-				cout << "Your prisonscrubbs smell like flowers.. mmm" << endl;
+				cout << "Your prisonscrubbs smell like flowers.. mmm" << endl; // Om man inte har en uniform alls
 			}
 			break;
 		}
 
 		case open:
 		{
-			b_lockerroom = false;
 			cout << "In the locker you see a bunch of things, do you want to take something?\n 1. A clean uniform || 2. some coins ";
 			answer = "";
 			cin >> answer;
 			switch (answer[0])
 			{
 			case '1':
-				l_player.ItemCleanUniform();
+			{
+				cout << "Nice choice, are you a guard at this prison?! you sure look like one.. " << endl;
+				if (b_bloodyUniform == true) // Om man har en blodig uniform men tar en ren
+				{
+				l_player.changeUniform(); // byter ut den blodiga mot en ren
 				b_cleanUniform = true;
+				}
+				else // Om man inte har någon uniform och tar en ren
+				{ 
+				l_player.ItemCleanUniform();  // lägger in en ren uniform i inventory
+				b_cleanUniform = true;
+				}
 				break;
+			}
 
 			case '2':
 				//Plussa på int coins
@@ -463,12 +474,19 @@ void Locations::lockerroom() {
 				break;
 
 			default:
-				cout << "Byt ut mig mot konstant";
+				cout << wrongAnsw << endl;
 				break;
 			}
 
 			break;
 		}
+		case '3':
+		{
+			b_lockerroom = false; // avslutar loopen
+			mainCorridor();			//Skickar tillbaka till korridoren
+			break;
+		}
+
 		case e_inventory:
 		{
 			l_player.inventory();
@@ -476,7 +494,7 @@ void Locations::lockerroom() {
 		}
 
 		default:
-			cout << "Ändra mig till konstant";
+			cout << wrongAnsw << endl;
 
 
 		}

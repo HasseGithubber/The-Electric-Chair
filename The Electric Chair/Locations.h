@@ -23,7 +23,6 @@ public:
 	bool if_choice2 = true;
 	bool if_choice3 = true;
 	bool if_teleBoss = false;
-	bool b_choiseCoins = true; // blir false om du tar uniform + coins
 
 	// Bools till platser
 	bool b_cellA;

@@ -185,10 +185,9 @@ void Locations::securityroom() {
 				l_player.ItemBloodyUniform();// ger spelaren en blodig uniform
 				b_bloodyUniform = true;
 				cout << "You found some coins in the uniform.. wohoo" << endl;
-				b_choiseCoins = false;  // Gör att man inte ser valet coins i locker room
 				l_player.ItemCoins();
-				b_coins = true; // Till inventory
-				coins = 4;  // Spelaren har nu 4 coins.
+				b_coins = true; // Till inventory och valet i lockerrom
+				coins = 8;  // Spelaren har nu 8 coins.
 				break;
 			}
 			case no:
@@ -540,24 +539,44 @@ void Locations::lockerroom() {
 		{
 			if (b_bloodyUniform == true || b_cleanUniform == true ) // om man har en uniform, ren/blodig
 			{ 
-			cout << "Mmmmm .. your clothes smell gooood, they are now clean" << endl;
-			l_player.changeUniform(); // ändrar uniform till ren
-			b_cleanUniform = true;
+				if (coins > 0)
+				{
+					cout << "That cost you one coin! Mmmmm .. your clothes smell gooood, they are now clean" << endl;
+					l_player.changeUniform(); // ändrar uniform till ren
+					b_cleanUniform = true;
+					coins = coins - 1;
+					if (coins = 0)
+					{
+						b_coins = false;
+					}
+				}
+				else
+					cout << "you are out of coins.." << endl;
 			}
 			else
 			{
-				cout << "Your prisonscrubbs smell like flowers.. mmm" << endl; // Om man inte har en uniform alls
+				if (coins > 0)
+				{ 
+				cout << "You put a coin in the maschine.. ";
+				cout << "Your prisonscrubbs smell like flowers..mmm" << endl; // Om man inte har en uniform alls
+				coins = coins - 1;
+				if (coins = 0)
+				{
+					b_coins = false; }
+				}
+				else
+				cout << "you are out of coins.." << endl;
 			}
 			break;
 		}
 
 		case open:
 		{
-			if (b_choiseCoins == false) // Kollar om du redan har coins, du får inte se coins
+			if (b_coins == true || (b_bloodyUniform == false && b_cleanUniform == false)) // Kollar om du redan har coins, du får inte se coins
 			{
 				choiceCoins = " ";
 			}
-			else if (b_choiseCoins == true) // Har du inga, du får valet
+			else if (b_coins == false && (b_bloodyUniform == true || b_cleanUniform == true)) // Har du inga, du får valet
 			{
 				choiceCoins = "|| 3. some coins";
 			}
@@ -574,7 +593,7 @@ void Locations::lockerroom() {
 				l_player.changeUniform(); // byter ut den blodiga mot en ren
 				b_cleanUniform = true;
 				}
-				else // Om man inte har någon uniform och tar en ren
+				else if (b_bloodyUniform == false && b_cleanUniform == false) // Om man inte har någon uniform och tar en ren
 				{ 
 				l_player.ItemCleanUniform();  // lägger in en ren uniform i inventory
 				b_cleanUniform = true;
@@ -587,15 +606,15 @@ void Locations::lockerroom() {
 
 			case '3':
 				cout << "coins coins coins.. they always welcome" << endl;
-				b_choiseCoins = false;
 				if (b_coins == false)
 				{
 					l_player.ItemCoins(); // Ger spelaren "some coins" i inventory OM dom inte redan hade coins.
-					coins = coins + 4; // plussar på int coins.
+					coins = coins + 2; // plussar på int coins.
+					b_coins = true;
 				}
 				else
 				{
-					coins = coins + 4; // plussar på int coins.
+					coins = coins + 2; // plussar på int coins.
 				}
 				break;
 

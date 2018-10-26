@@ -12,6 +12,7 @@ public:
 	string choice3 = "3. Nail-file ";
 	string teleBoss = "";
 	string choiceCoins = "|| 3. some coins";
+	string seller;
 
 	// Int variabler
 	int i_bullen;
@@ -19,9 +20,9 @@ public:
 	int coins; // Använd till telefonen och washing machine
 	
 	// Bools till spel funktioner
-	bool if_choice1 = true;
-	bool if_choice2 = true;
-	bool if_choice3 = true;
+	bool if_choice1;
+	bool if_choice2;
+	bool if_choice3;
 	bool if_teleBoss = false;
 
 	// Bools till platser
@@ -41,6 +42,7 @@ public:
 	bool b_callMother;
 	bool b_callDevelopers;
 	bool b_callBoss;
+	bool b_bossAway = false; // Win condition
 
 	// Bools till items
 	bool b_scissors = false; // Denna är false tills spelaren tar sax:en, då blir den true.
@@ -53,7 +55,7 @@ public: // Enum's
 
 	enum yesNo
 	{
-		yes = '1', no
+		yes = 'y', no = 'n'
 	};
 	enum playeractions
 	{
@@ -90,7 +92,7 @@ public: // Enum's
 	};
 	enum talkDeveloper
 	{
-
+		e_suck = '1', e_fantastic, e_help
 	};
 	enum talkBoss
 	{

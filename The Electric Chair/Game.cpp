@@ -36,12 +36,16 @@ void Game::menu() {
 
 void Game::start() {
 	answer = "";
-	//bool startloop = true;
-	s_answer = "";
-	cout << "What do you want to call your prisoner?\n";
-	cin >> s_answer;
-	//g_player.name = s_answer;
-	cout << "Intro, prisoner name " << s_answer << ". What happens now? typ\n";
+	s_name = "";
+	cout << "What do you want to call your prisoner?" << endl;
+	while (getline(cin, s_name))
+	{
+		if (s_name != "")
+		{
+			break;
+		}
+	}
+	cout << "Intro, prisoner name " << s_name << ". What happens now? typ\n";
 	locate.fillItems();
 }
 
@@ -50,9 +54,9 @@ void Game::victory() {
 }
 
 void Game::pause(int a, int b) { // Tar in ett värde a som bestämmer sleep time; ett värde b som bestämmer antal dots.
-	for (int i = 0; i < a; i++)
+	for (int i = 0; i < b; i++)
 	{
-		Sleep(b);
+		Sleep(a);
 		cout << ".";
 	}
 	cout << endl;
@@ -68,6 +72,10 @@ int Game::dice() {
 	diceResult = 0;
 	diceResult = rand() % 6 + 1;
 	return diceResult;
+}
+
+int Game::randSeller() {
+	return 
 }
 
 

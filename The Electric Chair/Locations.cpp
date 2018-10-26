@@ -278,7 +278,7 @@ void Locations::farCorridor() {
 
 void Locations::fikaroom() {
 	b_fikaroom = true;
-	cout << "You find yourself in the holy fika room. Angels sing and the room table has some strange items and a (pay maybe?)telephone sits on the wall." << endl;
+	cout << "You find yourself in the holy fika room. Angels sing and the room table has some strange items and a (pay maybe?)telephone sits on the wall." << endl; // lägg till text som introducerar aspekter ur val nedanför
 	while (b_fikaroom)
 	{
 		cout << "What do you want to do?\n 1. Walk to the table || 2. Use the telephone || 8. Locker Room || 5. Main Corridor || 0. Check inventory\n";
@@ -329,7 +329,7 @@ void Locations::fikatable() {
 	while (b_fikatable)
 	{
 		answer = "";
-		cout << "What do you do?\n 1. Eat a bulle || 2. Throw the dice || 7. Fika Room || 0. Check inventory\n";
+		cout << "What do you do?\n 1. Eat a bulle || 2. Throw the dice || 7. Check the fika room || 0. Check inventory\n";
 		cin >> answer;
 		switch (answer[0])
 		{
@@ -353,16 +353,48 @@ void Locations::fikatable() {
 	switch (answer[0])
 	{
 	case e_bulle:
-		cout << "You eat a bulle"; // LÄgg in funktion
+		cout << "You eat a bulle.\n"; // LÄgg in funktion
+		i_bullen = l_game.bulle();
+		if (i_bullen == 1)
+		{
+			cout << "The bulle was delicious and you feel refreshed, mmmm.\n";
+		}
+		else
+		{
+			cout << "The bulle was moldy on the inside making you grasp your stomach, you lie on the floor while drifting into unconsciousness.";
+			l_game.pause(700, 5);
+			cout << "You wake up feeling a familiar ground, you check your surroundings and notice that you are in a bed and back in your cell";
+			l_game.pause(700, 5);
+			cout << "Bummer...";
+			cellA();
+		}
 		break;
 	case e_dice:
-		cout << "You threw a dice"; // Lägg in funktion
+		cout << "You threw a dice\n"; // Lägg in funktion
+		i_dice = l_game.dice();
+		if (i_dice >= 4)
+		{
+			cout << "You rolled a SUCCES";
+		}
+		else
+		{
+			cout << "You rolled a critical fail'ish, you feel the air around you starting to push and squeeze in and around you.\n";
+			l_game.pause(700, 4);
+			cout << "The room makes a humming sound as you see it warp far away from you in every direction. The table you were standing next to draws away and the clock on the wall spins rapidly backwards, but you don't feel like your moving.\n";
+			Sleep(2000);
+			cout << "Suddenly the walls rush back, the room starts collapsing towards you with a loud noise. You duck down grasping and covering yourself as hard as you can before the inevitable end.\n";
+			l_game.pause(700, 5);
+			cout << "Everything stops, all you can hear is a familiar clock ticking. You're back in your cell but you've teleported back in time";
+			Sleep(5000);
+			cout << "You noticed you've lost everything you had on you except what you started with. Bummer...";
+			cellA();
+		}
 		break;
 	case e_fikaroom:
 		fikaroom();
 		break;
 	}
-	fikaroom();
+	fikaroom(); // Händer efter bulle eller dice lyckade utkomster.
 }
 
 void Locations::telephone() {
@@ -381,7 +413,7 @@ void Locations::telephone() {
 		case e_developers:
 			b_telephone = false;
 			break;
-		case e_boss:	// Lägg till fler val att säga till bossen
+		case e_boss:
 			if (if_teleBoss)
 			{
 				b_telephone = false;
@@ -389,7 +421,7 @@ void Locations::telephone() {
 			}
 			else
 			{
-				"Some old guy answered the phone, but you hung up in him.\n";
+				"Some old guy answered the phone, but you hung up on him.\n";
 			}
 			break;
 		case e_inventory:
@@ -400,24 +432,45 @@ void Locations::telephone() {
 			break;
 		}
 	}
-	/*
-	switch (switch_on)
+	switch (answer[0])
 	{
-	default:
+	case e_mother:
+		break;
+	case e_developers:
+		break;
+	case e_boss:
 		break;
 	}
-	*/
+	
 }
-/*
-void Locations::callBoss() {
+
+void Locations::callMother() {
 	b_callBoss = true;
-	cout << "OMG it's the boss, what do you say?"; // you call is going through
+	cout << "Your mother answers the phone." << endl;
 	while (b_callBoss)
 	{
 		answer = "";
 	}
 }
-*/
+
+void Locations::callDevelopers() {
+	b_callBoss = true;
+	cout << "OMG it's the boss, what do you say?" << endl;
+	while (b_callBoss)
+	{
+		answer = "";
+	}
+}
+
+void Locations::callBoss() {
+	b_callBoss = true;
+	cout << "OMG it's the boss, what do you say?" << endl;
+	while (b_callBoss)
+	{
+		answer = "";
+	}
+}
+
 void Locations::lockerroom() {
 
 	b_lockerroom = true;

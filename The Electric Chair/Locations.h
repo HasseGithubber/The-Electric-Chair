@@ -11,6 +11,8 @@ public:
 	string choice2 = "2. Harry Potter book ";
 	string choice3 = "3. Nail-file ";
 	string teleBoss = "";
+	int i_bullen;
+	int i_dice;
 	
 	// Bools till spel funktioner
 	bool if_choice1 = true;
@@ -34,6 +36,9 @@ public:
 	// Bools till händelser i platser
 	bool b_fikatable;
 	bool b_telephone;
+	bool b_callMother;
+	bool b_callDevelopers;
+	bool b_callBoss;
 
 	// Bools till items
 	bool b_scissors = false; // Denna är false tills spelaren tar sax:en, då blir den true.
@@ -42,6 +47,10 @@ public:
 
 public: // Enum's
 
+	enum yesNo
+	{
+		yes = '1', no
+	};
 	enum playeractions
 	{
 		e_inventory = '0'
@@ -71,10 +80,6 @@ public: // Enum's
 	{
 		e_mother = '1', e_developers, e_boss
 	};
-	enum yesNo
-	{
-		yes = '1', no
-	};
 	enum lockerroomChoice
 	{
 		wash = '1', open = '2'
@@ -95,6 +100,9 @@ public:
 	// Plats specifika händelser
 	void fikatable();
 	void telephone();
+	void callMother();
+	void callDevelopers();
+	void callBoss();
 
 	// Spel funktioner
 	void fillItems();

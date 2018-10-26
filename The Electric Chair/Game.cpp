@@ -49,6 +49,14 @@ void Game::victory() {
 	cout << "You escaped the electric chair!";
 }
 
+void Game::pause(int a, int b) { // Tar in ett värde a som bestämmer sleep time; ett värde b som bestämmer antal dots.
+	for (int i = 0; i < a; i++)
+	{
+		Sleep(b);
+		cout << ".";
+	}
+	cout << endl;
+}
 
 int Game::bulle() {
 	bulleOutcome = 0;

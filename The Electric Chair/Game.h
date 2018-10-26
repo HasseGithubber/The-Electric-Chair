@@ -27,6 +27,7 @@ public:
 
 public:
 	// Mekaniska spel funktioner
+	void pause(int a, int b);
 	int bulle();
 	int dice();
 

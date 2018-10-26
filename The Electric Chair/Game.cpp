@@ -16,7 +16,7 @@ void Game::menu() {
 	do
 	{
 		answer = "";
-		cout << "Menyn\n 1. Start || 2. Exit" << endl;
+		cout << "Menu\n 1. Start || 2. Exit" << endl;
 		cin >> answer;
 		switch(answer[0])
 		{

@@ -180,16 +180,23 @@ void Locations::securityroom() {
 			switch (answer[0])
 			{
 			case yes:
+			{
 				b_secroom = false;
 				l_player.ItemBloodyUniform();// ger spelaren en blodig uniform
 				b_bloodyUniform = true;
 				cout << "You found some coins in the uniform.. wohoo" << endl;
+				b_choiseCoins = false;  // Gör att man inte ser valet coins i locker room
 				l_player.ItemCoins();
-				coins = 5;  // Spelaren har nu 5 coins.
+				b_coins = true; // Till inventory
+				coins = 4;  // Spelaren har nu 4 coins.
 				break;
+			}
 			case no:
+			{
 				b_secroom = false;
+				b_coins = false;
 				break;
+			}
 			default:
 				cout << wrongAnsw << endl; // "endl" Töm buffern efter potientiella mängder fel slag
 				break;
@@ -477,7 +484,7 @@ void Locations::lockerroom() {
 	cout << "You are now in the lockerroom" << endl;
 	while (b_lockerroom)
 	{
-		cout << "You see a washing machine and and a bunch of lockers " << endl;
+		cout << "You see a washing machine and a bunch of lockers " << endl;
 		cout << "1. use washing machine || 2. open a locker || 3. Back to the main corridor || 0. Inventory ";
 		answer = "";
 		cin >> answer;
@@ -500,7 +507,15 @@ void Locations::lockerroom() {
 
 		case open:
 		{
-			cout << "In the locker you see a bunch of things, do you want to take something?\n 1. A clean uniform || 2. some coins ";
+			if (b_choiseCoins == false) // Kollar om du redan har coins, du får inte se coins
+			{
+				choiceCoins = " ";
+			}
+			else if (b_choiseCoins == true) // Har du inga, du får valet
+			{
+				choiceCoins = "|| 3. some coins";
+			}
+			cout << "In the locker you see a bunch of things, do you want to take something?\n 1. A clean uniform || 2. stinky banana peel "  << choiceCoins;
 			answer = "";
 			cin >> answer;
 			switch (answer[0])
@@ -520,10 +535,22 @@ void Locations::lockerroom() {
 				}
 				break;
 			}
-
 			case '2':
-				//Plussa på int coins
-				//fler coins i inventory?
+				cout << "Uuuhhhaaaa why would you want that?! stop taking junk, idiot." << endl;
+				break;
+
+			case '3':
+				cout << "coins coins coins.. they always welcome" << endl;
+				b_choiseCoins = false;
+				if (coins == false)
+				{
+					l_player.ItemCoins(); // Ger spelaren "some coins" i inventory OM dom inte redan hade coins.
+					coins = coins + 4; // plussar på int coins.
+				}
+				else
+				{
+					coins = coins + 4; // plussar på int coins.
+				}
 				break;
 
 			default:

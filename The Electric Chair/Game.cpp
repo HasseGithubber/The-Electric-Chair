@@ -39,14 +39,14 @@ void Game::start() {
 	//bool startloop = true;
 	s_answer = "";
 	cout << "What do you want to call your prisoner?\n";
-	cin >> s_answer;
+
 	//g_player.name = s_answer;
 	cout << "Intro, prisoner name " << s_answer << ". What happens now? typ\n";
 	locate.fillItems();
 }
 
 void Game::victory() {
-	cout << "You escaped the electric chair!";
+	cout << s_answer << " you escaped the electric chair!";
 }
 
 void Game::pause(int a, int b) { // Tar in ett värde a som bestämmer sleep time; ett värde b som bestämmer antal dots.

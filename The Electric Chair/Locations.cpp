@@ -8,15 +8,13 @@ Player l_player;
 
 void Locations::fillItems() // Fyller inventory från början.
 {
-
 	l_player.startInventory();
 	cellA();
-
 }
 
 void Locations::cellA() {
 
-
+	l_player.ClearExtraItems();
 	if (if_choice1 == false && if_choice2 == false && if_choice3 == false) // Så du dör.. inte färdig.
 	{
 		gameover(); // fixa
@@ -79,7 +77,7 @@ void Locations::cellA() {
 		default:
 			break;
 		}
-	}
+		}
 	}
 }
 
@@ -97,7 +95,7 @@ void Locations::cellCorridor() {
 		{
 			b_cellCorr = false;
 		}
-		else if (answer[0] == '0')
+		else if (answer[0] == 'i')
 		{
 			l_player.inventory();
 			cout << endl;
@@ -394,6 +392,7 @@ void Locations::fikatable() {
 			Sleep(5000);
 			cout << "You noticed you've lost everything you had on you except what you started with. Bummer...";
 			cellA();
+			
 		}
 		break;
 	case e_fikaroom:

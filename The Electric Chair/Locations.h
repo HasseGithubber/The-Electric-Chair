@@ -113,6 +113,7 @@ public:
 	void lockerroom();
 	void mainEntrance();
 
+
 	// Plats specifika händelser
 	void fikatable();
 	void telephone();

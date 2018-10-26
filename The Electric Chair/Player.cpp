@@ -4,6 +4,7 @@
 #include "Game.h"
 #include <iomanip>
 
+Locations backToCell;
 
 void Player::inventory() {
 
@@ -32,7 +33,7 @@ void Player::startInventory()
 int Player::pushBack(int x) {
 
 	if (x == 1)
-	{ 
+	{
 		items[0] = "Broken Hairpin";
 	}
 	else if (x == 2)
@@ -76,6 +77,18 @@ void Player::ItemCoins() {
 	items.push_back("Some coins ");
 }
 
+void Player::ClearExtraItems()
+{
+	if (items.size() > 3)
+	{
+		for (int i = 0; i < items.size() - 3; i++)
+		{
+			items.pop_back();
+
+		}
+	}
+	
+}
 
 void Player::clearVector()
 {

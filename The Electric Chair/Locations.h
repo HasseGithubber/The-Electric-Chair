@@ -11,15 +11,17 @@ public:
 	string choice2 = "2. Harry Potter book ";
 	string choice3 = "3. Nail-file ";
 	string teleBoss = "";
+	string choiceCoins = "|| 3. some coins";
 	int i_bullen;
 	int i_dice;
-	string choiceCoins = "|| 3. some coins";
+	int coins; // Använd till telefonen
+
 	
 	// Bools till spel funktioner
 	bool if_choice1 = true;
 	bool if_choice2 = true;
 	bool if_choice3 = true;
-	int coins; // Använd till telefonen
+
 	bool if_teleBoss = false;
 
 
@@ -46,7 +48,7 @@ public:
 	bool b_bloodyUniform = false;
 	bool b_cleanUniform = false;
 	bool b_coins = false; // blir true om spelaren hittar coins
-	bool b_choiseCoins = true; // blir false om du tar uniform + coins
+
 
 public: // Enum's
 

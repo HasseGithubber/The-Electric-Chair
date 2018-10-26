@@ -484,7 +484,7 @@ void Locations::lockerroom() {
 }
 
 void Locations::mainEntrance() {
-	if (b_dirtyUniform) // Placeholder
+	if (b_bloodyUniform) // Placeholder
 	{
 		teleBoss = "|| 3. Call the boss ";
 		if_teleBoss = true;

@@ -6,22 +6,24 @@ private:
 	string answer;
 	const string wrongAnsw = "That is not an option, try again";
 public:
-	// Variabler
+	// String Variabler
 	string choice1 = "1. Hairpin ";
 	string choice2 = "2. Harry Potter book ";
 	string choice3 = "3. Nail-file ";
 	string teleBoss = "";
+	string choiceCoins = "|| 3. some coins";
+
+	// Int variabler
 	int i_bullen;
 	int i_dice;
-	string choiceCoins = "|| 3. some coins";
+	int coins; // Använd till telefonen och washing machine
 	
 	// Bools till spel funktioner
 	bool if_choice1 = true;
 	bool if_choice2 = true;
 	bool if_choice3 = true;
-	int coins; // Använd till telefonen
 	bool if_teleBoss = false;
-
+	bool b_choiseCoins = true; // blir false om du tar uniform + coins
 
 	// Bools till platser
 	bool b_cellA;
@@ -46,7 +48,7 @@ public:
 	bool b_bloodyUniform = false;
 	bool b_cleanUniform = false;
 	bool b_coins = false; // blir true om spelaren hittar coins
-	bool b_choiseCoins = true; // blir false om du tar uniform + coins
+
 
 public: // Enum's
 
@@ -56,7 +58,7 @@ public: // Enum's
 	};
 	enum playeractions
 	{
-		e_inventory = '0'
+		e_inventory = 'i', e_hangup = 'h'
 	};
 	enum locations
 	{
@@ -71,17 +73,29 @@ public: // Enum's
 	{
 		e_scissor = '1', e_bazooka, e_ak47, e_kpist
 	};
-	enum fikaroom
+	enum fikaroomChoices
 	{
 		e_fikatable = '1',  e_telephone
 	};
-	enum fikatable
+	enum fikatableChoices
 	{
 		e_bulle = '1', e_dice,
 	};
 	enum phonenumbers
 	{
 		e_mother = '1', e_developers, e_boss
+	};
+	enum talkMother
+	{
+		e_money = '1', e_pretty, e_birthday
+	};
+	enum talkDeveloper
+	{
+
+	};
+	enum talkBoss
+	{
+
 	};
 	enum lockerroomChoice
 	{

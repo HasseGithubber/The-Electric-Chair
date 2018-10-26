@@ -28,7 +28,7 @@ void Locations::cellA() {
 	while (b_cellA)
 	{
 		answer = "";
-		cout << "You are stuck in your cell " << l_game.s_answer << endl << choice1 << choice2 << choice3 << "0. Inventory";  // endl för att tömma buffern
+		cout << "You are stuck in your cell " << l_game.s_answer << endl << choice1 << choice2 << choice3 << "i. Inventory";  // endl för att tömma buffern
 		cin >> answer;
 		switch (answer[0])
 		{
@@ -90,7 +90,7 @@ void Locations::cellCorridor() {
 	while (b_cellCorr)
 	{
 		cout << " What do you do now? " << endl;
-		cout << " 3. Go to Cell B || 4. Go to securityroom || 0 Inventory";
+		cout << " 3. Go to Cell B || 4. Go to securityroom || i. Inventory";
 		answer = "";
 		cin >> answer;
 		if (answer[0] == '3' || answer[0] == '4')
@@ -125,7 +125,7 @@ void Locations::cellB() {
 	cout << "Cell B you now are in" << endl;  // endl för att tömma buffern
 	while (b_cellB)
 	{
-		cout << "You are talkning to your dealer, \n 1. Take scissors || 2. Take bazooka || 3. Take Ak47 || 4. Take Kpist || 0. Inventory";
+		cout << "You are talkning to your dealer, \n 1. Take scissors || 2. Take bazooka || 3. Take Ak47 || 4. Take Kpist || i. Inventory";
 		answer = "";
 		cin >> answer;
 		switch (answer[0])
@@ -288,7 +288,7 @@ void Locations::fikaroom() {
 	cout << "You find yourself in the holy fika room. Angels sing and the room table has some strange items and a (pay maybe?)telephone sits on the wall." << endl; // lägg till text som introducerar aspekter ur val nedanför
 	while (b_fikaroom)
 	{
-		cout << "What do you want to do?\n 1. Walk to the table || 2. Use the telephone || 8. Locker Room || 5. Main Corridor || 0. Check inventory\n";
+		cout << "What do you want to do?\n 1. Walk to the table || 2. Use the telephone || 8. Locker Room || 5. Main Corridor || i. Check inventory\n";
 		answer = "";
 		cin >> answer;
 		switch (answer[0])
@@ -336,7 +336,7 @@ void Locations::fikatable() {
 	while (b_fikatable)
 	{
 		answer = "";
-		cout << "What do you do?\n 1. Eat a bulle || 2. Throw the dice || 7. Check the fika room || 0. Check inventory\n";
+		cout << "What do you do?\n 1. Eat a bulle || 2. Throw the dice || 7. Check the fika room || i. Check inventory\n";
 		cin >> answer;
 		switch (answer[0])
 		{
@@ -407,62 +407,108 @@ void Locations::fikatable() {
 void Locations::telephone() {
 	b_telephone = true;
 	cout << "You take the telephone to your head and hear the ringtone." << endl;
-	while (b_telephone)
+	if (b_coins == true)
 	{
-		answer = "";
-		cout << "What do you do?\n 1. Call your mother || 2. Call the developers " << teleBoss << "|| 0. Check inventory\n";
-		cin >> answer;
-		switch (answer[0])
+		while (b_telephone)
 		{
-		case e_mother:
-			b_telephone = false;
-			break;
-		case e_developers:
-			b_telephone = false;
-			break;
-		case e_boss:
-			if (if_teleBoss)
+			if (b_coins == true)
 			{
-				b_telephone = false;
-				cout << "fhdsjkalfsd";
+				coins -= 1;
+				if (coins == 0)
+				{
+					b_coins = false;
+				}
+				answer = "";
+				cout << "What do you do?\n 1. Call your mother || 2. Call the developers " << teleBoss; // << "|| i. Check inventory\n";
+				cin >> answer;
+				switch (answer[0])
+				{
+				case e_mother:
+					b_telephone = false;
+					break;
+				case e_developers:
+					b_telephone = false;
+					break;
+				case e_boss:
+					if (if_teleBoss)
+					{
+						b_telephone = false;
+					}
+					else
+					{
+						cout << "Some old guy answered the phone, but you hung up on him.\n";
+					}
+					break;
+				//case e_inventory:  // **!! Om inventory ska finnas måste alla telefon val för sig minska coins med 1.
+				//	l_player.inventory();
+				//	break;
+				default:
+					cout << "You typed a number, but no one answered. Try again" << endl;
+					break;
+				}
 			}
 			else
 			{
-				"Some old guy answered the phone, but you hung up on him.\n";
+				b_telephone = false;
+				cout << "You are out of coins, you can't make a call.\n";
 			}
+		} // Slut på while loopen
+		switch (answer[0])
+		{
+		case e_mother:
+			callMother();
 			break;
-		case e_inventory:
-			l_player.inventory();
+		case e_developers:
+			callDevelopers();
+			break;
+		case e_boss:
+			callBoss();
 			break;
 		default:
-			cout << "You typed a number, but no one answered. Try again" << endl;
 			break;
 		}
 	}
-	switch (answer[0])
+	else
 	{
-	case e_mother:
-		break;
-	case e_developers:
-		break;
-	case e_boss:
-		break;
+		cout << "You are out of coins, you can't make a call.\n";
 	}
-	
+	fikaroom();
+
 }
 
 void Locations::callMother() {
-	b_callBoss = true;
+	b_callMother = true;
 	cout << "Your mother answers the phone." << endl;
-	while (b_callBoss)
+	while (b_callMother)
 	{
+		cout << "What do you want to say to your mother?\n 1. Ask her for money || 2. Tell her she's pretty || 3. Congratulate her on her birthday || h. Hang up the phone\n";
 		answer = "";
+		cin >> answer;
+		switch (answer[0])
+		{
+		case e_money:
+			cout << "You're not getting any money from me until you've become good man, like that's ever gonna happen.\n";
+			break;
+		case e_pretty:
+			cout << "Well then you're certianly not my child, cause you're but ugly.\n";
+			break;
+		case e_birthday:
+			cout << "You're only 3 years late, dumbass!\n";
+			break;
+		case e_hangup:
+			b_callMother = false;
+			break;
+		default:
+			cout << "Did you wanna say something or are you just wasting my time!?" << endl;
+			break;
+		}
 	}
+	telephone();
 }
 
 void Locations::callDevelopers() {
 	b_callBoss = true;
-	cout << "OMG it's the boss, what do you say?" << endl;
+	cout << "Linda and Hasse answers the phone from their office, grupprum 3.\n" << endl;
 	while (b_callBoss)
 	{
 		answer = "";
@@ -485,7 +531,7 @@ void Locations::lockerroom() {
 	while (b_lockerroom)
 	{
 		cout << "You see a washing machine and a bunch of lockers " << endl;
-		cout << "1. use washing machine || 2. open a locker || 3. Back to the main corridor || 0. Inventory ";
+		cout << "1. use washing machine || 2. open a locker || 3. Back to the main corridor || i. Inventory ";
 		answer = "";
 		cin >> answer;
 		switch (answer[0])
@@ -542,7 +588,7 @@ void Locations::lockerroom() {
 			case '3':
 				cout << "coins coins coins.. they always welcome" << endl;
 				b_choiseCoins = false;
-				if (coins == false)
+				if (b_coins == false)
 				{
 					l_player.ItemCoins(); // Ger spelaren "some coins" i inventory OM dom inte redan hade coins.
 					coins = coins + 4; // plussar på int coins.

@@ -515,19 +515,19 @@ void Locations::callDevelopers() {
 	cout << "Linda & Hasse answer the phone from their office, grupprum 3." << endl;
 	while (b_callMother)
 	{
-		cout << "What do you want to say?\n 1. You guys suck || 2. Your guys are fantastic || 3. I need help! || h. Hang up the phone\n";
+		cout << "What do you want to say?\n 1. You guys suck! || 2. Your guys are fantastic! || 3. I need help! || h. Hang up the phone\n";
 		answer = "";
 		cin >> answer;
 		switch (answer[0])
 		{
 		case e_suck:
-			cout << "Wow, you've got some balls. You're the right person for this electric chair\n";
+			cout << "Wow, you've got some balls. You're the right person for this Electric Chair\n";
 			break;
 		case e_fantastic:
 			cout << "Awwh, thanks.\n";
 			break;
 		case e_help:
-			cout << "Dumbass!\n";
+			cout << "Dumbass...\n";
 			break;
 		case e_hangup:
 			b_callDevelopers = false;
@@ -542,25 +542,26 @@ void Locations::callDevelopers() {
 
 void Locations::callBoss() {
 	b_callBoss = true;
-	cout << "Yes?, what is it?" << endl;
+	cout << "Yes?, what is it?... have the donuts arrived?" << endl;
 	while (b_callBoss)
 	{
 		seller = l_game.randSeller();
-		cout << "What do you want to say?\n 1. Hi this is " << l_game.s_name << ". || 2. This is the hospital calling, it's about your wife. || 3. Hi! || h. Hang up the phone\n";
+		cout << "What do you want to say?\n 1. Hi, its " << l_game.s_name << ". || 2. This is your wifes doctor calling, it's what she's have always feared. || 3. Hi! || h. Hang up the phone\n";
 		answer = "";
 		cin >> answer;
 		switch (answer[0])
 		{
-		case :
+		case e_introduction:
 			cout << "What?! How are you calling from the fika room?!... \"guards!..\"..click.\n";
 			break;
-		case :
-			cout << "\n"; 
+		case e_hospital:
+			cout << "Oh no... I'm coming right away.\n";
+			b_bossAway = true;
 			break;
-		case :
-			cout << "\n";
+		case e_seller:
+			cout << "\n"; // rand answer based on seller.
 			break;
-		case e_hangup:
+		case e_hangup: // fjärde alternativ med donuts? fail.
 			b_callBoss = false;
 			break;
 		default:

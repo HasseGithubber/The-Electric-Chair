@@ -96,7 +96,7 @@ public: // Enum's
 	};
 	enum talkBoss
 	{
-
+		e_introduction = '1', e_hospital, e_seller 
 	};
 	enum lockerroomChoice
 	{

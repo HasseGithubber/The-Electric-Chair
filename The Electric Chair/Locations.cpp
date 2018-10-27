@@ -555,7 +555,7 @@ void Locations::callBoss() {
 			cout << "What?! How are you calling from the fika room?!... \"guards!..\"..click.\n";
 			break;
 		case :
-			cout << "\n";
+			cout << "\n"; 
 			break;
 		case :
 			cout << "\n";

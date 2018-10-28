@@ -37,7 +37,7 @@ void Game::menu() {
 void Game::start() {
 	answer = "";
 	s_name = "";
-	cout << "What do you want to call your prisoner?" << endl;
+	print("What do you want to call your prisoner?", 15);
 	while (getline(cin, s_name))
 	{
 		if (s_name != "")
@@ -62,6 +62,15 @@ void Game::pause(int a, int b) { // Tar in ett värde a som bestämmer sleep time;
 	cout << endl;
 }
 
+void Game::print(string a, int b) { // lägg in val av utskrift?
+	for (int i = 0; i < a.length(); i++)
+	{
+		cout << a[i];
+		Sleep(b);
+	}
+	cout << endl;
+}
+
 int Game::bulle() {
 	bulleOutcome = 0;
 	bulleOutcome = rand() % 2 + 1;
@@ -73,11 +82,6 @@ int Game::dice() {
 	diceResult = rand() % 6 + 1;
 	return diceResult;
 }
-
-int Game::randSeller() {
-	return 
-}
-
 
 Game::Game()
 {

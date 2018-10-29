@@ -2,21 +2,27 @@
 #include <vector>
 class Player
 {
-
 public:
 	string name;
 	vector<string> items;
+
+	//Items
+	string s_scissor = "Scissors";
+	string s_bloodyUniform = "Bloody Uniform";
+	string s_cleanUniform = "Clean uniform";
+	string s_coins = "Some coins ";
 
 public:
 	void inventory();
 	void startInventory();
 	int pushBack(int);
-	void ItemScissors();
-	void ItemBloodyUniform();
-	void ItemCleanUniform();
+	void giveItem(int a);
+	//void ItemScissors();
+	//void ItemBloodyUniform();
+	//void ItemCleanUniform();
+	//void ItemCoins();
 	void changeUniform();
 	void clearVector();
-	void ItemCoins();
 	void changeCoins();
 	void ClearExtraItems();
 

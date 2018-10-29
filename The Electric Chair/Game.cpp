@@ -7,8 +7,8 @@ Player g_player;
 Locations locate;
 
 void Game::intro() {
-	menu();
 	
+	menu();
 }
 
 void Game::menu() {

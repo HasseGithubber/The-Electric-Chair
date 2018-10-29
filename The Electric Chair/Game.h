@@ -3,7 +3,6 @@ class Game
 {
 private:
 	string answer;
-
 public:
 	// string variabler
 	string s_name;

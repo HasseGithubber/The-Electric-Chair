@@ -19,12 +19,6 @@ public:
 	string s_choiceCoins = "|| 3. some coins";
 	string s_seller = "Hi! Do you want to buy our magnificent vacuum cleaners? Ofcourse you do, and we got a special price for you just TODAY! Just confirm the payment and get an extra pack of vacuum bags for free!\n";
 	string s_bossSeller = "Why don't you take those extra bags and shove'em up where the sun don't shine... *click*\n.";
-	string choice1 = "1. Hairpin ";
-	string choice2 = "2. Harry Potter book ";
-	string choice3 = "3. Nail-file ";
-	string teleBoss = "";
-	string choiceCoins = "|| 4. some coins";
-	string seller;
 
 	// till titlar
 	string titleCellCorridor = " ||             Cell Corridor            || ";
@@ -77,7 +71,6 @@ public:
 	bool b_bloodyUniform = false;
 	bool b_cleanUniform = false;
 	bool b_coins = false; // blir true om spelaren hittar coins
-
 
 public: // Enum's
 
@@ -149,12 +142,9 @@ public:
 	void telephone();
 	void callMother();
 	void callDevelopers();
-	//void callBoss();
 	void washing();
 	void locker();
-
 	void callBoss();
-	//void bossSeller();
 
 	// Spel funktioner
 	void fillItems();

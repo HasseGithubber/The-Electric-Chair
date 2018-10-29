@@ -21,7 +21,7 @@ void Locations::CleanItems()
 	b_bloodyUniform = false;
 	b_cleanUniform = false;
 	b_coins = false;
-	coins = 0;
+	i_coins = 0;
 	cellA();
 
 }
@@ -724,38 +724,38 @@ void Locations::washing()
 {
 	if (b_bloodyUniform == true || b_cleanUniform == true) // om man har en uniform, ren/blodig
 	{
-		if (coins > 0)
+		if (i_coins > 0)
 		{
 			cout << " That cost you one coin! Mmmmm .. your clothes smell gooood, they are now clean" << endl;
 			l_player.changeUniform(); // ändrar uniform till ren
 			b_cleanUniform = true;
-			coins = coins - 1;
-			if (coins <= 0)
+			i_coins = i_coins - 1;
+			if (i_coins <= 0)
 			{
 				l_player.changeCoins(); // tar bort coins från inventory när dom är slut
 				b_coins = false;
 			}
 		}
-		else if (coins <= 0)
+		else if (i_coins <= 0)
 		{
 			cout << " you are out of coins.." << endl;
 		}
 	}
 	else
 	{
-		if (coins > 0)
+		if (i_coins > 0)
 		{
 			cout << " You put a coin in the maschine.. "; //test test
-			cout << " Your prisonscrubbs smell like flowers..mmm" << "coins: " << coins << endl; // Om man inte har en uniform alls
-			coins = coins - 1;
-			if (coins <= 0)
+			cout << " Your prisonscrubbs smell like flowers..mmm" << "coins: " << i_coins << endl; // Om man inte har en uniform alls
+			i_coins = i_coins - 1;
+			if (i_coins <= 0)
 			{
 				b_coins = false;
 				l_player.changeCoins(); // tar bort coins från inventory när dom är slut
 			}
 		}
 		else
-			cout << " you are out of coins.." << "coins: " << coins << endl;//TEST TEST
+			cout << " you are out of coins.." << "coins: " << i_coins << endl;//TEST TEST
 	}
 }
 
@@ -767,14 +767,14 @@ void Locations::locker()
 		// Kollar om man har en uniform & INGA coins, man får inte ta coins om man inte har en uniform eller om man redan har coins.
 		if (b_coins == true || (b_bloodyUniform == false && b_cleanUniform == false)) 
 		{
-			choiceCoins = " ";
+			s_choiceCoins = " ";
 		}
 		else if (b_coins == false && (b_bloodyUniform == true || b_cleanUniform == true)) // Har du inga, du får valet
 		{
-			choiceCoins = "|| 4. some coins";
+			s_choiceCoins = "|| 4. some coins";
 		}
 
-		cout << " In the locker you see a bunch of things, do you want to take something?\n 1. Back to lockerroom || 2. A clean uniform || 3. stinky banana peel " << choiceCoins;
+		cout << " In the locker you see a bunch of things, do you want to take something?\n 1. Back to lockerroom || 2. A clean uniform || 3. stinky banana peel " << s_choiceCoins;
 		answer = "";
 		cin >> answer;
 		switch (answer[0])
@@ -805,7 +805,7 @@ void Locations::locker()
 			if (b_coins == false) // man får bara mer coins om man inte redan hade några
 			{
 				l_player.ItemCoins(); // Ger spelaren "some coins" i inventory OM dom inte redan hade coins.
-				coins = coins + 2; // plussar på int coins.
+				i_coins = i_coins + 2; // plussar på int coins.
 				b_coins = true;
 			}
 			break;
@@ -844,13 +844,13 @@ void Locations::gameover() { // Inte färdig. flytta till location. Töm inventory
 	bool b_cleanUniform = false;	// ren uniform
 	bool b_coins = false;			// coins
 	l_player.clearVector();			// rensa inventory
-	coins = 0;						// noll coins
+	i_coins = 0;						// noll coins
 	if_choice1 = true;				// återställer menyn, så man har alla 3 val
 	if_choice2 = true;
 	if_choice3 = true;
-	choice1 = "1. Hairpin ";
-	choice2 = "2. Harry Potter book ";
-	choice3 = "3. Nail-file ";
+	s_choice1 = "1. Hairpin ";
+	s_choice2 = "2. Harry Potter book ";
+	s_choice3 = "3. Nail-file ";
 
 	b_gameOver = true;
 

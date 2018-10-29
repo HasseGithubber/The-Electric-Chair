@@ -4,7 +4,7 @@
 #include "Game.h"
 #include <iomanip>
 
-Locations backToCell;
+
 
 void Player::inventory() {
 
@@ -72,22 +72,34 @@ void Player::changeUniform() {
 
 }
 
+void Player::changeCoins()
+{
+	
+	items.pop_back();
+
+}
+
 void Player::ItemCoins() {
+
 
 	items.push_back("Some coins ");
 }
 
 void Player::ClearExtraItems()
 {
-	if (items.size() > 3)
+
+
+	int count = items.size();
+
+	if (count > 3)
 	{
-		for (int i = 0; i < items.size() - 3; i++)
+		for (int i = 0; i < count - 3; i++)
 		{
 			items.pop_back();
 
 		}
+
 	}
-	
 }
 
 void Player::clearVector()

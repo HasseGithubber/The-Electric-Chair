@@ -34,10 +34,12 @@ void Game::menu() {
 	} while (menuloop);
 }
 
+
 void Game::start() {
 	answer = "";
 	s_name = "";
 	cout << "What do you want to call your prisoner?" << endl;
+	/*
 	while (getline(cin, s_name))
 	{
 		if (s_name != "")
@@ -45,12 +47,15 @@ void Game::start() {
 			break;
 		}
 	}
+
 	cout << "Intro, prisoner name " << s_name << ". What happens now? typ\n";
+		*/
 	locate.fillItems();
 }
 
+
 void Game::victory() {
-	cout << s_answer << " you escaped the electric chair!";
+	cout << s_name << " you escaped the electric chair!";
 }
 
 void Game::pause(int a, int b) { // Tar in ett värde a som bestämmer sleep time; ett värde b som bestämmer antal dots.
@@ -74,10 +79,11 @@ int Game::dice() {
 	return diceResult;
 }
 
+/*
 int Game::randSeller() {
-	return 
+	return
 }
-
+*/
 
 Game::Game()
 {

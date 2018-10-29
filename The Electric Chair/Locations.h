@@ -11,22 +11,32 @@ public:
 	string choice2 = "2. Harry Potter book ";
 	string choice3 = "3. Nail-file ";
 	string teleBoss = "";
-	string choiceCoins = "|| 3. some coins";
+	string choiceCoins = "|| 4. some coins";
 	string seller;
 
+	// till titlar
+	string titleCellCorridor = " ||             Cell Corridor            || ";
+	string titleCellA = " ||                 Cell A               || ";
+	string titleCellB = " ||                 Cell B               || ";
+	string titleSecurityRoom = " ||             Security Room            || ";
+	string titleMainCorridor = " ||             Main Corridor            || ";
+	string titleFikaroom = " ||               Fika Room              || ";
+	string titleLockerroom = " ||              Lockerroom              || ";
+	string titleMainEntrance = " ||             Main Entrance            || ";
+	
 	// Int variabler
 	int i_bullen;
 	int i_dice;
-	int coins; // Använd till telefonen och washing machine
+	int coins = 0; // Använd till telefonen och washing machine
 	
 	// Bools till spel funktioner
-	bool if_choice1;
-	bool if_choice2;
-	bool if_choice3;
+	bool if_choice1 = true; // dessa måste stå som true, annars funkar inte cellA.
+	bool if_choice2 = true;
+	bool if_choice3 = true;
 	bool if_teleBoss = false;
 
 	// Bools till platser
-	bool b_cellA;
+	bool b_cellA = true;
 	bool b_cellCorr;
 	bool b_cellB;
 	bool b_secroom;
@@ -35,6 +45,7 @@ public:
 	bool b_fikaroom;
 	bool b_lockerroom;
 	bool b_mainEntr;
+	bool b_gameOver = true;
 
 	// Bools till händelser i platser
 	bool b_fikatable;
@@ -43,6 +54,7 @@ public:
 	bool b_callDevelopers;
 	bool b_callBoss;
 	bool b_bossAway = false; // Win condition
+	bool b_locker;
 
 	// Bools till items
 	bool b_scissors = false; // Denna är false tills spelaren tar sax:en, då blir den true.
@@ -121,11 +133,16 @@ public:
 	void telephone();
 	void callMother();
 	void callDevelopers();
-	void callBoss();
+	//void callBoss();
+	void washing();
+	void locker();
+
 
 	// Spel funktioner
 	void fillItems();
+	void CleanItems();
 	void gameover();
+	void menu(string, int);
 
 public:
 	Locations();

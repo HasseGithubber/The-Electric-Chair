@@ -762,7 +762,6 @@ void Locations::washing()
 		else
 		{
 			l_game.print(" you are out of coins..", 15);
-			cout << "coins: " << i_coins << endl; //TEST TEST
 		}
 	}
 }

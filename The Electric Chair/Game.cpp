@@ -53,16 +53,18 @@ void Game::victory() {
 	cout << s_name << " you escaped the electric chair!";
 }
 
-void Game::pause(int a, int b) { // Tar in ett värde a som bestämmer sleep time; ett värde b som bestämmer antal dots.
+// Funktion vars uppgift är att skapa en paus i spelet. Den skriver ut ett antal "." där man också kan välja hastigheten
+void Game::pause(int a, int b) {
 	for (int i = 0; i < b; i++)
 	{
-		Sleep(a);
 		cout << ".";
+		Sleep(a);
 	}
 	cout << endl;
 }
 
-void Game::print(string a, int b) { // lägg in val av utskrift?
+// Funktion som skriver ut en string eller text en karaktär i taget med hastighets inställning.
+void Game::print(string a, int b) {
 	for (int i = 0; i < a.length(); i++)
 	{
 		cout << a[i];

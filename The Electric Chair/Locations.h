@@ -47,7 +47,7 @@ public:
 	bool b_cellB;
 	bool b_secroom;
 	bool b_mainCorr;
-	bool b_farCorr;
+	bool b_farCorr = true;
 	bool b_fikaroom;
 	bool b_lockerroom;
 	bool b_mainEntr;
@@ -73,10 +73,6 @@ public:
 
 public: // Enum's
 
-	enum yesNo
-	{
-		yes = 'y', no = 'n'
-	};
 	enum playeractions
 	{
 		e_inventory = 'i', e_hangup = 'h'
@@ -140,7 +136,6 @@ public:
 	void fikaroom();
 	void lockerroom();
 	void mainEntrance();
-
 
 	// Plats specifika händelser
 	void fikatable();

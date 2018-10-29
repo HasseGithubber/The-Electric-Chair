@@ -4,8 +4,7 @@
 #include "Game.h"
 #include <iomanip>
 
-
-
+// Funktion som skriver ut inventory.
 void Player::inventory() {
 
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6); // gul färg
@@ -33,11 +32,9 @@ void Player::startInventory()
 	items.push_back("Hairpin");
 	items.push_back("Magic Harry Potter book");
 	items.push_back("Nailfile");
-
 }
 
 int Player::pushBack(int x) {
-
 	if (x == 1)
 	{
 		items[0] = "Broken Hairpin";
@@ -50,53 +47,62 @@ int Player::pushBack(int x) {
 	{
 		items[2] = "Broken Nailfile";
 	}
-
 	return 0;
-
 }
 
-void Player::ItemScissors()
-{
-	items.push_back("Scissors");
+void Player::giveItem(int a) {
+	switch (a)
+	{
+	case 1:
+		items.push_back("Scissors");
+		break;
+	case 2:
+		items.push_back("Bloody Uniform");
+		break;
+	case 3:
+		items.push_back("Clean uniform");
+		break;
+	case 4:
+		items.push_back("Some coins ");
+		break;
+	default:
+		break;
+	}
 }
 
-void Player::ItemBloodyUniform() {
-
-	items.push_back("Bloody Uniform");
-
-}
-
-void Player::ItemCleanUniform() {
-
-	items.push_back("Clean uniform");
-
-}
+//void Player::ItemScissors()
+//{
+//	items.push_back("Scissors");
+//}
+//
+//void Player::ItemBloodyUniform() {
+//
+//	items.push_back("Bloody Uniform");
+//}
+//
+//void Player::ItemCleanUniform() {
+//
+//	items.push_back("Clean uniform");
+//}
+//
+//void Player::ItemCoins() {
+//
+//	items.push_back("Some coins ");
+//}
 
 void Player::changeUniform() {
 
 	items[4] = "Clean uniform";
-
 }
 
 void Player::changeCoins()
 {
-	
 	items.pop_back();
-
-}
-
-void Player::ItemCoins() {
-
-
-	items.push_back("Some coins ");
 }
 
 void Player::ClearExtraItems()
 {
-
-
 	int count = items.size();
-
 	if (count > 3)
 	{
 		for (int i = 0; i < count - 3; i++)
@@ -104,7 +110,6 @@ void Player::ClearExtraItems()
 			items.pop_back();
 
 		}
-
 	}
 }
 

@@ -51,7 +51,6 @@ public:
 	bool b_fikaroom;
 	bool b_lockerroom;
 	bool b_mainEntr;
-	bool b_gameOver = true;
 
 	// Bools till händelser i platser
 	bool b_farCorrHide = true;
@@ -119,6 +118,12 @@ public: // Enum's
 	{
 		e_wash = '1', e_open = '2'
 	};
+	enum locker
+	{
+		e_cleanUniform = '1', e_banana, e_coins
+	};
+
+	
 
 public:
 	// Alla platser

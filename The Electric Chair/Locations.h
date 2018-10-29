@@ -33,7 +33,7 @@ public:
 	// Int variabler
 	int i_bullen;
 	int i_dice;
-	int i_coins; // Använd till telefonen och washing machine
+	int i_coins = 0; // Använd till telefonen och washing machine
 	
 	// Bools till spel funktioner
 	bool if_choice1 = true;
@@ -121,7 +121,7 @@ public: // Enum's
 	};
 	enum lockerroomChoice
 	{
-		wash = '1', open = '2'
+		e_wash = '1', e_open = '2'
 	};
 
 public:

@@ -223,7 +223,7 @@ void Locations::securityroom() {
 	else
 	{
 		l_game.print("The security guard quickly notices you and puts you back into your cell!!", 35);
-		cellA();
+		CleanItems();
 	}
 
 	mainCorridor();
@@ -436,7 +436,7 @@ void Locations::fikatable() {
 			l_game.pause(700, 5);
 			l_game.print("You wake up feeling a familiar ground, you check your surroundings and notice that you are in a bed and back in your cell", 35);
 			l_game.print("Bummer...", 50);
-			cellA();
+			CleanItems();
 		}
 		break;
 	case e_dice:
@@ -457,7 +457,7 @@ void Locations::fikatable() {
 			l_game.print("Everything stops, all you can hear is a familiar clock ticking. You're back in your cell but you've teleported back in time", 45);
 			l_game.pause(700, 5);
 			l_game.print("You noticed you've lost everything you had on you except what you started with. Bummer...", 35);
-			cellA();
+			CleanItems();
 			
 		}
 		break;
@@ -643,7 +643,7 @@ void Locations::callBoss() {
 	switch (answer[0])
 	{
 	case e_introduce:
-		cellA();
+		CleanItems();
 		break;
 	case e_hospital:
 		b_bossAway = true;
@@ -665,7 +665,7 @@ void Locations::callBoss() {
 		telephone();
 		break;
 	case e_donuts:
-		cellA();
+		CleanItems();
 		break;
 	case e_hangup:
 		telephone();
@@ -682,21 +682,21 @@ void Locations::lockerroom() {
 	cout << " You are now in the lockerroom, you see a washing machine and a bunch of lockers " << endl;
 	while (b_lockerroom)
 	{
-		cout << " 1. use washing machine || 2. open a locker || 3. Go to fikaroom  || 4. Back to main corridor || i. Inventory ";
+		cout << " 1. use washing machine || 2. open a locker || 7. Go to fikaroom  || 5. Back to main corridor || i. Inventory ";
 		answer = "";
 		cin >> answer;
 		switch (answer[0])
 		{
-		case wash:
+		case e_wash:
 			washing(); // skickar till funktionen washing.
 			break;
-		case open:
+		case e_open:
 			b_lockerroom = false;	// avslutar loopen
 			break;
-		case '3':
+		case e_fikaroom:
 			b_lockerroom = false;	// avslutar loopen
 			break;
-		case '4':
+		case e_mainCorridor:
 			b_lockerroom = false;	 // avslutar loopen
 			break;
 		case e_inventory:
@@ -708,13 +708,13 @@ void Locations::lockerroom() {
 	}
 	switch (answer[0])
 	{
-	case open:
+	case e_open:
 		locker(); // skickar till funktionen locker.
 		break;
-	case '3':
+	case e_fikaroom:
 		fikaroom();		//Skickar tillbaka till fikaroom
 		break;
-	case '4':
+	case e_mainCorridor:
 		mainCorridor();		// Skickar tillbaka till korridoren
 		break;
 	}

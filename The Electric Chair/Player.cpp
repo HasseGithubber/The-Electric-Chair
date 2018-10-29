@@ -70,26 +70,6 @@ void Player::giveItem(int a) {
 	}
 }
 
-//void Player::ItemScissors()
-//{
-//	items.push_back("Scissors");
-//}
-//
-//void Player::ItemBloodyUniform() {
-//
-//	items.push_back("Bloody Uniform");
-//}
-//
-//void Player::ItemCleanUniform() {
-//
-//	items.push_back("Clean uniform");
-//}
-//
-//void Player::ItemCoins() {
-//
-//	items.push_back("Some coins ");
-//}
-
 void Player::changeUniform() {
 
 	items[4] = "Clean uniform";

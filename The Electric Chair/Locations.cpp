@@ -422,7 +422,7 @@ void Locations::fikatable() {
 			i_coins = i_coins + 1; // plussar på int coins.
 			if (b_coins == false)
 			{
-				l_player.ItemCoins(); // Lägger bara till coins i den synliga inventoryn om dom inte redan finns där.
+				l_player.giveItem(4); // Lägger bara till coins i den synliga inventoryn om dom inte redan finns där.
 				b_coins = true;
 			}
 			fikaroom(); // Händer efter bulle eller dice lyckade utkomster. 2/2
@@ -446,7 +446,7 @@ void Locations::fikatable() {
 			i_coins = i_coins + 1; // plussar på int coins.
 			if (b_coins == false)
 			{
-				l_player.ItemCoins(); // Lägger bara till coins i den synliga inventoryn om dom inte redan finns där.
+				l_player.giveItem(4); // Lägger bara till coins i den synliga inventoryn om dom inte redan finns där.
 				b_coins = true;
 			}
 			fikaroom(); // Händer efter bulle eller dice lyckade utkomster. 1/2
@@ -798,12 +798,12 @@ void Locations::locker()
 			}
 			else if (b_bloodyUniform == false && b_cleanUniform == false) // Om man inte har någon uniform och tar en ren
 			{
-				l_player.ItemCleanUniform();  // lägger in en ren uniform i inventory
+				l_player.giveItem(3);  // lägger in en ren uniform i inventory
 				l_game.print(" You found some coins in the uniform.. wohoo", 35);
 				i_coins = i_coins + 5; // du får coins 
 				if (b_coins == false)
 				{
-					l_player.ItemCoins(); // Lägger bara till coins i sden synliga inventoryn om dom inte redan finns där.
+					l_player.giveItem(4); // Lägger bara till coins i sden synliga inventoryn om dom inte redan finns där.
 					b_coins = true;
 				}
 			}
@@ -879,26 +879,7 @@ void Locations::gameover() {
 	s_bossSeller = "Why don't you take those extra bags and shove'em up where the sun don't shine... *click*\n.";
 
 	l_player.clearVector();			// rensa inventory
-	b_gameOver = true;
 
-	while (b_gameOver)
-	{ 
-		l_game.print("Game over! You did not escape the electric chair.. start over? y/n", 45);
-		answer = "";
-		cin >> answer;
-		switch (answer[0])
-		{
-		case 'y':
-			b_gameOver = false;
-			l_game.intro();
-			break;
-		case 'n':
-			b_gameOver = false;
-			l_game.print("Quitting.. ", 25);
-			l_game.pause(700, 5);
-			break;
-		}
-	}
 	cout << "Game over! You did not escape the electric chair.." << endl;
 	l_game.menu();
 

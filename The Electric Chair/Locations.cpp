@@ -836,8 +836,12 @@ void Locations::locker()
 	}
 }
 
-void Locations::mainEntrance() {
+void Locations::mainEntrance() { // INTE FÄRDIG -UNDERPROGRESS
 	menu(titleMainEntrance, 4); // skriver ut titeln med färg.
+	
+
+	l_game.print("you have now entered the main entrence.. be aware! ", 35);
+	l_game.print("The boss noticed the blood on your uniform", 35);
 
 	if (b_bossAway)
 	{

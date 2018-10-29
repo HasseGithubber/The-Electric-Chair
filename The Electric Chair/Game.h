@@ -29,9 +29,9 @@ public:
 public:
 	// Mekaniska spel funktioner
 	void pause(int a, int b);
+	void print(string a, int b);
 	int bulle();
 	int dice();
-	int randSeller();
 
 public:
 	Game();

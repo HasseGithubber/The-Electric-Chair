@@ -128,7 +128,7 @@ public: // Enum's
 	};
 	enum lockerroomChoice
 	{
-		wash = '1', open = '2'
+		e_wash = '1', e_open = '2'
 	};
 
 public:

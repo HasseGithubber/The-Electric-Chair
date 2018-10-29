@@ -682,21 +682,21 @@ void Locations::lockerroom() {
 	cout << " You are now in the lockerroom, you see a washing machine and a bunch of lockers " << endl;
 	while (b_lockerroom)
 	{
-		cout << " 1. use washing machine || 2. open a locker || 3. Go to fikaroom  || 4. Back to main corridor || i. Inventory ";
+		cout << " 1. use washing machine || 2. open a locker || 7. Go to fikaroom  || 5. Back to main corridor || i. Inventory ";
 		answer = "";
 		cin >> answer;
 		switch (answer[0])
 		{
-		case wash:
+		case e_wash:
 			washing(); // skickar till funktionen washing.
 			break;
-		case open:
+		case e_open:
 			b_lockerroom = false;	// avslutar loopen
 			break;
-		case '3':
+		case e_fikaroom:
 			b_lockerroom = false;	// avslutar loopen
 			break;
-		case '4':
+		case e_mainCorridor:
 			b_lockerroom = false;	 // avslutar loopen
 			break;
 		case e_inventory:
@@ -708,13 +708,13 @@ void Locations::lockerroom() {
 	}
 	switch (answer[0])
 	{
-	case open:
+	case e_open:
 		locker(); // skickar till funktionen locker.
 		break;
-	case '3':
+	case e_fikaroom:
 		fikaroom();		//Skickar tillbaka till fikaroom
 		break;
-	case '4':
+	case e_mainCorridor:
 		mainCorridor();		// Skickar tillbaka till korridoren
 		break;
 	}

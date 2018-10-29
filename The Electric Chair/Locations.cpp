@@ -32,7 +32,6 @@ void Locations::cellA() {
 	if (if_choice1 == false && if_choice2 == false && if_choice3 == false) // Så du dör.. inte färdig.
 	{
 		gameover(); // Skickar till funktionen gameover
-		
 	}
 	else
 	{ 
@@ -205,7 +204,7 @@ void Locations::securityroom() {
 				l_game.print("You found some coins in the uniform.. wohoo", 35);
 				l_player.ItemCoins();
 				b_coins = true; // Till inventory och valet i lockerrom
-				i_coins = 8;  // Spelaren har nu 8 coins.
+				i_coins = i_coins + 8;  // Spelaren har nu 8 coins.
 				break;
 			}
 			case no:
@@ -231,14 +230,13 @@ void Locations::securityroom() {
 
 void Locations::mainCorridor() { // Fixa så att valet till far corridor bara finns första gången
 	b_mainCorr = true;
+	menu(titleMainCorridor, 4); // skriver ut titeln med färg.
 	cout << "The main corridor you are in" << endl;
 	l_game.print(s_farCorrIntro, 35);
-	menu(titleMainCorridor, 4); // skriver ut titeln med färg.
 
-	cout << "You hear a few voices coming from the main entrance to the right, to the left the corridor just keeps going";
 	while (b_mainCorr)
 	{
-		cout << "Where do you want to go?\n" << s_fikaRoom << s_lockerRoom << s_farCorr << "|| 9. Main entrance || 0. Inventory\n";
+		cout << "Where do you want to go?\n" << s_fikaRoom << s_lockerRoom << s_farCorr << "|| 9. Main entrance || i. Inventory\n";
 		answer = "";
 		cin >> answer;
 		switch (answer[0])
@@ -346,9 +344,8 @@ void Locations::farCorridor() {
 
 void Locations::fikaroom() {
 	b_fikaroom = true;
-	l_game.print("You find yourself in the holy fika room. Angels sing and the room table has some strange items and a (pay maybe?)telephone sits on the wall.", 35); // lägg till text som introducerar aspekter ur val nedanför
 	menu(titleFikaroom, 10); // skriver ut titeln med färg.
-	cout << "You find yourself in the holy fika room. Angels sing and the room table has some strange items and a (pay maybe?)telephone sits on the wall." << endl; // lägg till text som introducerar aspekter ur val nedanför
+	l_game.print("You find yourself in the holy fika room. Angels sing and the room table has some strange items and a (pay maybe?)telephone sits on the wall.", 35); // lägg till text som introducerar aspekter ur val nedanför
 	while (b_fikaroom)
 	{
 		cout << "What do you want to do?\n 1. Walk to the table || 2. Use the telephone || 8. Locker Room || 5. Main Corridor || i. Check inventory\n";
@@ -428,7 +425,14 @@ void Locations::fikatable() {
 		l_game.pause(700, 5);
 		if (i_bullen == 1)
 		{
-			cout << "The bulle was delicious and you feel refreshed, mmmm.\n";
+			cout << "The bulle was delicious and you feel refreshed, mmmm.\n Also, you found a coin inside the bulle! lucky you!";
+			i_coins = i_coins + 1; // plussar på int coins.
+			if (b_coins == false)
+			{
+				l_player.ItemCoins(); // Lägger bara till coins i den synliga inventoryn om dom inte redan finns där.
+				b_coins = true;
+			}
+			fikaroom(); // Händer efter bulle eller dice lyckade utkomster. 2/2
 		}
 		else
 		{
@@ -438,6 +442,7 @@ void Locations::fikatable() {
 			l_game.print("Bummer...", 50);
 			CleanItems();
 		}
+		
 		break;
 	case e_dice:
 		l_game.print("You threw a dice\n", 35); // Lägg in funktion
@@ -445,7 +450,14 @@ void Locations::fikatable() {
 		l_game.pause(700, 5);
 		if (i_dice >= 4)
 		{
-			cout << "You rolled a SUCCES";
+			cout << "You rolled a SUCCES and got one coin! ";
+			i_coins = i_coins + 1; // plussar på int coins.
+			if (b_coins == false)
+			{
+				l_player.ItemCoins(); // Lägger bara till coins i den synliga inventoryn om dom inte redan finns där.
+				b_coins = true;
+			}
+			fikaroom(); // Händer efter bulle eller dice lyckade utkomster. 1/2
 		}
 		else
 		{
@@ -465,7 +477,7 @@ void Locations::fikatable() {
 		fikaroom();
 		break;
 	}
-	fikaroom(); // Händer efter bulle eller dice lyckade utkomster.
+	//fikaroom(); // Händer efter bulle eller dice lyckade utkomster.
 }
 
 void Locations::telephone() {
@@ -481,6 +493,7 @@ void Locations::telephone() {
 				if (i_coins == 0)
 				{
 					b_coins = false;
+					l_player.changeCoins(); // tar bort coins från inventory om dom är slut.
 				}
 				answer = "";
 				cout << "Who do you want to call?\n 1. Call your mother || 2. Call the developers " << s_teleBoss << "7. Go back to the fika room";
@@ -679,7 +692,7 @@ void Locations::lockerroom() {
 
 	b_lockerroom = true;
 	menu(titleLockerroom, 10); // skriver ut titeln med färg.
-	cout << " You are now in the lockerroom, you see a washing machine and a bunch of lockers " << endl;
+	l_game.print(" You are now in the lockerroom, you see a washing machine and a bunch of lockers ", 35);
 	while (b_lockerroom)
 	{
 		cout << " 1. use washing machine || 2. open a locker || 7. Go to fikaroom  || 5. Back to main corridor || i. Inventory ";
@@ -729,6 +742,7 @@ void Locations::washing()
 			cout << " That cost you one coin! Mmmmm .. your clothes smell gooood, they are now clean" << endl;
 			l_player.changeUniform(); // ändrar uniform till ren
 			b_cleanUniform = true;
+			b_bloodyUniform = false; // ändrar blodiga uniformen till false eftersom man nu har en ren.
 			i_coins = i_coins - 1;
 			if (i_coins <= 0)
 			{
@@ -745,7 +759,7 @@ void Locations::washing()
 	{
 		if (i_coins > 0)
 		{
-			cout << " You put a coin in the maschine.. "; //test test
+			cout << " You put a coin in the maschine.. "; 
 			cout << " Your prisonscrubbs smell like flowers..mmm" << "coins: " << i_coins << endl; // Om man inte har en uniform alls
 			i_coins = i_coins - 1;
 			if (i_coins <= 0)
@@ -755,7 +769,7 @@ void Locations::washing()
 			}
 		}
 		else
-			cout << " you are out of coins.." << "coins: " << i_coins << endl;//TEST TEST
+			cout << " you are out of coins.." << endl;
 	}
 }
 
@@ -771,36 +785,43 @@ void Locations::locker()
 		}
 		else if (b_coins == false && (b_bloodyUniform == true || b_cleanUniform == true)) // Har du inga, du får valet
 		{
-			s_choiceCoins = "|| 4. some coins";
+			s_choiceCoins = "|| 3. some coins";
 		}
-
-		cout << " In the locker you see a bunch of things, do you want to take something?\n 1. Back to lockerroom || 2. A clean uniform || 3. stinky banana peel " << s_choiceCoins;
+		cout << " In the locker you see a bunch of things, do you want to take something?\n 8. Back to lockerroom || 1. A clean uniform || 2. stinky banana peel " << s_choiceCoins;
 		answer = "";
 		cin >> answer;
 		switch (answer[0])
 		{
-		case '1':
+		case e_lockerroom:
 			b_locker = false; // avslutar loopen
 			break;
-		case '2':
+		case e_cleanUniform:
 		{
 			cout << " Nice choice, are you a guard at this prison?! you sure look like one.. " << endl;
+
 			if (b_bloodyUniform == true) // Om man har en blodig uniform men tar en ren
 			{
 				l_player.changeUniform();	// byter ut den blodiga mot en ren
-				b_cleanUniform = true;		// visar att du har en ren uniform
 			}
 			else if (b_bloodyUniform == false && b_cleanUniform == false) // Om man inte har någon uniform och tar en ren
 			{
 				l_player.ItemCleanUniform();  // lägger in en ren uniform i inventory
-				b_cleanUniform = true;		  // visar att du har en ren uniform
+				l_game.print(" You found some coins in the uniform.. wohoo", 35);
+				i_coins = i_coins + 5; // du får coins 
+				if (b_coins == false)
+				{
+					l_player.ItemCoins(); // Lägger bara till coins i sden synliga inventoryn om dom inte redan finns där.
+					b_coins = true;
+				}
 			}
+			b_cleanUniform = true;		// visar att du har en ren uniform
+			b_bloodyUniform = false; // ändrar blodiga uniformen till false eftersom man nu har en ren.
 			break;
 		}
-		case '3':
-			cout << " Uuuhhhaaaa why would you want that?! stop taking junk, idiot." << endl;
+		case e_banana:
+			l_game.print(" Uuuhhhaaaa why would you want that?! stop taking junk, idiot.", 35);
 			break;
-		case '4':
+		case e_coins:
 			cout << " coins coins coins.. they always welcome" << endl;
 			if (b_coins == false) // man får bara mer coins om man inte redan hade några
 			{
@@ -816,7 +837,7 @@ void Locations::locker()
 	}
 	switch (answer[0])
 	{
-	case '1':
+	case e_lockerroom:
 		lockerroom(); // skickar till lockerrom
 		break;
 	}
@@ -836,7 +857,7 @@ void Locations::mainEntrance() {
 	}
 }
 
-void Locations::gameover() { // Inte färdig. flytta till location. Töm inventory..skicka till starta om.
+void Locations::gameover() { 
 
 	// nollställ items
 	bool b_scissors = false;		// sax
@@ -851,29 +872,10 @@ void Locations::gameover() { // Inte färdig. flytta till location. Töm inventory
 	s_choice1 = "1. Hairpin ";
 	s_choice2 = "2. Harry Potter book ";
 	s_choice3 = "3. Nail-file ";
-
-	b_gameOver = true;
-
-	while (b_gameOver)
-	{ 
-	cout << "Game over! You did not escape the electric chair.. start over? y/n";
-	answer = "";
-	cin >> answer;
-	switch (answer[0])
-	{
-	case 'y':
-		b_gameOver = false;
-		l_game.intro();
-		break;
-	case 'n':
-		b_gameOver = false;
-		cout << "Quitting.. " << endl;
-		break;
-	}
-	}
+	cout << "Game over! You did not escape the electric chair.." << endl;
+	l_game.menu();
 
 }
-
 
 void Locations::menu(string name, int a)
 {
@@ -888,6 +890,7 @@ void Locations::menu(string name, int a)
 	cout << " ------------------------------------------" << endl; // endl för att tömma buffern
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 }
+
 Locations::Locations()
 {
 }
@@ -895,3 +898,4 @@ Locations::Locations()
 Locations::~Locations()
 {
 }
+

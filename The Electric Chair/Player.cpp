@@ -8,18 +8,24 @@
 
 void Player::inventory() {
 
-	cout << "--------------------------------" << "\n Inventory:\n" << "--------------------------------" << endl;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6); // gul färg
+	cout << " --------------------------------" << endl;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15); // vanlig textfärg
+	cout << "  Inventory:" << endl;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6); // gul färg
+	cout << " --------------------------------" << endl;
 	cout << endl;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15); // vanlig textfärg
 	for (unsigned int i = 0; i < items.size(); i++)
 	{
 
-		cout << " " << items[i] << endl;
+		cout << "  " << items[i] << endl;
 
 	}
-
 	cout << endl;
-	cout << "--------------------------------" << endl << endl;
-
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6); // gul färg
+	cout << " --------------------------------" << endl << endl;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15); // Avsluta med vanlig textfärg
 }
 
 void Player::startInventory()

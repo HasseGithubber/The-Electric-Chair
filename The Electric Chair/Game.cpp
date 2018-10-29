@@ -34,6 +34,7 @@ void Game::menu() {
 	} while (menuloop);
 }
 
+
 void Game::start() {
 	answer = "";
 	s_name = "";

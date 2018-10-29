@@ -17,6 +17,7 @@ public:
 	void changeUniform();
 	void clearVector();
 	void ItemCoins();
+	void changeCoins();
 	void ClearExtraItems();
 
 public:

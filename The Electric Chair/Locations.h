@@ -19,7 +19,23 @@ public:
 	string s_choiceCoins = "|| 3. some coins";
 	string s_seller = "Hi! Do you want to buy our magnificent vacuum cleaners? Ofcourse you do, and we got a special price for you just TODAY! Just confirm the payment and get an extra pack of vacuum bags for free!\n";
 	string s_bossSeller = "Why don't you take those extra bags and shove'em up where the sun don't shine... *click*\n.";
+	string choice1 = "1. Hairpin ";
+	string choice2 = "2. Harry Potter book ";
+	string choice3 = "3. Nail-file ";
+	string teleBoss = "";
+	string choiceCoins = "|| 4. some coins";
+	string seller;
 
+	// till titlar
+	string titleCellCorridor = " ||             Cell Corridor            || ";
+	string titleCellA = " ||                 Cell A               || ";
+	string titleCellB = " ||                 Cell B               || ";
+	string titleSecurityRoom = " ||             Security Room            || ";
+	string titleMainCorridor = " ||             Main Corridor            || ";
+	string titleFikaroom = " ||               Fika Room              || ";
+	string titleLockerroom = " ||              Lockerroom              || ";
+	string titleMainEntrance = " ||             Main Entrance            || ";
+	
 	// Int variabler
 	int i_bullen;
 	int i_dice;
@@ -32,7 +48,7 @@ public:
 	bool if_teleBoss = false;
 
 	// Bools till platser
-	bool b_cellA;
+	bool b_cellA = true;
 	bool b_cellCorr;
 	bool b_cellB;
 	bool b_secroom;
@@ -41,6 +57,7 @@ public:
 	bool b_fikaroom;
 	bool b_lockerroom;
 	bool b_mainEntr;
+	bool b_gameOver = true;
 
 	// Bools till händelser i platser
 	bool b_farCorrHide = true;
@@ -53,6 +70,7 @@ public:
 	bool b_callBoss;
 	bool b_bossSeller;
 	bool b_bossAway = false; // Win condition
+	bool b_locker;
 
 	// Bools till items
 	bool b_scissors = false; // Denna är false tills spelaren tar sax:en, då blir den true.
@@ -131,12 +149,18 @@ public:
 	void telephone();
 	void callMother();
 	void callDevelopers();
+	//void callBoss();
+	void washing();
+	void locker();
+
 	void callBoss();
 	//void bossSeller();
 
 	// Spel funktioner
 	void fillItems();
+	void CleanItems();
 	void gameover();
+	void menu(string, int);
 
 public:
 	Locations();

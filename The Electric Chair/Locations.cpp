@@ -21,7 +21,7 @@ void Locations::CleanItems()
 	b_bloodyUniform = false;
 	b_cleanUniform = false;
 	b_coins = false;
-	coins = 0;
+	i_coins = 0;
 	cellA();
 
 }
@@ -223,7 +223,7 @@ void Locations::securityroom() {
 	else
 	{
 		l_game.print("The security guard quickly notices you and puts you back into your cell!!", 35);
-		cellA();
+		CleanItems();
 	}
 
 	mainCorridor();
@@ -436,7 +436,7 @@ void Locations::fikatable() {
 			l_game.pause(700, 5);
 			l_game.print("You wake up feeling a familiar ground, you check your surroundings and notice that you are in a bed and back in your cell", 35);
 			l_game.print("Bummer...", 50);
-			cellA();
+			CleanItems();
 		}
 		break;
 	case e_dice:
@@ -457,7 +457,7 @@ void Locations::fikatable() {
 			l_game.print("Everything stops, all you can hear is a familiar clock ticking. You're back in your cell but you've teleported back in time", 45);
 			l_game.pause(700, 5);
 			l_game.print("You noticed you've lost everything you had on you except what you started with. Bummer...", 35);
-			cellA();
+			CleanItems();
 			
 		}
 		break;
@@ -643,7 +643,7 @@ void Locations::callBoss() {
 	switch (answer[0])
 	{
 	case e_introduce:
-		cellA();
+		CleanItems();
 		break;
 	case e_hospital:
 		b_bossAway = true;
@@ -665,7 +665,7 @@ void Locations::callBoss() {
 		telephone();
 		break;
 	case e_donuts:
-		cellA();
+		CleanItems();
 		break;
 	case e_hangup:
 		telephone();
@@ -724,38 +724,38 @@ void Locations::washing()
 {
 	if (b_bloodyUniform == true || b_cleanUniform == true) // om man har en uniform, ren/blodig
 	{
-		if (coins > 0)
+		if (i_coins > 0)
 		{
 			cout << " That cost you one coin! Mmmmm .. your clothes smell gooood, they are now clean" << endl;
 			l_player.changeUniform(); // ändrar uniform till ren
 			b_cleanUniform = true;
-			coins = coins - 1;
-			if (coins <= 0)
+			i_coins = i_coins - 1;
+			if (i_coins <= 0)
 			{
 				l_player.changeCoins(); // tar bort coins från inventory när dom är slut
 				b_coins = false;
 			}
 		}
-		else if (coins <= 0)
+		else if (i_coins <= 0)
 		{
 			cout << " you are out of coins.." << endl;
 		}
 	}
 	else
 	{
-		if (coins > 0)
+		if (i_coins > 0)
 		{
 			cout << " You put a coin in the maschine.. "; //test test
-			cout << " Your prisonscrubbs smell like flowers..mmm" << "coins: " << coins << endl; // Om man inte har en uniform alls
-			coins = coins - 1;
-			if (coins <= 0)
+			cout << " Your prisonscrubbs smell like flowers..mmm" << "coins: " << i_coins << endl; // Om man inte har en uniform alls
+			i_coins = i_coins - 1;
+			if (i_coins <= 0)
 			{
 				b_coins = false;
 				l_player.changeCoins(); // tar bort coins från inventory när dom är slut
 			}
 		}
 		else
-			cout << " you are out of coins.." << "coins: " << coins << endl;//TEST TEST
+			cout << " you are out of coins.." << "coins: " << i_coins << endl;//TEST TEST
 	}
 }
 
@@ -805,7 +805,7 @@ void Locations::locker()
 			if (b_coins == false) // man får bara mer coins om man inte redan hade några
 			{
 				l_player.ItemCoins(); // Ger spelaren "some coins" i inventory OM dom inte redan hade coins.
-				coins = coins + 2; // plussar på int coins.
+				i_coins = i_coins + 2; // plussar på int coins.
 				b_coins = true;
 			}
 			break;
@@ -844,7 +844,7 @@ void Locations::gameover() { // Inte färdig. flytta till location. Töm inventory
 	bool b_cleanUniform = false;	// ren uniform
 	bool b_coins = false;			// coins
 	l_player.clearVector();			// rensa inventory
-	coins = 0;						// noll coins
+	i_coins = 0;						// noll coins
 	if_choice1 = true;				// återställer menyn, så man har alla 3 val
 	if_choice2 = true;
 	if_choice3 = true;

@@ -841,19 +841,21 @@ void Locations::mainEntrance() {
 	menu(titleMainEntrance, 4); // skriver ut titeln med färg.
 	l_game.print(" You have now entered the main entrence.. be aware of the securityboss! ", 35);
 
-	if (b_bloodyUniform == true) // Om man har en blodig uniform
+	// Om man har en blodig uniform
+	if (b_bloodyUniform == true) 
 	{
-		l_game.print(" The boss noticed the blood on your uniform, you got caught.. ack in your cell YOU BLOODY CIMINAL!!", 35);
+		l_game.print(" The boss noticed the blood on your uniform, you got caught.. Back in your cell YOU BLOODY CRIMINAL!!", 35);
 		l_game.print(" You are back in your cell and you noticed you've lost everything you had on you except what you started with. Bummer...", 35);
 		CleanItems(); // rensar items och skickar tillbaka till cell A
 	}
 	else if (b_bloodyUniform == false && b_cleanUniform == false) // Om man inte har någon uniform alls
 	{
-		l_game.print(" The boss noticed you had prisonscrubbs on you!  you got caught.. Back in your cell YOU BLOODY CIMINAL!!", 35);
+		l_game.print(" The boss noticed you had prisonscrubbs on you! you got caught.. Back in your cell YOU BLOODY CRIMINAL!!", 35);
 		l_game.print(" You are back in your cell and you noticed you've lost everything you had on you except what you started with. Bummer...", 35);
 		CleanItems();  // rensar items och skickar tillbaka till cell A
 	}
-	else if (b_cleanUniform == true) // om man har en ren uniform
+	// om man har en ren uniform
+	else if (b_cleanUniform == true)
 	{
 		if (b_bossAway == true) // Om man har ringt chefen, så han är borta.
 		{

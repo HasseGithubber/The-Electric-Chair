@@ -85,8 +85,12 @@ void Game::victory() {
 	print("                    *                         * ", 4);
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 	cout << endl;
-	print(s_name, 35);
-	print("         you escaped the electric chair!", 35);
+	print("        You escaped the electric chair!", 35);
+
+
+	intro(); // Skickar till introt igen.
+
+
 }
 
 // Funktion vars uppgift är att skapa en paus i spelet. Den skriver ut ett antal "." där man också kan välja hastigheten

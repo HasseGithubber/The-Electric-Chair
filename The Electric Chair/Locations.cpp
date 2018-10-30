@@ -6,36 +6,47 @@
 Game l_game;
 Player l_player;
 
-void Locations::fillItems() // Fyller inventory från början.
+// Fyller inventory från början.
+void Locations::fillItems() 
 {
-	l_player.startInventory();
+	l_player.startInventory(); // fyller med 3 saker som man kan använda i början av spelet.
 	cellA();
 }
 
-void Locations::CleanItems()
+// rensar alla items så att spelaren måste börja om, spelaren har 3 chanser, sedan blir det Gameover.
+void Locations::CleanItems() 
 {
-	//rensa items
-	l_player.ClearExtraItems();
-	b_scissors = false;
+	
+	l_player.ClearExtraItems(); // tar bort alla items i inventory utom de 3 första.
+
+	// rensar alla items bools till false
+	b_scissors = false;			
 	b_bloodyUniform = false;
 	b_cleanUniform = false;
 	b_coins = false;
 	i_coins = 0;
-	b_bossAway = false;			// chefen är kvar
-	if_teleBoss = false;		// så man inte kan ringa chefen
-	cellA();
+	b_bossAway = false;			// gör att chefen är kvar i main entrence
+	if_teleBoss = false;		// så man inte kan ringa chefen innan man varit i main entrence
+	cellA();					// skickar sedan vidare spelaren till cell A
 }
 
+// Här startar spelaren, i Cell A.
 void Locations::cellA() {
-	system("CLS"); // clear screen
-	if (if_choice1 == false && if_choice2 == false && if_choice3 == false) // Så du dör.. inte färdig.
+
+	// clear screen
+	system("CLS"); 
+
+	// Om alla 3 chanser är false så har du förlorat.
+	if (if_choice1 == false && if_choice2 == false && if_choice3 == false)  
 	{
 		gameover(); // Skickar till funktionen gameover
 	}
+
+	// Om man fortfarande har någon chans kvar.
 	else
 	{ 
-		b_cellA = true;
 		menu(titleCellA, 9); // skriver ut titeln med färg.
+		b_cellA = true;
 		while (b_cellA)
 		{
 			l_game.print("  You are stuck in your cell, how do you plan to escape?", 35);
@@ -43,21 +54,21 @@ void Locations::cellA() {
 			cout << "  " << s_choice1 << s_choice2 << s_choice3 << "i. Inventory\n";
 			cin >> answer;
 			cout << endl;
-			switch (answer[0])
+			switch (answer[0]) // switchen tar endast in första "char" som skrivs, spelet kraschar ej.
 			{
 			case e_hairpin:
 				b_cellA = false;
-				l_player.pushBack(1);
-				s_choice1 = "";
-				if (if_choice1) {
-					if_choice1 = false;
+				l_player.pushBack(1); // skickar in en "Broken hairpin" i inventory
+				s_choice1 = "";	// man ser inte längre hairpin som ett val
+				if (if_choice1) { // Kollar om spelaren får använda "hairpin"
+					if_choice1 = false; // spelaren kan inte längre använda hairpin
 					l_game.print("  You bend and twist you hairpin into a keylike form.\n  After some tries you succesfully open the lock, unfortunally you hairpin is all but broken.\n", 35);
 					l_game.print("  You escaped from your cell", 25);
 					system("pause"); // väntar på ett enter innan den går vidare
-					cellCorridor();
+					cellCorridor(); // spelaren skickas till cell corridor
 				}
 				else {
-					l_game.print("  Your hairpin is broken. Use something else", 15);
+					l_game.print("  Your hairpin is broken. Use something else", 15); // om hairpin är "broken", då får den inte längre användas.
 				}
 				break;
 			case e_harryPotter:
@@ -68,7 +79,7 @@ void Locations::cellA() {
 					if_choice2 = false;
 					l_game.print("  After reading the book you decide to try your luck and pick up the toilet brush...\n  You swish and flick your makeshift wand and recite the words \"Alohomora\"\n  After realising that your cell is now sprayed with toilet water you hear the lock click.", 35);
 					l_game.print("  You escaped from your cell", 25);
-					system("pause"); // väntar på ett enter innan den går vidare
+					system("pause"); 
 					cellCorridor();
 				}
 				else {
@@ -85,7 +96,7 @@ void Locations::cellA() {
 					l_game.pause(700, 5);
 					l_game.print("  4 months later you succesfully break the lock.", 35);
 					l_game.print("  You escaped from your cell", 25);
-					system("pause"); // väntar på ett enter innan den går vidare
+					system("pause"); 
 					cellCorridor();
 				}
 				else {
@@ -93,10 +104,10 @@ void Locations::cellA() {
 				}
 				break;
 			case e_inventory:
-				l_player.inventory();
+				l_player.inventory(); // Visar funktionen "inventory" i consolen.
 				break;
 			default:
-				l_game.print(wrongAnsw, 15);
+				l_game.print(wrongAnsw, 15); // berättar för spelaren att den skrivit fel och den får en ny chans.
 				break;
 			}
 		} // Slut på while loop
@@ -104,10 +115,9 @@ void Locations::cellA() {
 }
 
 void Locations::cellCorridor() {
+
 	system("CLS"); // clear screen
-
 	b_cellCorr = true;
-
 	menu(titleCellCorridor, 9); // skriver ut titeln med färg.
 	
 	while (b_cellCorr)
@@ -249,9 +259,10 @@ void Locations::securityroom() {
 }
 
 void Locations::mainCorridor() {
+
 	system("CLS"); // clear screen
-	b_mainCorr = true;
 	menu(titleMainCorridor, 4); // skriver ut titeln med färg.
+	b_mainCorr = true;
 	l_game.print(s_farCorrIntro, 35);
 
 	while (b_mainCorr)

@@ -36,7 +36,6 @@ void Locations::cellA() {
 	{ 
 		b_cellA = true;
 		menu(titleCellA, 9); // skriver ut titeln med färg.
-		l_game.print("  You are stuck in your cell, how do you plan to escape?", 35);
 		while (b_cellA)
 		{
 			l_game.print("  You are stuck in your cell, how do you plan to escape?", 35);

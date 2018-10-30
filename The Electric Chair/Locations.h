@@ -7,9 +7,9 @@ private:
 	const string wrongAnsw = "That is not an option, try again";
 public:
 	// String Variabler
-	string s_choice1 = "1. Hairpin || ";
-	string s_choice2 = "2. Harry Potter book || ";
-	string s_choice3 = "3. Nail-file || ";
+	string s_choice1 = "1. Use Hairpin || ";
+	string s_choice2 = "2. Use Harry Potter book || ";
+	string s_choice3 = "3. Use Nail-file || ";
 	string s_farCorrIntro = "  You hear some voices coming from the main entrance to the right, to the left the corridor just keeps going.\n";
 	string s_farCorr = "  6. Continue the corridor ";
 	string s_fikaRoom = "";

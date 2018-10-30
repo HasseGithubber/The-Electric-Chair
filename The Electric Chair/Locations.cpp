@@ -27,6 +27,7 @@ void Locations::CleanItems()
 }
 
 void Locations::cellA() {
+	system("CLS"); // clear screen
 	if (if_choice1 == false && if_choice2 == false && if_choice3 == false) // Så du dör.. inte färdig.
 	{
 		gameover(); // Skickar till funktionen gameover
@@ -35,6 +36,7 @@ void Locations::cellA() {
 	{ 
 		b_cellA = true;
 		menu(titleCellA, 9); // skriver ut titeln med färg.
+		l_game.print("  You are stuck in your cell, how do you plan to escape?", 35);
 		while (b_cellA)
 		{
 			l_game.print("  You are stuck in your cell, how do you plan to escape?", 35);
@@ -52,6 +54,7 @@ void Locations::cellA() {
 					if_choice1 = false;
 					l_game.print("  You bend and twist you hairpin into a keylike form.\n  After some tries you succesfully open the lock, unfortunally you hairpin is all but broken.\n", 35);
 					l_game.print("  You escaped from your cell", 25);
+					system("pause"); // väntar på ett enter innan den går vidare
 					cellCorridor();
 				}
 				else {
@@ -66,6 +69,7 @@ void Locations::cellA() {
 					if_choice2 = false;
 					l_game.print("  After reading the book you decide to try your luck and pick up the toilet brush...\n  You swish and flick your makeshift wand and recite the words \"Alohomora\"\n  After realising that your cell is now sprayed with toilet water you hear the lock click.", 35);
 					l_game.print("  You escaped from your cell", 25);
+					system("pause"); // väntar på ett enter innan den går vidare
 					cellCorridor();
 				}
 				else {
@@ -82,6 +86,7 @@ void Locations::cellA() {
 					l_game.pause(700, 5);
 					l_game.print("  4 months later you succesfully break the lock.", 35);
 					l_game.print("  You escaped from your cell", 25);
+					system("pause"); // väntar på ett enter innan den går vidare
 					cellCorridor();
 				}
 				else {
@@ -100,6 +105,8 @@ void Locations::cellA() {
 }
 
 void Locations::cellCorridor() {
+	system("CLS"); // clear screen
+
 	b_cellCorr = true;
 
 	menu(titleCellCorridor, 9); // skriver ut titeln med färg.
@@ -139,6 +146,7 @@ void Locations::cellCorridor() {
 }
 
 void Locations::cellB() {
+	system("CLS"); // clear screen
 	b_cellB = true;
 	menu(titleCellB, 9); // skriver ut titeln med färg.
 	l_game.print("  You are talking to your friendly neighbour, the weapons dealer.", 35);
@@ -188,11 +196,13 @@ void Locations::cellB() {
 	}
 	if (answer[0] == e_scissor)
 	{
+		system("pause"); // väntar på ett enter innan den går vidare
 		cellCorridor();
 	}
 }
 
 void Locations::securityroom() {
+	system("CLS"); // clear screen
 	b_secroom = true;
 	menu(titleSecurityRoom, 4); // skriver ut titeln med färg.
 	if (b_scissors == true)
@@ -228,16 +238,19 @@ void Locations::securityroom() {
 				break;
 			}
 		}
+		system("pause"); // väntar på ett enter innan den går vidare
 		mainCorridor();
 	}
 	else
 	{
 		l_game.print("  The security guard quickly notices you and puts you back into your cell!!", 35);
+		system("pause"); // väntar på ett enter innan den går vidare
 		CleanItems();
 	}
 }
 
 void Locations::mainCorridor() {
+	system("CLS"); // clear screen
 	b_mainCorr = true;
 	menu(titleMainCorridor, 4); // skriver ut titeln med färg.
 	l_game.print(s_farCorrIntro, 35);
@@ -354,6 +367,7 @@ void Locations::farCorridor() {
 }
 
 void Locations::fikaroom() {
+	system("CLS"); // clear screen
 	b_fikaroom = true;
 	menu(titleFikaroom, 10); // skriver ut titeln med färg.
 	l_game.print("  You find yourself in the holy fika room. Angels sing and the room table has some strange items and a telephone sits on the wall.", 35); // lägg till text som introducerar aspekter ur val nedanför
@@ -447,7 +461,8 @@ void Locations::fikatable() {
 				l_player.giveItem(4); // Lägger bara till coins i den synliga inventoryn om dom inte redan finns där.
 				b_coins = true;
 			}
-			fikaroom(); // Händer efter bulle eller dice lyckade utkomster. 2/2
+			system("pause"); // väntar på ett enter innan den går vidare
+			fikaroom(); // Händer efter bulle eller dice lyckade utkomster. 
 		}
 		else
 		{
@@ -455,6 +470,7 @@ void Locations::fikatable() {
 			l_game.pause(700, 5);
 			l_game.print("  You wake up feeling a familiar ground, you check your surroundings and notice that you are in a bed and back in your cell", 35);
 			l_game.print("  Bummer...", 50);
+			system("pause"); // väntar på ett enter innan den går vidare
 			CleanItems();
 		}
 		break;
@@ -471,6 +487,7 @@ void Locations::fikatable() {
 				l_player.giveItem(4); // Lägger bara till coins i den synliga inventoryn om dom inte redan finns där.
 				b_coins = true;
 			}
+			system("pause"); // väntar på ett enter innan den går vidare
 			fikaroom(); // Händer efter bulle eller dice lyckade utkomster. 1/2
 		}
 		else
@@ -483,14 +500,16 @@ void Locations::fikatable() {
 			l_game.print("  Everything stops, all you can hear is a familiar clock ticking. You're back in your cell but you've teleported back in time", 45);
 			l_game.pause(700, 5);
 			l_game.print("  You noticed you've lost everything you had on you except what you started with. Bummer...", 35);
+			system("pause"); // väntar på ett enter innan den går vidare
 			CleanItems();
 		}
 		break;
 	case e_fikaroom:
+		system("pause"); // väntar på ett enter innan den går vidare
 		fikaroom();
 		break;
 	}
-	//fikaroom(); // Händer efter bulle eller dice lyckade utkomster.
+
 }
 
 void Locations::telephone() {
@@ -695,6 +714,7 @@ void Locations::callBoss() {
 	switch (answer[0])
 	{
 	case e_introduce:
+		system("pause"); // väntar på ett enter innan den går vidare
 		CleanItems();
 		break;
 	case e_hospital:
@@ -718,6 +738,7 @@ void Locations::callBoss() {
 		telephone();
 		break;
 	case e_donuts:
+		system("pause"); // väntar på ett enter innan den går vidare
 		CleanItems();
 		break;
 	case e_hangup:
@@ -729,6 +750,7 @@ void Locations::callBoss() {
 }
 
 void Locations::lockerroom() {
+	system("CLS"); // clear screen
 
 	b_lockerroom = true;
 	menu(titleLockerroom, 10); // skriver ut titeln med färg.
@@ -891,6 +913,7 @@ void Locations::locker()
 }
 
 void Locations::mainEntrance() { 
+	system("CLS"); // clear screen
 	
 	menu(titleMainEntrance, 4); // skriver ut titeln med färg.
 	l_game.print("  You have now entered the main entrence.. be aware of the securityboss! ", 35);
@@ -902,6 +925,7 @@ void Locations::mainEntrance() {
 		l_game.print("  Security Boss:", 35);
 		l_game.print("    -Back in your cell YOU BLOODY CRIMINAL!!", 35);
 		l_game.print("  You are back in your cell and you noticed you've lost everything you had on you except what you started with. Bummer...", 35);
+		system("pause"); // väntar på ett enter innan den går vidare
 		CleanItems(); // rensar items och skickar tillbaka till cell A
 	}
 	else if (b_bloodyUniform == false && b_cleanUniform == false) // Om man inte har någon uniform alls
@@ -910,6 +934,7 @@ void Locations::mainEntrance() {
 		l_game.print("  Security Boss:", 35);
 		l_game.print("    -Back in your cell YOU BLOODY CRIMINAL!!", 35);
 		l_game.print("  You are back in your cell and you noticed you've lost everything you had on you except what you started with. Bummer...", 35);
+		system("pause"); // väntar på ett enter innan den går vidare
 		CleanItems();  // rensar items och skickar tillbaka till cell A
 	}
 	// om man har en ren uniform
@@ -928,6 +953,7 @@ void Locations::mainEntrance() {
 			l_game.print("  You walk back into the main corridor.", 35);
 			s_teleBoss = "|| 3. Call the boss ";
 			if_teleBoss = true;
+			system("pause"); // väntar på ett enter innan den går vidare
 			mainCorridor(); // du skickas tillbaka til maincorridor
 		}
 	}
@@ -953,9 +979,9 @@ void Locations::gameover() {
 	
 	i_coins = 0;					// noll coins
 
-	s_choice1 = "1. Hairpin || ";
-	s_choice2 = "2. Harry Potter book || ";
-	s_choice3 = "3. Nail-file || ";
+	s_choice1 = "1. Use Hairpin || ";
+	s_choice2 = "2. Use Harry Potter book || ";
+	s_choice3 = "3. Use Nail-file || ";
 	s_farCorrIntro = "  You hear some voices coming from the main entrance to the right, to the left the corridor just keeps going.\n";
 	s_farCorr = "  6. Continue the corridor ";
 	s_fikaRoom = "";
@@ -966,6 +992,7 @@ void Locations::gameover() {
 	l_player.clearVector();			// rensa inventory
 
 	cout << "  Game over! You did not escape the electric chair.." << endl;
+	system("pause"); // väntar på ett enter innan den går vidare
 	l_game.menu();
 }
 

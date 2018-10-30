@@ -18,7 +18,7 @@ void Locations::start() {
 			break;
 		}
 	}
-	l_game.print("\n  ==========================================================================\n\n  ", 1);
+	l_game.print("\n  ==========================================================================\n  ", 1);
 	l_game.print("  Judge: ", 65);
 	cout << "    -" << s_name << "!\n  ";
 	l_game.pause(700, 3);
@@ -28,10 +28,10 @@ void Locations::start() {
 	l_game.print("  Prison Manager:\n    -Well luckily for you we have some malfunctions with the chair.\n    Something with the circuits on this old relic and it's all from china\n    or somewhere so it'll take sometime before we get it fixed.\n    So get comfortable, hahahaha.\n", 65);
 	l_game.pause(700, 3);
 	l_game.print("  4 years later...", 100);
+	system("pause");
 	fillItems();
 }
 
-void Locations::fillItems() // Fyller inventory från början.
 // Fyller inventory från början.
 void Locations::fillItems() 
 {
@@ -172,9 +172,13 @@ void Locations::cellCorridor() {
 	switch (answer[0])
 	{
 	case e_cellB:
+		l_game.print("You take a peek into Cell B.", 15);
+		system("pause");
 		cellB();
 		break;
 	case e_securityroom:
+		l_game.print("You continue out of the cell corridor.", 15);
+		system("pause");
 		securityroom();
 		break;
 	}
@@ -231,6 +235,7 @@ void Locations::cellB() {
 	}
 	if (answer[0] == e_scissor)
 	{
+		l_game.print("Happy getting something you turn around", 15);
 		system("pause"); // väntar på ett enter innan den går vidare
 		cellCorridor();
 	}
@@ -273,12 +278,13 @@ void Locations::securityroom() {
 				break;
 			}
 		}
+		l_game.print("After a stumble over the body you go into the main corridor.", 15);
 		system("pause"); // väntar på ett enter innan den går vidare
 		mainCorridor();
 	}
 	else
 	{
-		l_game.print("  The security guard quickly notices you and puts you back into your cell!!", 35);
+		l_game.print("  The security guard quickly notices you and puts you back into your cell!!", 15);
 		system("pause"); // väntar på ett enter innan den går vidare
 		CleanItems();
 	}
@@ -355,12 +361,15 @@ void Locations::mainCorridor() {
 		farCorridor();
 		break;
 	case e_fikaroom:
+		l_game.print("You go to the fika room...", 15);
 		fikaroom();
 		break;
 	case e_lockerroom:
+		l_game.print("You go to the locker room...", 15);
 		lockerroom();
 		break;
 	case e_mainEntrance:
+		l_game.print("You go to the main entrance...", 15);
 		mainEntrance();
 		break;
 	default:

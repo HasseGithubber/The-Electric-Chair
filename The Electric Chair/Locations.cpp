@@ -31,7 +31,6 @@ void Locations::start() {
 	fillItems();
 }
 
-void Locations::fillItems() // Fyller inventory från början.
 // Fyller inventory från början.
 void Locations::fillItems() 
 {
@@ -133,7 +132,7 @@ void Locations::cellA() {
 				l_player.inventory(); // Visar funktionen "inventory" i consolen.
 				break;
 			default:
-				l_game.print(wrongAnsw, 15); // berättar för spelaren att den skrivit fel och den får en ny chans.
+				l_game.print(wrongAnsw, 15); // berättar för spelaren att den skrivit fel och den får en ny chans, en konstant.
 				break;
 			}
 		} // Slut på while loop
@@ -143,8 +142,8 @@ void Locations::cellA() {
 void Locations::cellCorridor() {
 
 	system("CLS"); // clear screen
-	b_cellCorr = true;
 	menu(titleCellCorridor, 9); // skriver ut titeln med färg.
+	b_cellCorr = true;
 	
 	while (b_cellCorr)
 	{
@@ -273,7 +272,7 @@ void Locations::securityroom() {
 				break;
 			}
 		}
-		system("pause"); // väntar på ett enter innan den går vidare
+		
 		mainCorridor();
 	}
 	else
@@ -974,28 +973,34 @@ void Locations::mainEntrance() {
 		system("pause"); // väntar på ett enter innan den går vidare
 		CleanItems();  // rensar items och skickar tillbaka till cell A
 	}
-	// om man har en ren uniform
+
+	// om man har en ren uniform på sig
 	else if (b_cleanUniform == true)
 	{
-		if (b_bossAway == true) // Om man har ringt chefen, så han är borta.
+
+		// Om man har ringt chefen, så han är borta.
+		if (b_bossAway == true) 
 		{
 			l_game.print("  It seems like the boss has left, nicely done!", 35);
-			l_game.victory();
+			l_game.victory(); // spelaren VANN SPELET! skickas till victory funktion.
 		}
-		else // om chefen är kvar.
+
+		// om chefen är kvar.
+		else 
 		{
 			l_game.print("  The securityboss walks towards you, he looks at your uniform an then screams angry...", 35);
 			l_game.print("  Security Boss:", 35);
 			l_game.print("    -BACK TO WORK!! What the hell are you doing here?", 35);
 			l_game.print("  You walk back into the main corridor.", 35);
 			s_teleBoss = "|| 3. Call the boss ";
-			if_teleBoss = true;
-			system("pause"); // väntar på ett enter innan den går vidare
-			mainCorridor(); // du skickas tillbaka til maincorridor
+			if_teleBoss = true; // Ger valet att spelaren kan ringa chefen från fikaroom
+			system("pause");  // väntar på ett enter innan den går vidare
+			mainCorridor();  // du skickas tillbaka til maincorridor
 		}
 	}
 }
 
+// När spelaren inte har några chanser kvar
 void Locations::gameover() { 
 
 	// **Nollställer spelet för en nystart**
@@ -1032,9 +1037,10 @@ void Locations::gameover() {
 	menu(titleGameOver, 6); // skriver ut titeln med färg.
 	l_game.print("  Game over! You did not escape the electric chair..", 35);
 	system("pause"); // väntar på ett enter innan den går vidare
-	l_game.intro();
+	l_game.intro(); // startar om spelet
 }
 
+// Färgad titel till alla rum
 void Locations::menu(string name, int a)
 {
 	cout << endl;
@@ -1048,6 +1054,7 @@ void Locations::menu(string name, int a)
 	l_game.print("  ------------------------------------------", 2); // endl för att tömma buffern
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 }
+
 Locations::Locations()
 {
 }

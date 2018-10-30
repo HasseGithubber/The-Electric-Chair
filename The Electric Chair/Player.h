@@ -17,10 +17,6 @@ public:
 	void startInventory();
 	int pushBack(int);
 	void giveItem(int a);
-	//void ItemScissors();
-	//void ItemBloodyUniform();
-	//void ItemCleanUniform();
-	//void ItemCoins();
 	void changeUniform();
 	void clearVector();
 	void changeCoins();

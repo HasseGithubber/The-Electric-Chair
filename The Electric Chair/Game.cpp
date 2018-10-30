@@ -9,9 +9,8 @@ Locations locate;
 // Introduktion till spelet. Titel och kort förklaring av vad det är.
 void Game::intro() {
 	print("  You are a prisoner on death row. Wrongly accused you will do anything to escape the...", 35);
-	cout << "  ";
 	pause(500, 5);
-	locate.menu(" ***~~      ~~ELECTRIC CHAIR~~        ~~***", 6);
+	locate.menu("  ***~~      ~~ELECTRIC CHAIR~~        ~~***", 6);
 	print("\n\n  This is a text adventure game were your goal is to escape the prison.\n  To accomplish this you have to explore, find items and figure your way out\n  to freedom by choosing an option in each area.\n\n  You only have three chances to escape so make it good or try again from the beginning.\n\n", 35);
 	menu();
 }
@@ -53,13 +52,13 @@ void Game::start() {
 		}
 	}
 	print("\n  ==========================================================================\n\n  ", 1);
-	print("Judge: ", 65);
-	cout << "  -" << s_name << "!\n  ";
+	print("  Judge: ", 65);
+	cout << "    -" << s_name << "!\n  ";
 	pause(700, 3);
-	print("  -You are charged for the murder of... some dude and hereby sentenced to death!\n", 65);
-	cout << s_name;
-	print("'s Mother:\n  -Now why did you go and do that huh?!\n  -Tell your father when you see him he can rott in hell!\n  .. *Mother walks out*...\n", 65);
-	print("Prison Manager:\n  -Well luckily for you we have some malfunctions with the chair.\n  Something with the circuits on this old relic and it's all from china\n  or somewhere so it'll take sometime before we get it fixed.\n  So get comfortable, hahahaha.\n", 65);
+	print("    -You are charged for the murder of... some dude and hereby sentenced to death!\n", 65);
+	cout << "  " << s_name;
+	print("'s Mother:\n    -Now why did you go and do that huh?!\n    -Tell your father when you see him he can rott in hell!\n  .. *Mother walks out*...\n", 65);
+	print("  Prison Manager:\n    -Well luckily for you we have some malfunctions with the chair.\n    Something with the circuits on this old relic and it's all from china\n    or somewhere so it'll take sometime before we get it fixed.\n    So get comfortable, hahahaha.\n", 65);
 	pause(700, 3);
 	print("  4 years later...", 100);
 	locate.fillItems();
@@ -67,6 +66,7 @@ void Game::start() {
 
 // Winner winner, we ain't getting thinner.
 void Game::victory() {
+	cout << "\n";
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
 	print("         *              *                 *    ", 4);
 	print("            *     *        *           *      *", 4);
@@ -86,6 +86,8 @@ void Game::victory() {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 	cout << endl;
 	print("        You escaped the electric chair!", 35);
+	cout << "\n\n\n";
+	cin.get();
 
 
 	intro(); // Skickar till introt igen.
@@ -95,6 +97,7 @@ void Game::victory() {
 
 // Funktion vars uppgift är att skapa en paus i spelet. Den skriver ut ett antal "." där man också kan välja hastigheten
 void Game::pause(int a, int b) {
+	cout << "  ";
 	for (int i = 0; i < b; i++)
 	{
 		cout << ".";

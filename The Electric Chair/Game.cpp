@@ -8,6 +8,7 @@ Locations locate;
 
 // Introduktion till spelet. Titel och kort förklaring av vad det är.
 void Game::intro() {
+	system("CLS");
 	print("  You are a prisoner on death row. Wrongly accused you will do anything to escape the...", 35);
 	pause(500, 5);
 	locate.menu("  ***~~      ~~ELECTRIC CHAIR~~        ~~***", 6);
@@ -28,7 +29,7 @@ void Game::menu() {
 		case startgame:
 			menuloop = false;
 			cout << endl;
-			start();
+			locate.start();
 			break;
 		case exitgame:
 			menuloop = false;
@@ -38,31 +39,6 @@ void Game::menu() {
 			break;
 		}
 	} while (menuloop);
-}
-
-// Spelet ber om input från användaren att ge ett namn till sin karaktär som sparas i game klassen.
-void Game::start() {
-	answer = "";
-	s_name = "";
-	print("  What is your name?", 15);
-	while (getline(cin, s_name))
-	{
-		if (s_name != "")
-		{
-			break;
-		}
-	}
-	print("\n  ==========================================================================\n\n  ", 1);
-	print("  Judge: ", 65);
-	cout << "    -" << s_name << "!\n  ";
-	pause(700, 3);
-	print("    -You are charged for the murder of... some dude and hereby sentenced to death!\n", 65);
-	cout << "  " << s_name;
-	print("'s Mother:\n    -Now why did you go and do that huh?!\n    -Tell your father when you see him he can rott in hell!\n  .. *Mother walks out*...\n", 65);
-	print("  Prison Manager:\n    -Well luckily for you we have some malfunctions with the chair.\n    Something with the circuits on this old relic and it's all from china\n    or somewhere so it'll take sometime before we get it fixed.\n    So get comfortable, hahahaha.\n", 65);
-	pause(700, 3);
-	print("  4 years later...", 100);
-	locate.fillItems();
 }
 
 // Winner winner, we ain't getting thinner.

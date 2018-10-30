@@ -6,6 +6,31 @@
 Game l_game;
 Player l_player;
 
+// Spelet ber om input från användaren att ge ett namn till sin karaktär som sparas i game klassen.
+void Locations::start() {
+	answer = "";
+	s_name = "";
+	l_game.print("  What is your name?", 15);
+	while (getline(cin, s_name))
+	{
+		if (s_name != "")
+		{
+			break;
+		}
+	}
+	l_game.print("\n  ==========================================================================\n\n  ", 1);
+	l_game.print("  Judge: ", 65);
+	cout << "    -" << s_name << "!\n  ";
+	l_game.pause(700, 3);
+	l_game.print("    -You are charged for the murder of... some dude and hereby sentenced to death!\n", 65);
+	cout << "  " << s_name;
+	l_game.print("'s Mother:\n    -Now why did you go and do that huh?!\n    -Tell your father when you see him he can rott in hell!\n  .. *Mother walks out*...\n", 65);
+	l_game.print("  Prison Manager:\n    -Well luckily for you we have some malfunctions with the chair.\n    Something with the circuits on this old relic and it's all from china\n    or somewhere so it'll take sometime before we get it fixed.\n    So get comfortable, hahahaha.\n", 65);
+	l_game.pause(700, 3);
+	l_game.print("  4 years later...", 100);
+	fillItems();
+}
+
 void Locations::fillItems() // Fyller inventory från början.
 {
 	l_player.startInventory();
@@ -81,7 +106,7 @@ void Locations::cellA() {
 				s_choice3 = "";
 				if (if_choice3) {
 					if_choice3 = false;
-					l_game.print("  You take you nail-file an start working the lock...", 35);
+					l_game.print("  You take your nail-file an start working the lock...", 35);
 					l_game.pause(700, 5);
 					l_game.print("  4 months later you succesfully break the lock.", 35);
 					l_game.print("  You escaped from your cell", 25);
@@ -332,7 +357,7 @@ void Locations::mainCorridor() {
 }
 
 void Locations::farCorridor() {
-	l_game.print("  The corridor you continue to walk.", 25);
+	l_game.print("  The corridor you continue to walk.\n", 25);
 	l_game.print("  A fika room and locker room you find doors to.", 35);
 	while (b_farCorr)
 	{
@@ -606,7 +631,7 @@ void Locations::callMother() {
 		{
 		case e_money:
 			l_game.print("  Mother:", 35);
-			l_game.print("    -You're not getting any money from me until you've become good man, like that's ever gonna happen.", 25);
+			l_game.print("    -You're not getting any money from me until you've become a god-loving human being, like that's ever gonna happen.", 25);
 			break;
 		case e_pretty:
 			l_game.print("  Mother:", 35);
@@ -671,7 +696,7 @@ void Locations::callBoss() {
 	while (b_callBoss)
 	{
 		l_game.print("  What do you want to say?", 35);
-		cout << "  1. Hi, its " << l_game.s_name << ". || 2. This is your wifes doctor calling, it's what she's have always feared. || 3. Sell vacuum cleaners. || 4. Yeah!, there's tons of donuts. || h. Hang up the phone\n";
+		cout << "  1. Hi, its " << s_name << ". || 2. This is your wifes doctor calling, it's what she's have always feared. || 3. Sell vacuum cleaners. || 4. Yeah!, there's tons of donuts. || h. Hang up the phone\n";
 		answer = "";
 		cin >> answer;
 		cout << endl;
@@ -690,7 +715,8 @@ void Locations::callBoss() {
 			break;
 		case e_seller:
 			b_callBoss = false;
-			l_game.print("  You:", 35);
+			l_game.print("  ", 35);
+			cout << s_name << ":";
 			l_game.print(s_seller, 25);
 			l_game.print("  Security Boss:", 35);
 			l_game.print(s_bossSeller, 25);
@@ -757,7 +783,7 @@ void Locations::lockerroom() {
 	while (b_lockerroom)
 	{
 		l_game.print("  What do you want to do?", 35);
-		cout << "  1. use washing machine || 2. open a locker || 7. Go to fikaroom  || 5. Back to main corridor || i. Inventory\n";
+		cout << "  1. Use washing machine || 2. Open a locker || 7. Go to fikaroom  || 5. Back to main corridor || i. Inventory\n";
 		answer = "";
 		cin >> answer;
 		cout << endl;
@@ -855,7 +881,7 @@ void Locations::locker()
 			s_choiceCoins = "|| 3. some coins";
 		}
 		l_game.print("  In the locker you see a bunch of things, do you want to take something?", 35);
-		cout << "  1. A clean uniform || 2. stinky banana peel " << s_choiceCoins << " || 8. Back to lockerroom\n";
+		cout << "  1. A clean uniform || 2. Stinky banana peel" << s_choiceCoins << " || 8. Back to lockerroom\n";
 		answer = "";
 		cin >> answer;
 		cout << endl;
@@ -994,7 +1020,7 @@ void Locations::gameover() {
 	menu(titleGameOver, 6); // skriver ut titeln med färg.
 	l_game.print("  Game over! You did not escape the electric chair..", 35);
 	system("pause"); // väntar på ett enter innan den går vidare
-	l_game.menu();
+	l_game.intro();
 }
 
 void Locations::menu(string name, int a)

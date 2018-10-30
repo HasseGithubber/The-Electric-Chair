@@ -5,10 +5,6 @@ private:
 	string answer;
 	const string wrongAnsw = "\n  That is not an option, try again";
 public:
-	// string variabler
-	string s_name;
-	string s_seller;
-
 	// int vairabler
 	int diceResult;
 	int bulleOutcome;
@@ -23,7 +19,6 @@ public:
 	// Game funktioner
 	void intro();
 	void menu();
-	void start();
 	void victory();
 
 public:

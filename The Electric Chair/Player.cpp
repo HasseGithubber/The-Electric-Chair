@@ -42,11 +42,11 @@ int Player::pushBack(int x) {
 	}
 	else if (x == 2)
 	{
-		items[1] = "Broken Harry Potter book";
+		items[1] = "Warped Harry Potter book";
 	}
 	else if (x == 3)
 	{
-		items[2] = "Broken Nailfile";
+		items[2] = "Dull Nailfile";
 	}
 	return 0;
 }

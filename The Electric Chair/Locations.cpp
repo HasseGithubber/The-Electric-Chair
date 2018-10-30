@@ -330,7 +330,9 @@ void Locations::mainCorridor() {
 			if (b_farCorrHide)
 			{
 				b_mainCorr = false;
-				// Far Corridor värden, reset'as i gameover funktionen.
+
+				// Far Corridor värden som tar bort alternativet efter man har varit dit.
+				// Dom återställs i gameover funktionen.
 				b_farCorrHide = false;
 				b_fikaRoomReveal = true;
 				b_lockerRoomReveal = true;
@@ -377,6 +379,7 @@ void Locations::mainCorridor() {
 	}
 }
 
+// Far corridor finns bara tillgänglig första gången, alternativet tas bort så fort man har gått dit.
 void Locations::farCorridor() {
 	l_game.print("  The corridor you continue to walk.\n", 25);
 	l_game.print("  A fika room and locker room you find doors to.", 35);
@@ -494,8 +497,8 @@ void Locations::fikatable() {
 	switch (answer[0])
 	{
 	case e_bulle:
-		l_game.print("  You eat a bulle.\n", 35); // LÄgg in funktion
-		i_bullen = l_game.bulle();
+		l_game.print("  You eat a bulle.\n", 35);
+		i_bullen = l_game.bulle(); // Kallar på bulle funktionen i game klassen och ger tillbaks ett en slumpmässig siffra.
 		l_game.pause(700, 5);
 		if (i_bullen == 1)
 		{
@@ -520,8 +523,8 @@ void Locations::fikatable() {
 		}
 		break;
 	case e_dice:
-		l_game.print("  You threw a dice\n", 35); // Lägg in funktion
-		i_dice = l_game.dice();
+		l_game.print("  You threw a dice\n", 35);
+		i_dice = l_game.dice(); // Kallar på dice funktionen i game klassen och ger tillabks en slumpmässig siffra.
 		l_game.pause(700, 5);
 		if (i_dice >= 4)
 		{
@@ -560,14 +563,14 @@ void Locations::fikatable() {
 void Locations::telephone() {
 	b_telephone = true;
 	l_game.print("  You take the telephone to your head and hear the ringtone.", 35);
-	if (b_coins == true)
+	if (b_coins == true) // Kollar om du har några coins annars går kommer du tillbaks till fikarummet.
 	{
 		while (b_telephone)
 		{
-			if (b_coins == true)
+			if (b_coins == true) // Kollar om du har några coins annars går kommer du tillbaks till fikarummet.
 			{
-				i_coins -= 1;
-				if (i_coins == 0)
+				i_coins -= 1; // Kostar en coin att ringa ett samtal
+				if (i_coins == 0) // Om du får slut på coins i loopen så stängs den och skickar tillbaka dig till fikarummet.
 				{
 					b_coins = false;
 					l_player.changeCoins(); // tar bort coins från inventory om dom är slut.
@@ -586,7 +589,7 @@ void Locations::telephone() {
 					b_telephone = false;
 					break;
 				case e_boss:
-					if (if_teleBoss)
+					if (if_teleBoss) // Bossen kan bara ringas när man har besökt honom i main entrance
 					{
 						b_telephone = false;
 					}
@@ -635,9 +638,9 @@ void Locations::telephone() {
 		l_game.pause(500, 3);
 		fikaroom();
 	}
-	
 }
 
+// Ring och prata med mamma.
 void Locations::callMother() {
 	b_callMother = true;
 	l_game.print("  Your mother answers the phone.", 35);
@@ -674,6 +677,7 @@ void Locations::callMother() {
 	telephone();
 }
 
+// Ring och prata med oss.
 void Locations::callDevelopers() {
 	b_callDevelopers = true;
 	l_game.print("  Linda & Hasse answer the phone from their office, grupprum 2.", 35);
@@ -710,6 +714,7 @@ void Locations::callDevelopers() {
 	telephone();
 }
 
+// Ring och prata med bossen, om du får.
 void Locations::callBoss() {
 	b_callBoss = true;
 	l_game.print("  Security Boss:", 35);
@@ -738,6 +743,8 @@ void Locations::callBoss() {
 			b_callBoss = false;
 			l_game.print("  ", 35);
 			cout << s_name << ":";
+
+			// En förändrande konversation som säljare med bossen. Återställs i gameover funktionen.
 			l_game.print(s_seller, 25);
 			l_game.print("  Security Boss:", 35);
 			l_game.print(s_bossSeller, 25);
@@ -763,13 +770,13 @@ void Locations::callBoss() {
 		system("pause"); // väntar på ett enter innan den går vidare
 		CleanItems();
 		break;
-	case e_hospital:
+	case e_hospital: // Efter det här valet så initieras våran win condition i main entrance
 		b_bossAway = true;
 		if_teleBoss = false;
 		s_bossAway = "  **Hi, this is the boss. I'm not available at the moment but leave a message after the bip. ...biiiip.**\n  You hang up the phone.";
 		telephone();
 		break;
-	case e_seller:
+	case e_seller: // Byter ut hur konversationen utspelas
 		if (b_bossSeller)
 		{
 			b_bossSeller = false;
@@ -1061,7 +1068,7 @@ void Locations::menu(string name, int a)
 	l_game.print(name, 8);
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), a);
 	l_game.print("  ##########################################", 4);
-	l_game.print("  ------------------------------------------", 2); // endl för att tömma buffern
+	l_game.print("  ------------------------------------------", 2);
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 }
 

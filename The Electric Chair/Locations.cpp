@@ -141,6 +141,7 @@ void Locations::cellB() {
 		switch (answer[0])
 		{
 		case e_scissor:
+			b_cellB = false;
 			if (b_scissors == true) // Så att man inte ska kunna ta flera saxar.
 			{
 				l_game.print("You already have one.. why take two?", 15);
@@ -168,18 +169,16 @@ void Locations::cellB() {
 			l_game.print(wrongAnsw, 15);
 			break;
 		}
-		if (answer[0] == '1') // valet för att lämna rummet, tadaaaaaaaa
-		{
-			b_cellB = false;
-		}
 	}
-	cellCorridor();
+	if (answer[0] == e_scissor)
+	{
+		cellCorridor();
+	}
 }
 
 void Locations::securityroom() {
 	b_secroom = true;
 	menu(titleSecurityRoom, 4); // skriver ut titeln med färg.
-	
 	if (b_scissors == true)
 	{
 		l_game.print("You lunge towards the guard and stab him.\n The body lies motionless on the floor, you think to yourself that his uniform might come in handy.", 35);
@@ -212,13 +211,13 @@ void Locations::securityroom() {
 				break;
 			}
 		}
+		mainCorridor();
 	}
 	else
 	{
 		l_game.print("The security guard quickly notices you and puts you back into your cell!!", 35);
 		CleanItems();
 	}
-	mainCorridor();
 }
 
 void Locations::mainCorridor() {
@@ -535,14 +534,16 @@ void Locations::telephone() {
 			fikaroom();
 			break;
 		default:
+			fikaroom();
 			break;
 		}
 	}
 	else
 	{
 		l_game.print("You are out of coins, you can't make a call.", 15);
+		fikaroom();
 	}
-	fikaroom();
+	
 }
 
 void Locations::callMother() {
@@ -651,6 +652,7 @@ void Locations::callBoss() {
 		b_bossAway = true;
 		if_teleBoss = false;
 		s_bossAway = "**Hi, this is the boss. I'm not available at the moment but leave a message after the bip. ...biiiip.**\n You hang up the phone.";
+		telephone();
 		break;
 	case e_seller:
 		if (b_bossSeller)
@@ -839,7 +841,6 @@ void Locations::mainEntrance() {
 	menu(titleMainEntrance, 4); // skriver ut titeln med färg.
 	l_game.print(" You have now entered the main entrence.. be aware of the securityboss! ", 35);
 
-
 	if (b_bloodyUniform == true) // Om man har en blodig uniform
 	{
 		l_game.print(" The boss noticed the blood on your uniform, you got caught.. ack in your cell YOU BLOODY CIMINAL!!", 35);
@@ -903,7 +904,6 @@ void Locations::gameover() {
 
 	cout << "Game over! You did not escape the electric chair.." << endl;
 	l_game.menu();
-
 }
 
 void Locations::menu(string name, int a)

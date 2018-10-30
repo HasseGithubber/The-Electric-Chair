@@ -8,9 +8,6 @@ Locations locate;
 
 // Introduktion till spelet. Titel och kort förklaring av vad det är.
 void Game::intro() {
-
-	victory(); // testar funkitonen // linda
-
 	print("  You are a prisoner on death row. Wrongly accused you will do anything to escape the...", 35);
 	cout << "  ";
 	pause(500, 5);
@@ -70,9 +67,7 @@ void Game::start() {
 
 // Winner winner, we ain't getting thinner.
 void Game::victory() {
-
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
-
 	print("         *              *                 *    ", 4);
 	print("            *     *        *           *      *", 4);
 	print("       *                     *            *", 4);
@@ -92,11 +87,6 @@ void Game::victory() {
 	cout << endl;
 	print(s_name, 35);
 	print("         you escaped the electric chair!", 35);
-
-
-
-
-
 }
 
 // Funktion vars uppgift är att skapa en paus i spelet. Den skriver ut ett antal "." där man också kan välja hastigheten

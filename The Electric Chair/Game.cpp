@@ -34,6 +34,7 @@ void Game::menu() {
 			menuloop = false;
 			break;
 		default:
+			print(wrongAnsw, 15);
 			break;
 		}
 	} while (menuloop);

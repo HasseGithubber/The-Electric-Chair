@@ -35,12 +35,13 @@ void Locations::cellA() {
 	{ 
 		b_cellA = true;
 		menu(titleCellA, 9); // skriver ut titeln med färg.
-		l_game.print("  You are stuck in your cell, how do you plan to escape?", 35);
 		while (b_cellA)
 		{
+			l_game.print("  You are stuck in your cell, how do you plan to escape?", 35);
 			answer = "";
-			cout << "  " << s_choice1 << s_choice2 << s_choice3 << "i. Inventory";
+			cout << "  " << s_choice1 << s_choice2 << s_choice3 << "i. Inventory\n";
 			cin >> answer;
+			cout << endl;
 			switch (answer[0])
 			{
 			case e_hairpin:
@@ -49,6 +50,7 @@ void Locations::cellA() {
 				s_choice1 = "";
 				if (if_choice1) {
 					if_choice1 = false;
+					l_game.print("  You bend and twist you hairpin into a keylike form.\n  After some tries you succesfully open the lock, unfortunally you hairpin is all but broken.\n", 35);
 					l_game.print("  You escaped from your cell", 25);
 					cellCorridor();
 				}
@@ -62,6 +64,7 @@ void Locations::cellA() {
 				s_choice2 = "";
 				if (if_choice2) {
 					if_choice2 = false;
+					l_game.print("  After reading the book you decide to try your luck and pick up the toilet brush...\n  You swish and flick your makeshift wand and recite the words \"Alohomora\"\n  After realising that your cell is now sprayed with toilet water you hear the lock click.", 35);
 					l_game.print("  You escaped from your cell", 25);
 					cellCorridor();
 				}
@@ -75,11 +78,14 @@ void Locations::cellA() {
 				s_choice3 = "";
 				if (if_choice3) {
 					if_choice3 = false;
+					l_game.print("  You take you nail-file an start working the lock...", 35);
+					l_game.pause(700, 5);
+					l_game.print("  4 months later you succesfully break the lock.", 35);
 					l_game.print("  You escaped from your cell", 25);
 					cellCorridor();
 				}
 				else {
-					l_game.print(" Your nail-file is dull after all those years. Use something else ", 15);
+					l_game.print("  Your nail-file is dull after all those years. Use something else", 15);
 				}
 				break;
 			case e_inventory:
@@ -100,10 +106,11 @@ void Locations::cellCorridor() {
 	
 	while (b_cellCorr)
 	{
-		l_game.print("  What do you do now? ", 35);
-		cout << "  3. Go to Cell B || 4. Go to securityroom || i. Inventory";
+		l_game.print("  What do you want to do? ", 35);
+		cout << "  3. Go to Cell B || 4. Go to securityroom || i. Inventory\n";
 		answer = "";
 		cin >> answer;
+		cout << endl;
 		switch (answer[0])
 		{
 		case e_cellB:
@@ -134,12 +141,15 @@ void Locations::cellCorridor() {
 void Locations::cellB() {
 	b_cellB = true;
 	menu(titleCellB, 9); // skriver ut titeln med färg.
-	l_game.print("  You are talking to your friendly neighbour, the weapons dealer. What do you want?\n", 35);
+	l_game.print("  You are talking to your friendly neighbour, the weapons dealer.", 35);
 	while (b_cellB)
 	{
-		cout << "  1. Take scissors || 2. Take bazooka || 3. Take Ak47 || 4. Take Kpist || i. Inventory";
+		l_game.print("  Cell Neighbour:", 35);
+		l_game.print("    -What do you want?", 35);
+		cout << "  1. Take scissors || 2. Take bazooka || 3. Take Ak47 || 4. Take Kpist || i. Inventory\n";
 		answer = "";
 		cin >> answer;
+		cout << endl;
 		switch (answer[0])
 		{
 		case e_scissor:
@@ -190,9 +200,10 @@ void Locations::securityroom() {
 		l_game.print("  You lunge towards the guard and stab him.\n  The body lies motionless on the floor, you think to yourself that his uniform might come in handy.", 35);
 		while (b_secroom)
 		{
-			cout << "  Do you take the unifrom?\n   y/n";
+			l_game.print("  Do you take the unifrom?\n  y/n\n", 35);
 			answer = "";
 			cin >> answer;
+			cout << endl;
 			switch (answer[0])
 			{
 			case 'y':
@@ -233,9 +244,11 @@ void Locations::mainCorridor() {
 
 	while (b_mainCorr)
 	{
-		cout << "  Where do you want to go?\n" << s_fikaRoom << s_lockerRoom << s_farCorr << "|| 9. Main entrance || i. Inventory\n";
+		l_game.print("  Where do you want to go?", 35);
+		cout << "  " << s_fikaRoom << s_lockerRoom << s_farCorr << "|| 9. Main entrance || i. Inventory\n";
 		answer = "";
 		cin >> answer;
+		cout << endl;
 		switch (answer[0])
 		{
 		case e_fikaroom:
@@ -311,9 +324,11 @@ void Locations::farCorridor() {
 	l_game.print("  A fika room and locker room you find doors to.", 35);
 	while (b_farCorr)
 	{
-		cout << "  Where do you want to go?\n  7. Fika Room || 8. Locker Room || i. Inventory";
+		l_game.print("  Where do you want to go?", 35);
+		cout << "  7. Fika Room || 8. Locker Room || i. Inventory\n";
 		answer = "";
 		cin >> answer;
+		cout << endl;
 		switch (answer[0])
 		{
 		case e_fikaroom:
@@ -344,9 +359,11 @@ void Locations::fikaroom() {
 	l_game.print("  You find yourself in the holy fika room. Angels sing and the room table has some strange items and a telephone sits on the wall.", 35); // lägg till text som introducerar aspekter ur val nedanför
 	while (b_fikaroom)
 	{
-		cout << "  What do you want to do?\n  1. Walk to the table || 2. Use the telephone || 8. Locker Room || 5. Main Corridor || i. Check inventory\n";
+		l_game.print("  What do you want to do?", 35);
+		cout << "  1. Walk to the table || 2. Use the telephone || 8. Locker Room || 5. Main Corridor || i. Inventory\n";
 		answer = "";
 		cin >> answer;
+		cout << endl;
 		switch (answer[0])
 		{
 		case e_fikatable:
@@ -392,8 +409,10 @@ void Locations::fikatable() {
 	while (b_fikatable)
 	{
 		answer = "";
-		cout << "  What do you do?\n 1.  Eat a bulle || 2. Throw the dice || 7. Check the fika room || i. Check inventory\n";
+		l_game.print("  What do you want to do?", 35);
+		cout << "  1. Eat a bulle || 2. Throw the dice || 7. Check the fika room || i. Inventory\n";
 		cin >> answer;
+		cout << endl;
 		switch (answer[0])
 		{
 		case e_bulle:
@@ -490,8 +509,10 @@ void Locations::telephone() {
 					l_player.changeCoins(); // tar bort coins från inventory om dom är slut.
 				}
 				answer = "";
-				cout << "  Who do you want to call?\n 1. Call your mother || 2. Call the developers " << s_teleBoss << " || 7. Go back to the fika room";
+				l_game.print("  Who do you want to call?\n", 35);
+				cout << "  1. Call your mother || 2. Call the developers " << s_teleBoss << " || 7. Go back to the fika room\n";
 				cin >> answer;
+				cout << endl;
 				switch (answer[0])
 				{
 				case e_mother:
@@ -521,7 +542,7 @@ void Locations::telephone() {
 			else
 			{
 				b_telephone = false;
-				l_game.print("You are out of coins, you can't make a call.", 15);
+				l_game.print("  You are out of coins, you can't make a call.", 15);
 				l_game.pause(500, 3);
 			}
 		} // Slut på while loopen
@@ -546,7 +567,7 @@ void Locations::telephone() {
 	}
 	else
 	{
-		l_game.print("You are out of coins, you can't make a call.", 15);
+		l_game.print("  You are out of coins, you can't make a call.", 15);
 		l_game.pause(500, 3);
 		fikaroom();
 	}
@@ -558,9 +579,11 @@ void Locations::callMother() {
 	l_game.print("  Your mother answers the phone.", 35);
 	while (b_callMother)
 	{
-		cout << "  What do you want to say?\n 1. Ask her for money || 2. Tell her she's pretty || 3. Congratulate her on her birthday || h. Hang up the phone\n";
+		l_game.print("  What do you want to say?", 35);
+		cout << "  1. Ask her for money || 2. Tell her she's pretty || 3. Congratulate her on her birthday || h. Hang up the phone\n";
 		answer = "";
 		cin >> answer;
+		cout << endl;
 		switch (answer[0])
 		{
 		case e_money:
@@ -592,9 +615,11 @@ void Locations::callDevelopers() {
 	l_game.print("  Linda & Hasse answer the phone from their office, grupprum 2.", 35);
 	while (b_callDevelopers)
 	{
-		cout << "  What do you want to say?\n  1. You guys suck! || 2. Your guys are fantastic! || 3. I need help! || h. Hang up the phone\n";
+		l_game.print("  What do you want to say?", 35);
+		cout << "  1. You guys suck! || 2. Your guys are fantastic! || 3. I need help! || h. Hang up the phone\n";
 		answer = "";
 		cin >> answer;
+		cout << endl;
 		switch (answer[0])
 		{
 		case e_suck:
@@ -627,16 +652,18 @@ void Locations::callBoss() {
 	l_game.print("    -Yes?, what is it?... have the donuts arrived?", 35);
 	while (b_callBoss)
 	{
-		cout << "  What do you want to say?\n  1. Hi, its " << l_game.s_name << ". || 2. This is your wifes doctor calling, it's what she's have always feared. || 3. Sell vacuum cleaners. || 4. Yeah!, there's tons of donuts. || h. Hang up the phone\n";
+		l_game.print("  What do you want to say?", 35);
+		cout << "  1. Hi, its " << l_game.s_name << ". || 2. This is your wifes doctor calling, it's what she's have always feared. || 3. Sell vacuum cleaners. || 4. Yeah!, there's tons of donuts. || h. Hang up the phone\n";
 		answer = "";
 		cin >> answer;
+		cout << endl;
 		switch (answer[0])
 		{
 		case e_introduce:
 			b_callBoss = false;
 			l_game.print("  Security Boss:", 35);
 			l_game.print("    -What?! How did you get a phone?!... \"guards!\" *click*", 25);
-			l_game.print("Dumbfounded you hear the guards running in the corridor, they jump on you like a pack of hungry wolves.", 25);
+			l_game.print("  Dumbfounded you hear the guards running in the corridor, they jump on you like a pack of hungry wolves.", 25);
 			break;
 		case e_hospital:
 			b_callBoss = false;
@@ -654,7 +681,7 @@ void Locations::callBoss() {
 			b_callBoss = false;
 			l_game.print("  Security Boss:", 35);
 			l_game.print("    -Ahh, finally... \"time for a donut break guys\" *click*.", 25);
-			l_game.print("Oh yeah... I am in the fika room... crap!", 25);
+			l_game.print("  Oh yeah... I am in the fika room... crap!", 25);
 			break;
 		case e_hangup:
 			b_callBoss = false;
@@ -708,9 +735,11 @@ void Locations::lockerroom() {
 	l_game.print("  You are now in the lockerroom, you see a washing machine and a bunch of lockers ", 35);
 	while (b_lockerroom)
 	{
-		cout << "  1. use washing machine || 2. open a locker || 7. Go to fikaroom  || 5. Back to main corridor || i. Inventory ";
+		l_game.print("  What do you want to do?", 35);
+		cout << "  1. use washing machine || 2. open a locker || 7. Go to fikaroom  || 5. Back to main corridor || i. Inventory\n";
 		answer = "";
 		cin >> answer;
+		cout << endl;
 		switch (answer[0])
 		{
 		case e_wash:
@@ -765,7 +794,7 @@ void Locations::washing()
 		}
 		else if (i_coins <= 0) // om man har slut på coins.
 		{
-			l_game.print(" You are out of coins..", 15);
+			l_game.print("  You are out of coins..", 15);
 			l_game.pause(500, 3);
 		}
 	}
@@ -784,7 +813,7 @@ void Locations::washing()
 		}
 		else
 		{
-			l_game.print(" You are out of coins..", 15);
+			l_game.print("  You are out of coins..", 15);
 			l_game.pause(500, 3);
 		}
 	}
@@ -805,9 +834,10 @@ void Locations::locker()
 			s_choiceCoins = "|| 3. some coins";
 		}
 		l_game.print("  In the locker you see a bunch of things, do you want to take something?", 35);
-		cout << "  8. Back to lockerroom || 1. A clean uniform || 2. stinky banana peel " << s_choiceCoins;
+		cout << "  1. A clean uniform || 2. stinky banana peel " << s_choiceCoins << " || 8. Back to lockerroom\n";
 		answer = "";
 		cin >> answer;
+		cout << endl;
 		switch (answer[0])
 		{
 		case e_lockerroom:
@@ -839,7 +869,7 @@ void Locations::locker()
 			l_game.print("  Uuuhhhaaaa why would you want that?! stop taking junk, idiot.", 35);
 			break;
 		case e_coins:
-			l_game.print("  coins coins coins.. they always welcome ", 35); 
+			l_game.print("  Coins coins coins.. they always welcome ", 35); 
 			if (b_coins == false) // man får bara mer coins om man inte redan hade några
 			{
 				l_player.giveItem(4); // Ger spelaren "some coins" i inventory OM dom inte redan hade coins.
@@ -930,8 +960,8 @@ void Locations::gameover() {
 	s_farCorr = "  6. Continue the corridor ";
 	s_fikaRoom = "";
 	s_lockerRoom = "";
-	s_seller = "  Hi! Do you want to buy our magnificent vacuum cleaners? Ofcourse you do, and we got a special price for you just TODAY! Just confirm the payment and get an extra pack of vacuum bags for free!\n";
-	s_bossSeller = "  Why don't you take those extra bags and shove'em up where the sun don't shine... *click*\n.";
+	s_seller = "    -Hi! Do you want to buy our magnificent vacuum cleaners? Ofcourse you do, and we got a special price for you just TODAY! Just confirm the payment and get an extra pack of vacuum bags for free!\n";
+	s_bossSeller = "    -Why don't you take those extra bags and shove'em up where the sun don't shine... *click*\n.";
 
 	l_player.clearVector();			// rensa inventory
 

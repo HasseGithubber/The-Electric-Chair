@@ -3,16 +3,17 @@
 class Player
 {
 public:
-	string name;
+	// vektor till inventoryn
 	vector<string> items;
 
-	//Items
+	// Items
 	string s_scissor = "Scissors";
 	string s_bloodyUniform = "Bloody Uniform";
 	string s_cleanUniform = "Clean uniform";
 	string s_coins = "Some coins ";
 
 public:
+	// alla funktioner i Klassen Player
 	void inventory();
 	void startInventory();
 	int pushBack(int);

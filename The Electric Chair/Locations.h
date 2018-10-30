@@ -3,8 +3,12 @@
 class Locations
 {
 private:
+	// "answer" används i switch-funktionerna.
 	string answer;
+
+	// En konstant som används när användaren matar in fel karaktär
 	const string wrongAnsw = "That is not an option, try again";
+
 public:
 	// String Variabler
 	string s_name;

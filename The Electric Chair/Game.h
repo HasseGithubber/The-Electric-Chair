@@ -2,14 +2,16 @@
 class Game
 {
 private:
+	// "answer" används i switch-funktionerna.
 	string answer;
+	// En konstant som används när användaren matar in fel karaktär
 	const string wrongAnsw = "\n  That is not an option, try again";
 public:
 	// int vairabler
 	int diceResult;
 	int bulleOutcome;
 
-	// enums
+	// enums till menyn
 	enum game
 	{
 		startgame = '1', exitgame = '2'

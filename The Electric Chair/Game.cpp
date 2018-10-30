@@ -5,17 +5,17 @@
 
 Player g_player;
 Locations locate;
+Game g_game;
 
 // Introduktion till spelet. Titel och kort förklaring av vad det är.
 void Game::intro() {
 
-	victory(); // testar funkitonen // linda
 
-	print("  You are a prisoner on death row. Wrongly accused you will do anything to escape the...", 35);
+	print("  you are a prisoner on death row. wrongly accused you will do anything to escape the...", 35);
 	cout << "  ";
 	pause(500, 5);
-	locate.menu(" ***~~      ~~ELECTRIC CHAIR~~        ~~***", 6);
-	print("\n\n  This is a text adventure game were your goal is to escape the prison.\n  To accomplish this you have to explore, find items and figure your way out\n  to freedom by choosing an option in each area.\n\n  You only have three chances to escape so make it good or try again from the beginning.\n\n", 35);
+	locate.menu(" ***~~      ~~electric chair~~        ~~***", 6);
+	print("\n\n  this is a text adventure game were your goal is to escape the prison.\n  to accomplish this you have to explore, find items and figure your way out\n  to freedom by choosing an option in each area.\n\n  you only have three chances to escape so make it good or try again from the beginning.\n\n", 35);
 	menu();
 }
 
@@ -46,21 +46,21 @@ void Game::menu() {
 // Spelet ber om input från användaren att ge ett namn till sin karaktär som sparas i game klassen.
 void Game::start() {
 	answer = "";
-	s_name = "";
+	g_game.s_name = "";
 	print("  What is your name?", 15);
-	while (getline(cin, s_name))
+	while (getline(cin, g_game.s_name))
 	{
-		if (s_name != "")
+		if (g_game.s_name != "")
 		{
 			break;
 		}
 	}
 	print("\n  ==========================================================================\n\n  ", 1);
 	print("Judge: ", 65);
-	cout << "  -" << s_name << "!\n  ";
+	cout << "  -" << g_game.s_name << "!\n  ";
 	pause(700, 3);
 	print("  -You are charged for the murder of... some dude and hereby sentenced to death!\n", 65);
-	cout << s_name;
+	cout << g_game.s_name;
 	print("'s Mother:\n  -Now why did you go and do that huh?!\n  -Tell your father when you see him he can rott in hell!\n  .. *Mother walks out*...\n", 65);
 	print("Prison Manager:\n  -Well luckily for you we have some malfunctions with the chair.\n  Something with the circuits on this old relic and it's all from china\n  or somewhere so it'll take sometime before we get it fixed.\n  So get comfortable, hahahaha.\n", 65);
 	pause(700, 3);
@@ -90,11 +90,10 @@ void Game::victory() {
 	print("                    *                         * ", 4);
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
 	cout << endl;
-	print(s_name, 35);
-	print("         you escaped the electric chair!", 35);
+	print("        You escaped the electric chair!", 35);
 
 
-
+	intro(); // Skickar till introt igen.
 
 
 }

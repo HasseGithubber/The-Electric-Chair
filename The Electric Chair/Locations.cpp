@@ -25,7 +25,7 @@ void Locations::start() {
 	l_game.print("    -You are charged for the murder of... some dude and hereby sentenced to death!\n", 65);
 	cout << "  " << s_name;
 	l_game.print("'s Mother:\n    -Now why did you go and do that huh?!\n    -Tell your father when you see him he can rott in hell!\n  .. *Mother walks out*...\n", 65);
-	l_game.print("  Prison Manager:\n    -Well luckily for you we have some malfunctions with the chair.\n    Something with the circuits on this old relic and it's all from china\n    or somewhere so it'll take sometime before we get it fixed.\n    So get comfortable, hahahaha.\n", 65);
+	l_game.print("  Prison Manager:\n    -Well luckily for you we have some malfunctions with the chair.\n    Something with the circuits on this old relic and it's all from across the globe\n    or somewhere so it'll take sometime before we get it fixed.\n    So get comfortable, hahahaha.\n", 65);
 	l_game.pause(700, 3);
 	l_game.print("  4 years later...", 100);
 	system("pause");
@@ -75,7 +75,7 @@ void Locations::cellA() {
 		b_cellA = true;
 		while (b_cellA)
 		{
-			l_game.print("  You are stuck in your cell, how do you plan to escape?", 35);
+			l_game.print("  You are stuck in your cell A, how do you plan to escape?", 35);
 			answer = "";
 			cout << "  " << s_choice1 << s_choice2 << s_choice3 << "i. Inventory\n";
 			cin >> answer;
@@ -177,7 +177,7 @@ void Locations::cellCorridor() {
 		cellB();
 		break;
 	case e_securityroom:
-		l_game.print("You continue out of the cell corridor.", 15);
+		l_game.print("You continue out, into the security room.", 15);
 		system("pause");
 		securityroom();
 		break;
@@ -235,7 +235,7 @@ void Locations::cellB() {
 	}
 	if (answer[0] == e_scissor)
 	{
-		l_game.print("Happy getting something you turn around", 15);
+		l_game.print("Happy getting something, you turn back.", 15);
 		system("pause"); // väntar på ett enter innan den går vidare
 		cellCorridor();
 	}
@@ -250,7 +250,7 @@ void Locations::securityroom() {
 		l_game.print("  You lunge towards the guard and stab him.\n  The body lies motionless on the floor, you think to yourself that his uniform might come in handy.", 35);
 		while (b_secroom)
 		{
-			l_game.print("  Do you take the unifrom?\n  y/n\n", 35);
+			l_game.print("  Do you take the unifrom?\n  y/n", 35);
 			answer = "";
 			cin >> answer;
 			cout << endl;
@@ -278,7 +278,7 @@ void Locations::securityroom() {
 				break;
 			}
 		}
-		l_game.print("After a stumble over the body you go into the main corridor.", 15);
+		l_game.print("  After a stumble over the body you go into the main corridor.\n  You notice that the door locks tight behind you, no going back by yourself now.", 15);
 		system("pause"); // väntar på ett enter innan den går vidare
 		mainCorridor();
 	}
@@ -457,9 +457,11 @@ void Locations::fikaroom() {
 		telephone();
 		break;
 	case e_lockerroom:
+		l_game.print("You walk across the corridor to check the other room...", 15);
 		lockerroom();
 		break;
 	case e_mainCorridor:
+		l_game.print("You go back to the main corridor...", 15);
 		mainCorridor();
 		break;
 	}
@@ -514,9 +516,9 @@ void Locations::fikatable() {
 		}
 		else
 		{
-			l_game.print("  The bulle was moldy on the inside making you grasp your stomach, you lie on the floor while drifting into unconsciousness.", 35);
+			l_game.print("  The bulle was moldy on the inside making you grasp your stomach,\n  you lie on the floor while drifting into unconsciousness.", 35);
 			l_game.pause(700, 5);
-			l_game.print("  You wake up feeling a familiar ground, you check your surroundings and notice that you are in a bed and back in your cell", 35);
+			l_game.print("  You wake up feeling a familiar ground,\n  you check your surroundings and notice that you are in a bed and back in your cell", 35);
 			l_game.print("  Bummer...", 50);
 			system("pause"); // väntar på ett enter innan den går vidare
 			CleanItems();
@@ -541,23 +543,23 @@ void Locations::fikatable() {
 		else
 		{
 			l_game.print("  You rolled a critical fail'ish, you feel the air around you starting to push and squeeze in and around you.\n", 35);
-			l_game.print("  The room makes a humming sound as you see it warp far away from you in every direction. The table you were standing next to draws away and the clock on the wall spins rapidly backwards, but you don't feel like your moving.\n", 45);
+			l_game.print("  The room makes a humming sound as you see it warp far away from you in every direction.\n  The table you were standing next to draws away and the clock on the wall spins rapidly backwards, but you don't feel like your moving.\n", 45);
 			l_game.pause(700, 5);
-			l_game.print("  Suddenly the walls rush back, the room starts collapsing towards you with a loud noise. You duck down grasping and covering yourself as hard as you can before the inevitable end.\n", 25);
+			l_game.print("  Suddenly the walls rush back, the room starts collapsing towards you with a loud noise.\n  You duck down grasping and covering yourself as hard as you can before the inevitable end.\n", 25);
 			l_game.pause(1000, 5);
-			l_game.print("  Everything stops, all you can hear is a familiar clock ticking. You're back in your cell but you've teleported back in time", 45);
+			l_game.print("  Everything stops, all you can hear is a familiar clock ticking.\n  You're back in your cell but you've teleported back in time", 45);
 			l_game.pause(700, 5);
-			l_game.print("  You noticed you've lost everything you had on you except what you started with. Bummer...", 35);
+			l_game.print("  You notice you've lost everything you had on you except what you started with.\n  Bummer...", 35);
 			system("pause"); // väntar på ett enter innan den går vidare
 			CleanItems();
 		}
 		break;
 	case e_fikaroom:
+		l_game.print("You leave the table, for now...", 15);
 		system("pause"); // väntar på ett enter innan den går vidare
 		fikaroom();
 		break;
 	}
-
 }
 
 void Locations::telephone() {
@@ -577,7 +579,7 @@ void Locations::telephone() {
 				}
 				answer = "";
 				l_game.print("  Who do you want to call?\n", 35);
-				cout << "  1. Call your mother || 2. Call the developers " << s_teleBoss << " || 7. Go back to the fika room\n";
+				cout << "  1. Call your mother || 2. Call the developers || 3. Call the boss" /*<< s_teleBoss <<*/ " || 7. Go back to the fika room\n";
 				cin >> answer;
 				cout << endl;
 				switch (answer[0])
@@ -610,7 +612,7 @@ void Locations::telephone() {
 			{
 				b_telephone = false;
 				l_game.print("  You are out of coins, you can't make a call.", 15);
-				l_game.pause(500, 3);
+				system("pause");
 			}
 		} // Slut på while loopen
 		switch (answer[0])
@@ -635,7 +637,7 @@ void Locations::telephone() {
 	else
 	{
 		l_game.print("  You are out of coins, you can't make a call.", 15);
-		l_game.pause(500, 3);
+		system("pause");
 		fikaroom();
 	}
 }
@@ -674,6 +676,7 @@ void Locations::callMother() {
 			break;
 		}
 	}
+	l_game.print("Goodbye mom..", 15);
 	telephone();
 }
 
@@ -700,7 +703,7 @@ void Locations::callDevelopers() {
 			break;
 		case e_help:
 			l_game.print("  Developers:", 35);
-			l_game.print("    -Dumbass...", 25);
+			l_game.print("    -Have you tasted the bulle, or thrown a dice?...", 25);
 			break;
 		case e_hangup:
 			b_callDevelopers = false;
@@ -711,6 +714,7 @@ void Locations::callDevelopers() {
 			break;
 		}
 	}
+	l_game.print("Goodbye, thanks for the help...", 15);
 	telephone();
 }
 
@@ -722,7 +726,7 @@ void Locations::callBoss() {
 	while (b_callBoss)
 	{
 		l_game.print("  What do you want to say?", 35);
-		cout << "  1. Hi, its " << s_name << ". || 2. This is your wifes doctor calling, it's what she's have always feared. || 3. Sell vacuum cleaners. || 4. Yeah!, there's tons of donuts. || h. Hang up the phone\n";
+		cout << "  1. Hi, its " << s_name << ". || 2. This is your wifes doctor calling, it's what she's always feared. || 3. Sell vacuum cleaners. || 4. Yeah!, there's tons of donuts. || h. Hang up the phone\n";
 		answer = "";
 		cin >> answer;
 		cout << endl;
@@ -742,7 +746,7 @@ void Locations::callBoss() {
 		case e_seller:
 			b_callBoss = false;
 			l_game.print("  ", 35);
-			cout << s_name << ":";
+			cout << s_name << ":\n";
 
 			// En förändrande konversation som säljare med bossen. Återställs i gameover funktionen.
 			l_game.print(s_seller, 25);
@@ -781,12 +785,12 @@ void Locations::callBoss() {
 		{
 			b_bossSeller = false;
 			s_seller = "    -Hi! Do you want to buy our magnificent vacuum cleaners? Ofcourse yo...\n";
-			s_bossSeller = "    -I want to buy you a nice cup of shut the fuck up... click..";
+			s_bossSeller = "    -I want to buy you a nice cup of shut the fuck up... *click*..\n";
 		}
 		else
 		{
 			s_seller = "    -Hi! Do you wan..\n";
-			s_bossSeller = "    -No. click\n";
+			s_bossSeller = "    -No. *click*\n";
 		}
 		telephone();
 		break;
@@ -795,6 +799,7 @@ void Locations::callBoss() {
 		CleanItems();
 		break;
 	case e_hangup:
+		l_game.print(".. click...", 15);
 		telephone();
 		break;
 	default:
@@ -842,9 +847,11 @@ void Locations::lockerroom() {
 		locker(); // skickar till funktionen locker.
 		break;
 	case e_fikaroom:
+		l_game.print("You walk across the corridor to check the other room...", 15);
 		fikaroom();		//Skickar tillbaka till fikaroom
 		break;
 	case e_mainCorridor:
+		l_game.print("You go back to the main corridor...", 15);
 		mainCorridor();		// Skickar tillbaka till korridoren
 		break;
 	}
@@ -941,7 +948,7 @@ void Locations::locker()
 			break;
 		}
 		case e_banana:
-			l_game.print("  Uuuhhhaaaa why would you want that?! stop taking junk, idiot.", 35);
+			l_game.print("  Uuuhhhaaaa why would you want that?! Stop taking junk, idiot.", 35);
 			break;
 		case e_coins:
 			l_game.print("  Coins coins coins.. they always welcome ", 35); 
@@ -960,6 +967,7 @@ void Locations::locker()
 	switch (answer[0])
 	{
 	case e_lockerroom:
+		l_game.print("You close the locker...", 15);
 		lockerroom(); // skickar till lockerrom
 		break;
 	}
@@ -1009,7 +1017,8 @@ void Locations::mainEntrance() {
 			l_game.print("  Security Boss:", 35);
 			l_game.print("    -BACK TO WORK!! What the hell are you doing here?", 35);
 			l_game.print("  You walk back into the main corridor.", 35);
-			s_teleBoss = "|| 3. Call the boss ";
+			l_game.print("  Hmmm... if only I could get him out of there somehow...", 55);
+			//s_teleBoss = "|| 3. Call the boss ";
 			if_teleBoss = true; // Ger valet att spelaren kan ringa chefen från fikaroom
 			system("pause");  // väntar på ett enter innan den går vidare
 			mainCorridor();  // du skickas tillbaka til maincorridor

@@ -7,28 +7,28 @@ private:
 	const string wrongAnsw = "That is not an option, try again";
 public:
 	// String Variabler
-	string s_choice1 = "1. Use Hairpin ";
-	string s_choice2 = "2. Use Harry Potter book ";
-	string s_choice3 = "3. Use Nail-file ";
-	string s_farCorrIntro = "You hear some voices coming from the main entrance to the right, to the left the corridor just keeps going.\n";
-	string s_farCorr = "6. Continue the corridor ";
+	string s_choice1 = "1. Hairpin || ";
+	string s_choice2 = "2. Harry Potter book || ";
+	string s_choice3 = "3. Nail-file || ";
+	string s_farCorrIntro = "  You hear some voices coming from the main entrance to the right, to the left the corridor just keeps going.\n";
+	string s_farCorr = "  6. Continue the corridor ";
 	string s_fikaRoom = "";
 	string s_lockerRoom = "";
 	string s_teleBoss = "";
-	string s_bossAway = "Some old guy answered the phone, but you hung up on him.\n";
+	string s_bossAway = "  Some old guy answered the phone, but you hung up on him.\n";
 	string s_choiceCoins = "|| 3. some coins";
-	string s_seller = "Hi! Do you want to buy our magnificent vacuum cleaners? Ofcourse you do, and we got a special price for you just TODAY! Just confirm the payment and get an extra pack of vacuum bags for free!\n";
-	string s_bossSeller = "Why don't you take those extra bags and shove'em up where the sun don't shine... *click*.\n";
+	string s_seller = "  Hi! Do you want to buy our magnificent vacuum cleaners? Ofcourse you do, and we got a special price for you just TODAY! Just confirm the payment and get an extra pack of vacuum bags for free!\n";
+	string s_bossSeller = "  Why don't you take those extra bags and shove'em up where the sun don't shine... *click*\n.";
 
 	// till titlar
-	string titleCellCorridor = " ||             Cell Corridor            || ";
-	string titleCellA = " ||                 Cell A               || ";
-	string titleCellB = " ||                 Cell B               || ";
-	string titleSecurityRoom = " ||             Security Room            || ";
-	string titleMainCorridor = " ||             Main Corridor            || ";
-	string titleFikaroom = " ||               Fika Room              || ";
-	string titleLockerroom = " ||              Lockerroom              || ";
-	string titleMainEntrance = " ||             Main Entrance            || ";
+	string titleCellCorridor = "  ||             Cell Corridor            || ";
+	string titleCellA = "  ||                 Cell A               || ";
+	string titleCellB = "  ||                 Cell B               || ";
+	string titleSecurityRoom = "  ||             Security Room            || ";
+	string titleMainCorridor = "  ||             Main Corridor            || ";
+	string titleFikaroom = "  ||               Fika Room              || ";
+	string titleLockerroom = "  ||              Lockerroom              || ";
+	string titleMainEntrance = "  ||             Main Entrance            || ";
 	
 	// Int variabler
 	int i_bullen;

@@ -29,7 +29,8 @@ public:
 	string titleFikaroom = "  ||               Fika Room              || ";
 	string titleLockerroom = "  ||              Lockerroom              || ";
 	string titleMainEntrance = "  ||             Main Entrance            || ";
-	
+	string titleGameOver = "  ¤¤               GAME OVER              ¤¤ ";
+	 
 	// Int variabler
 	int i_bullen;
 	int i_dice;

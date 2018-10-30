@@ -17,7 +17,6 @@ void Game::intro() {
 
 // Spelets huvud meny
 void Game::menu() {
-	system("CLS"); // clear screen
 	bool menuloop = true;
 	do
 	{

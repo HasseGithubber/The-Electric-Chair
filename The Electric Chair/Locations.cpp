@@ -458,10 +458,12 @@ void Locations::fikaroom() {
 		break;
 	case e_lockerroom:
 		l_game.print("You walk across the corridor to check the other room...", 15);
+		system("pause");
 		lockerroom();
 		break;
 	case e_mainCorridor:
 		l_game.print("You go back to the main corridor...", 15);
+		system("pause");
 		mainCorridor();
 		break;
 	}
@@ -847,11 +849,11 @@ void Locations::lockerroom() {
 		locker(); // skickar till funktionen locker.
 		break;
 	case e_fikaroom:
-		l_game.print("You walk across the corridor to check the other room...", 15);
+		l_game.print("  You walk across the corridor to check the other room...", 15);
 		fikaroom();		//Skickar tillbaka till fikaroom
 		break;
 	case e_mainCorridor:
-		l_game.print("You go back to the main corridor...", 15);
+		l_game.print("  You go back to the main corridor...", 15);
 		mainCorridor();		// Skickar tillbaka till korridoren
 		break;
 	}
@@ -906,17 +908,8 @@ void Locations::locker()
 	b_locker = true;
 	while (b_locker)
 	{ 
-		// Kollar om man har en uniform & INGA coins, man får inte ta coins om man inte har en uniform eller om man redan har coins.
-		if (b_coins == true || (b_bloodyUniform == false && b_cleanUniform == false)) 
-		{
-			s_choiceCoins = " ";
-		}
-		else if (b_coins == false && (b_bloodyUniform == true || b_cleanUniform == true)) // Har du inga, du får valet
-		{
-			s_choiceCoins = "|| 3. some coins";
-		}
 		l_game.print("  In the locker you see a bunch of things, do you want to take something?", 35);
-		cout << "  1. A clean uniform || 2. Stinky banana peel" << s_choiceCoins << " || 8. Back to lockerroom\n";
+		cout << "  1. A clean uniform || 2. Stinky banana peel || 3. some coins || 8. Back to lockerroom\n";
 		answer = "";
 		cin >> answer;
 		cout << endl;
@@ -951,12 +944,16 @@ void Locations::locker()
 			l_game.print("  Uuuhhhaaaa why would you want that?! Stop taking junk, idiot.", 35);
 			break;
 		case e_coins:
-			l_game.print("  Coins coins coins.. they always welcome ", 35); 
 			if (b_coins == false) // man får bara mer coins om man inte redan hade några
 			{
+				l_game.print("  Coins coins coins.. they always welcome ", 35);
 				l_player.giveItem(4); // Ger spelaren "some coins" i inventory OM dom inte redan hade coins.
-				i_coins = i_coins + 2; // plussar på int coins.
+				i_coins = i_coins + 4; // plussar på int coins.
 				b_coins = true;
+			}
+			else
+			{
+				l_game.print("  Your pockets are already full of coins, come back later when you have spent some..", 35);
 			}
 			break;
 		default:
@@ -967,7 +964,8 @@ void Locations::locker()
 	switch (answer[0])
 	{
 	case e_lockerroom:
-		l_game.print("You close the locker...", 15);
+		l_game.print("  You close the locker...", 15);
+		system("pause");
 		lockerroom(); // skickar till lockerrom
 		break;
 	}

@@ -850,10 +850,12 @@ void Locations::lockerroom() {
 		break;
 	case e_fikaroom:
 		l_game.print("  You walk across the corridor to check the other room...", 15);
+		system("pause"); // väntar på ett enter innan den går vidare
 		fikaroom();		//Skickar tillbaka till fikaroom
 		break;
 	case e_mainCorridor:
 		l_game.print("  You go back to the main corridor...", 15);
+		system("pause"); // väntar på ett enter innan den går vidare
 		mainCorridor();		// Skickar tillbaka till korridoren
 		break;
 	}

@@ -10,6 +10,7 @@ Locations locate;
 // Introduktion till spelet. Titel och kort förklaring av vad det är.
 void Game::intro() {
 	system("CLS");
+
 	print("  You are a prisoner on death row. Wrongly accused you will do anything to escape the...", 35);
 	pause(500, 5);
 	locate.menu("  ***~~      ~~ELECTRIC CHAIR~~        ~~***", 6);

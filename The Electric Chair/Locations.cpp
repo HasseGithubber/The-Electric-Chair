@@ -172,12 +172,12 @@ void Locations::cellCorridor() {
 	switch (answer[0])
 	{
 	case e_cellB:
-		l_game.print("You take a peek into Cell B.", 15);
+		l_game.print("  You take a peek into Cell B.", 15);
 		system("pause");
 		cellB();
 		break;
 	case e_securityroom:
-		l_game.print("You continue out, into the security room.", 15);
+		l_game.print("  You continue out, into the security room.", 15);
 		system("pause");
 		securityroom();
 		break;
@@ -235,7 +235,7 @@ void Locations::cellB() {
 	}
 	if (answer[0] == e_scissor)
 	{
-		l_game.print("Happy getting something, you turn back.", 15);
+		l_game.print("  Happy getting something, you turn back.", 15);
 		system("pause"); // väntar på ett enter innan den går vidare
 		cellCorridor();
 	}
@@ -363,15 +363,15 @@ void Locations::mainCorridor() {
 		farCorridor();
 		break;
 	case e_fikaroom:
-		l_game.print("You go to the fika room...", 15);
+		l_game.print("  You go to the fika room...", 15);
 		fikaroom();
 		break;
 	case e_lockerroom:
-		l_game.print("You go to the locker room...", 15);
+		l_game.print("  You go to the locker room...", 15);
 		lockerroom();
 		break;
 	case e_mainEntrance:
-		l_game.print("You go to the main entrance...", 15);
+		l_game.print("  You go to the main entrance...", 15);
 		mainEntrance();
 		break;
 	default:
@@ -457,11 +457,11 @@ void Locations::fikaroom() {
 		telephone();
 		break;
 	case e_lockerroom:
-		l_game.print("You walk across the corridor to check the other room...", 15);
+		l_game.print("  You walk across the corridor to check the other room...", 15);
 		lockerroom();
 		break;
 	case e_mainCorridor:
-		l_game.print("You go back to the main corridor...", 15);
+		l_game.print("  You go back to the main corridor...", 15);
 		mainCorridor();
 		break;
 	}
@@ -555,7 +555,7 @@ void Locations::fikatable() {
 		}
 		break;
 	case e_fikaroom:
-		l_game.print("You leave the table, for now...", 15);
+		l_game.print("  You leave the table, for now...", 15);
 		system("pause"); // väntar på ett enter innan den går vidare
 		fikaroom();
 		break;
@@ -579,7 +579,7 @@ void Locations::telephone() {
 				}
 				answer = "";
 				l_game.print("  Who do you want to call?\n", 35);
-				cout << "  1. Call your mother || 2. Call the developers || 3. Call the boss" /*<< s_teleBoss <<*/ " || 7. Go back to the fika room\n";
+				cout << "  1. Call your mother || 2. Call the developers || 3. Call the boss || 7. Go back to the fika room\n";
 				cin >> answer;
 				cout << endl;
 				switch (answer[0])
@@ -676,7 +676,7 @@ void Locations::callMother() {
 			break;
 		}
 	}
-	l_game.print("Goodbye mom..", 15);
+	l_game.print("  Goodbye mom..", 15);
 	telephone();
 }
 
@@ -714,7 +714,7 @@ void Locations::callDevelopers() {
 			break;
 		}
 	}
-	l_game.print("Goodbye, thanks for the help...", 15);
+	l_game.print("  Goodbye, thanks for the help...", 15);
 	telephone();
 }
 
@@ -799,7 +799,7 @@ void Locations::callBoss() {
 		CleanItems();
 		break;
 	case e_hangup:
-		l_game.print(".. click...", 15);
+		l_game.print("  .. click...", 15);
 		telephone();
 		break;
 	default:
@@ -1018,7 +1018,6 @@ void Locations::mainEntrance() {
 			l_game.print("    -BACK TO WORK!! What the hell are you doing here?", 35);
 			l_game.print("  You walk back into the main corridor.", 35);
 			l_game.print("  Hmmm... if only I could get him out of there somehow...", 55);
-			//s_teleBoss = "|| 3. Call the boss ";
 			if_teleBoss = true; // Ger valet att spelaren kan ringa chefen från fikaroom
 			system("pause");  // väntar på ett enter innan den går vidare
 			mainCorridor();  // du skickas tillbaka til maincorridor

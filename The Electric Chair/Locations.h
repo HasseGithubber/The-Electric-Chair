@@ -19,7 +19,6 @@ public:
 	string s_farCorr = "6. Continue the corridor ";
 	string s_fikaRoom = "";
 	string s_lockerRoom = "";
-	//string s_teleBoss = "";
 	string s_bossAway = "\n  Some old guy answered the phone, he sounds grumpy so you hang up on him.\n";
 	string s_choiceCoins = "|| 3. some coins";
 	string s_seller = "    -Hi! Do you want to buy our magnificent vacuum cleaners? Ofcourse you do, and we got a special price for you just TODAY!\n  Just confirm the payment and get an extra pack of vacuum bags for free!\n";

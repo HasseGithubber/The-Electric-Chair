@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Locations.h"
 #include "Player.h"
+#include <conio.h>
 
 Player g_player;
 Locations locate;
@@ -83,11 +84,27 @@ void Game::pause(int a, int b) {
 }
 
 // Funktion som skriver ut en string eller text en karaktär i taget med hastighets inställning.
+// Man kan avbryta utskriften och få allting på en gång om man trycker på en tangent.
 void Game::print(string a, int b) {
+	int x = 0;
+	bool blub = false;
 	for (int i = 0; i < a.length(); i++)
 	{
 		cout << a[i];
 		Sleep(b);
+		if (_kbhit())
+		{
+			blub = true;
+			x = i + 1;
+			break;
+		}
+	}
+	if (blub)
+	{
+		for (x; x < a.length(); x++)
+		{
+			cout << a[x];
+		}
 	}
 	cout << endl;
 }

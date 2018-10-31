@@ -364,14 +364,17 @@ void Locations::mainCorridor() {
 		break;
 	case e_fikaroom:
 		l_game.print("  You go to the fika room...", 15);
+		system("pause");
 		fikaroom();
 		break;
 	case e_lockerroom:
 		l_game.print("  You go to the locker room...", 15);
+		system("pause");
 		lockerroom();
 		break;
 	case e_mainEntrance:
 		l_game.print("  You go to the main entrance...", 15);
+		system("pause");
 		mainEntrance();
 		break;
 	default:
